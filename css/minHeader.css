@@ -1,0 +1,99 @@
+/*										header
+-----------------------------------------------*/
+header{
+	height: 75px;
+	width: 100%;
+	background: url(../images/bg_hd.jpg);
+	margin-bottom: 50px;
+}
+#headerMain{
+	height: 75px;
+	width: 960px;
+	margin: 0 auto;
+}
+#logo{
+	float: left;
+}
+#logo img{
+	height: 75px;
+}
+header ul{
+	height: 75px;
+	float: right;
+	overflow: hidden;
+}
+header li{
+	height: 75px;
+	width: 120px;
+	margin-left: 15px;
+}
+a{
+	height:75px;
+	width: 120px;
+	display: block;
+}
+#nav1{
+	height: 75px;
+	width: 120px;
+	background: url(../images/nav_act_01_off.png);
+}
+#nav1:hover{
+	height: 75px;
+	width: 120px;
+	background: url(../images/nav_act_01_on.png);
+}
+#nav2{
+	height: 75px;
+	width: 120px;
+	background: url(../images/nav_act_02_off.png);
+}
+#nav2:hover{
+	height: 75px;
+	width: 120px;
+	background: url(../images/nav_act_02_on.png);
+}
+#nav3{
+	height: 75px;
+	width: 120px;
+	background: url(../images/nav_act_03_out_off.png);
+}
+#nav3:hover{
+	height: 75px;
+	width: 120px;
+	background: url(../images/nav_act_03_out_on.png);
+}
+#nav4{
+	height: 75px;
+	width: 120px;
+	background: url(../images/nav_act_04_off.png);
+}
+#nav4:hover{
+	height: 75px;
+	width: 120px;
+	background: url(../images/nav_act_04_on.png);
+}
+#nav5{
+	height: 75px;
+	width: 120px;
+	background: url(../images/nav_act_05_out_off.png);
+}
+#nav5:hover{
+	height: 75px;
+	width: 120px;
+	background: url(../images/nav_act_05_out_on.png);
+}
+/*										footer
+-----------------------------------------------*/
+footer{
+	height: 75px;
+	width: 100%;
+	background: url(../images/bg_ft.jpg);
+	background-color: #e6fbff;
+	background-repeat: repeat-x;
+}
+#footerMain{
+	height: 60px;
+	width: 960px;
+	margin-top: 30px;
+	padding: 15px 30px 0 30px;
+}
