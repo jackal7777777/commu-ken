@@ -5,9 +5,10 @@
 <html lang="ja">
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/style.css"> 
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/minHeader.css">
 		<title>こみゅけん！-kommu-ken!-</title>
-		<script src="js/js.js"></script>
+		<script src="js/jquery-2.1.1.min.js"></script>
 		<script>
 			//スライド
 			//選択
@@ -16,9 +17,7 @@
 	</head>
 	<body>
 		<header>
-			<?php 
-				//header.php読込
-			 ?>
+			<?php require_once "header.html"; ?>
 		</header>
 		<main>
 			<!--ゲーム画面-->

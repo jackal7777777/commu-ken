@@ -1,0 +1,99 @@
+@charset "utf-8";
+/*----------------------------------------------
+	all
+	body
+	main
+		-game
+		-opening
+		-policy
+		-info
+*/
+
+
+/*										all
+-----------------------------------------------*/
+*,html,body{
+	margin: 0px;
+	padding: 0px;
+}
+/*										body
+-----------------------------------------------*/
+body{
+	background: url(../images/background_classroom.jpg);
+	background-size: cover;
+}
+ul{
+	list-style: none;
+}
+li{
+	float: left;
+}
+h2{
+	height: 25px;
+	width: auto;
+	margin: 50px 0 55px 50px;
+}
+/*										main
+-----------------------------------------------*/
+main{
+	clear: left;
+	min-height: 300px;
+	width: 960px;
+	margin: 0 auto;
+	background: #fafafa;
+}
+
+#game{
+	height: 500px;
+	width: 920px;
+	padding: 20px;
+	background: url(../images/bg_game.png);
+}
+#info input{
+	height: 40px;
+	width: 720px;
+	margin-bottom: 20px;
+}
+#info textarea{
+	height: 100px;
+	width: 720px;
+	margin-bottom: 35px;
+}
+#info input[type="button"]{
+	border: 0px;
+	height: 40px;
+	width: 120px;
+	background: url(../images/btn_send_off.png);
+	margin: 0 35px 20px 50px;
+}
+#info input[type="button"]:hover{
+	border: 0px;
+	height: 40px;
+	width: 120px;
+	background: url(../images/btn_send_on.png);
+	margin: 0 35px 20px 50px;
+}
+#info img{
+	height: 40px;
+	width: 105px;
+	margin: 0 35px 20px 50px;
+	float:left;
+}
+#info select{
+	height: 40px;
+	width: 100px;
+	margin: 0 20px 20px 0;
+}
+select#que{
+	width: 720px;
+}
+input[type="button"]#add{
+	height: 150px;
+	width: 150px;
+	background: url(../images/btn_regi_off.png);	
+}
+input[type="button"]#add:hover{
+	height: 150px;
+	width: 150px;
+	background: url(../images/btn_regi_on.png);	
+}

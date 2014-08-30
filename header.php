@@ -1,9 +1,12 @@
-<!--ロゴ-->
-<a href="index.php"><img src="images/logo.png"></a>
-<ul>
-	<li><a href="index.php">TOP</a></li>
-	<li><a href="index.php">ログイン/ログアウト</a></li>
-	<li><a href="#">会員登録/会員情報変更</a></li>
-	<li><a href="#">お問合せ</a></li>
-	<li><a href="tutorial.php">操作説明</a></li>
-</ul>
+<div id="headerMain">
+	<div id="logo">
+		<a href="index.php"><img src="images/logo.png"></a>
+	<!--/#logo--></div>
+	<ul>
+		<li id="nav1"><a href="index.php"></a></li>
+		<li id="nav2"><a href="index.php"></a></li>
+		<li id="nav3"><a href="add.php"></a></li>
+		<li id="nav4"><a href="info.php"></a></li>
+		<li id="nav5" class="liLast"><a href="tutorial.php"></a></li>
+	</ul>
+ <!--/#headerMain--></div>
