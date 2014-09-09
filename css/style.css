@@ -42,12 +42,43 @@ main{
 	margin: 0 auto;
 	background: #fafafa;
 }
-
+/*game*/
 #game{
 	height: 500px;
 	width: 920px;
 	padding: 20px;
 	background: url(../images/bg_game.png);
+	position: relative;
+}
+#game #selectLeft{
+	height: 60px;
+	width: 60px;
+	position: absolute;
+	top: 220px;
+	left: 85px;
+}
+#game #selectRight{
+	height: 60px;
+	width: 60px;
+	position: absolute;
+	top: 220px;
+	right: 85px;
+}
+#game #select{
+	position: absolute;
+	top: 115px;
+	left: 230px;
+	height: 270px;
+	width: 480px;
+	overflow:hidden;
+}
+#game #select #selectSlide{
+	height: 270px;
+	width: 5000px;
+	position: relative;
+}
+#game #select #selectSlide img{
+	float: left;
 }
 #info input{
 	height: 40px;
