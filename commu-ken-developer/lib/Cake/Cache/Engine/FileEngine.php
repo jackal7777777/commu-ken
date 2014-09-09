@@ -74,7 +74,7 @@ class FileEngine extends CacheEngine {
 			'lock' => true,
 			'serialize' => true,
 			'isWindows' => false,
-			'mask' => 0664
+			'mask' => 0666
 		);
 		parent::init($settings);
 

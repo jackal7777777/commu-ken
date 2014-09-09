@@ -107,3 +107,8 @@ CakeLog::config('error', array(
 ));
 
 CakePlugin::load( 'DebugKit');
+
+
+Cache::config('default', array(
+    'mask' => 0666,
+));
