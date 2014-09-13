@@ -51,6 +51,18 @@ main{
 	top: 10px;
 	left: 10px;
 }
+/*index*/
+#loginForm{
+	height: 180px;
+	width: 300px;
+	border-radius: 10px;
+	position: absolute;
+	padding: 10px;
+	bottom:30px;
+	right: 35px;
+	z-index: 99;
+	background: rgba(255,255,255,0.50);
+}
 /*game*/
 #game{
 	height: 500px;
@@ -58,6 +70,7 @@ main{
 	padding: 20px;
 	background: url(../images/bg_game.png);
 	position: relative;
+	margin: 0 auto;
 }
 #game #selectLeft{
 	height: 60px;
