@@ -368,7 +368,7 @@ function sp(){
 
 //タイマー
 function countDown(){
-	var sec = 2;
+	var sec = 15;
 	setInterval(function(){
 		if(sec>0){
 			sec = sec-1;

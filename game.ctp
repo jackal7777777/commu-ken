@@ -45,6 +45,7 @@
 			};
 			var save = new Array();
 			$(function(){
+				$("#social").fadeOut(0);
 				var url = location.href;
 				var sce = url.search(/sce/);
 				sce = "sce1sta1";
@@ -137,6 +138,7 @@
 							"z-index":"5"
 						}
 					}).appendTo("#timer");
+					countDown();
 					//イベント発生
 					$("<div>",{
 						"id":"event",
@@ -158,7 +160,7 @@
 						"id":"eventTitle",
 						"text":selectStage[sce]['eventTitle'],
 						"css":{
-							"height":"100px",
+							"height":"40px",
 							"width":"500px",
 							"position":"absolute",
 							"top":"100px",
@@ -185,23 +187,25 @@
 							"id":"select"+i,
 							"text":selectStage[sce]["say"+i],
 							"css":{
-								"height":"50px",
+								"height":"70px",
 								"width":"600px",
+								"border":"solid 1px #000",
+								"border-radius":"10px",
 								"position":"absolute",
-								"top":(70*(i-1))+"px",
+								"top":(80*(i-1))+"px",
 								"left":"0",
-								"background":"url(../images/bg_choice_off.png)",
+								"background":"#e6fbff",
 								"text-align":"center",
-								"line-height":"50px"
+								"line-height":"70px"
 							}
 						}).appendTo("#selectBox");
 					}
 					//選択肢マウスオーバー/アウト
 					$("#selectBox").children().mouseover(function(){
 						//alert("a");
-						$(this).css({"background":"url(../images/bg_choice_on.png)"});
+						$(this).css({"border":"solid 1px #f00"});
 						$(this).mouseout(function(){
-							$(this).css({"background":"url(../images/bg_choice_off.png)"});
+							$(this).css({"border":"solid 1px #000"});
 						});
 						
 					});
@@ -252,32 +256,7 @@
 								sp();
 								$("#hukidashi").off();
 								$("#hukidashi").click(function(){
-									$("<div>",{
-										"id":"blueBack",
-										"css":{
-											"height":"525px",
-											"width":"940px",
-											"background":"#e6fbff",
-											"position":"absolute",
-											"top":"10px",
-											"left":"10px",
-											"z-index":"5"
-										}	
-									}).appendTo("#game");
-									$("<img>",{
-										"src":"images/titile_enquete.png",
-										"css":{
-											"position":"absolute",
-											"z-index":"6"
-										}
-									});
-									$("<img>",{
-										"src":"images/titile_sns.png",
-										"css":{
-											"position":"absolute",
-											"z-index":"6"
-										}
-									});
+									$("#social").fadeIn(500);
 									$("#hukidashi").off();
 								});
 							});
@@ -286,7 +265,7 @@
 					//感想
 
 				});
-				//文章書き換え
+				//最初
 				function text(index, act){
 					//alert(act);
 					//キャラクター表示切替
@@ -360,6 +339,7 @@
 
 				//$("#game").append("<img src='images"+background[sce]+"'>");
 			});
+//文章をテキスト入力のように表示する
 function sp(){
     var setElm = $('.split'),
     delaySpeed = 50,
@@ -383,6 +363,33 @@ function sp(){
                 setElm.html(setText);
         },splitLength*delaySpeed+fadeSpeed);
     });
+}
+
+//タイマー
+function countDown(){
+	var sec = 15;
+	setInterval(function(){
+		if(sec>0){
+			sec = sec-1;
+			$("#count").text(sec);
+		}else{
+			for(var j=1;j<5;j++){
+				$("#select"+j).off();
+				$("<p>",{
+					"text":"時間切れ！！",
+					"css":{
+						"height":"50px",
+						"width":"300px",
+						"font-size":"50px",
+						"position":"absolute",
+						"top":"240px",
+						"left":"320px",
+						"z-index":"9"
+					}
+				}).appendTo("#game");
+			}
+		}
+	},1000);
 }
 
 		</script>
