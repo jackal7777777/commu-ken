@@ -29,8 +29,7 @@ class Serif extends AppModel {
 	                'type' => 'LEFT',
 	                'table' => 'answers',
 	                'alias' => 'Answer',
-	                'conditions' => array('Answer.answer_no = Serif.answer_no',
-	                	'Answer.step_id = Serif.step_id'))
+	                'conditions' => 'Answer.answer_no = Serif.answer_no')
 	            ),
 			'order' => array('Serif.serif_no' => 'asc','Serif.answer_no' => 'asc'),
 			//'group' => 'Serif.answer_no'

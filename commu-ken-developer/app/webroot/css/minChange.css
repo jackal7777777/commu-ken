@@ -1,0 +1,12 @@
+li#nav3{
+	background-image: url(../images/nav_act_03_in_off.png);
+}
+li#nav5{
+	background-image: url(../images/nav_act_05_in_off.png);
+}
+li#nav3:hover{
+	background-image: url(../images/nav_act_03_in_on.png);
+}
+li#nav5:hover{
+	background-image: url(../images/nav_act_05_in_on.png);
+}

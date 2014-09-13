@@ -12,7 +12,8 @@ class Answer extends AppModel {
 		//データベース検索情報セット
 		$params = array(
 			'fields' => array('answer_no','answer_text'),
-			'conditions' => array('Answer.step_id' => $stepId)
+			'conditions' => array('Answer.step_id' => $stepId),
+			'order' => 'Answer.answer_no'
 		);
 
 		//SQL実行

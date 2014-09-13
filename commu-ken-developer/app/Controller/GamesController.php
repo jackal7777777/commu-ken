@@ -7,10 +7,19 @@ class GamesController extends AppController{
     var $uses = array('User','Scenario','Stage','Step','Serif','Answer', 'Survey');
 
     //helpersを継承
-    public $helpers = array('Html', 'Form', 'Js');
+    //public $helpers = array('Html', 'Form', 'Js', 'Session', 'Css');
 
     //ajaxの通信であるかどうか判断
     public $components = array('RequestHandler');
+
+
+    public function opening(){
+        
+    }
+
+    public function tutorial(){
+        
+    }
 
     public function choice($scenarioId = 0){
 
@@ -18,9 +27,21 @@ class GamesController extends AppController{
 
         $this->set('user_id', $this->Session->read('user_id'));
 
-        debug($this->Scenario->allScenario());
+        
+        //debug($this->Scenario->allScenario());
 
+
+
+        //全シナリオ読み込み
         $this->set('scenarioArray', $this->Scenario->allScenario());
+
+        //全ステージ読み込み
+        $this->set('stageArray', $this->Stage->getStage());
+
+        if (isset($this->viewVars['user_id'])) {
+            //viewにセッション情報をセット
+            $this->set('sess', $this->Session->read('user_id'));
+        }
 
 
     }
@@ -33,7 +54,7 @@ class GamesController extends AppController{
             //$this->autoRender = false;
 
             //検索結果を取得
-            $result = $this->Stage->getStage($scenarioId);
+            
 
             $imgRoot = $result[0]['Stage']['bg_image'];
 
@@ -59,6 +80,8 @@ class GamesController extends AppController{
 
     public function game($scenarioId,$stageId,$stepNo = 1){
 
+        //echo dirname(__FILE__);
+
         $this->set('title_for_layout', 'こみゅけん！-kommu-ken!');
 
         $this->set('user_id', $this->Session->read('user_id'));
@@ -67,16 +90,21 @@ class GamesController extends AppController{
         $stepInfo = $this->Step->getStep($scenarioId,$stageId,$stepNo);
 
         //確認
-        debug($stepId);
-        //debug($stepInfo[0]['Step']['id']);
-
         $stepId = $stepInfo[0]['Step']['id'];
+        //debug($stepId);
         $this->set('step_id', $stepId);
+        //debug($stageId);
+
+        //ステージ情報を取得
+        $stageArray = $this->Stage->getStage(0,$stageId);
+        //debug($stageArray);
+        $this->set('stageArray', $stageArray[0]['Stage']);
 
         //ステップIDに該当するアンサーを取得
         $answers = $this->Answer->getAnswer($stepId);
+        $this->set('answerArray', $answers);
 
-        debug($answers);
+        //debug($answers);
 
         //仮でアンサーNoを設定しておく
         $answerNo = 1;
@@ -85,6 +113,7 @@ class GamesController extends AppController{
         //ステップIDとアンサーに該当するセリフを特定
         //ここでは該当ステップのセリフデータを全取得している
         $serifs = $this->Serif->getSerif($stepId);
+        $this->set('serifArray', $serifs);
 
         /*--------------------------------------------------------------*/
         /*以降はJSでの処理になると思うが、念のためロジックを書いておく
@@ -106,7 +135,7 @@ class GamesController extends AppController{
         //以上の処理で取得した全セリフデータから選択されたアンサーに対応したセリフデータを抽出できる
         /*------------------------------------------------------------*/
 
-        debug($serifs);
+        //debug($serifs);
 
         // post時の処理(アンケート登録)
         if ($this->request->is('post')) {

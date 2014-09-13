@@ -17,6 +17,10 @@ class User extends AppModel {
 		'pass'=> array(
 			'password' => 'notEmpty',
 			'message' => '入力必須項目です'
+		),
+		'secret_answer'=> array(
+			'secret_answer' => 'notEmpty',
+			'message' => '入力必須項目です'
 		)
 	);
 	public function userCheck($id,$pass){//ログイン確認

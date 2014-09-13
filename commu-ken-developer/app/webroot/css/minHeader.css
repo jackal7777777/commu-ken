@@ -90,6 +90,8 @@ footer{
 	background: url(../images/bg_ft.jpg);
 	background-color: #e6fbff;
 	background-repeat: repeat-x;
+	position: relative;
+	bottom: 0;
 }
 #footerMain{
 	height: 60px;

@@ -13,6 +13,7 @@ endif;
 
 App::uses('Debugger', 'Utility');
 
+//css出力
 echo $this->Html->css('minHeader');
 
 ?>
@@ -24,13 +25,25 @@ endif;
 
 <div id="game">
 	<!--オープニングスキップするかしないか-->
-	<div id="replayOpning">
-		<img src="images/btn_skip_off.png" id="skip">
-		<a href="index.php"><img src="images/btn_return.png"><img src="images/title_reopening.png"></a>
-		<form action="index.php">
-			<input type="checkbox" id="checkbox"><label for="checkbox"><img src="images/title_nextskip.png"></label>
-		</form>
-	</div>
+<div id="replayOpning">
+	<?= $this->Html->image('btn_skip_off.png', array('id' => 'skip')) ?>
+	<?= $this->Html->link($this->Html->image('btn_return.png').$this->Html->image('title_reopening.png'), array('controller' => 'accounts', 'action' => 'index'),array('escape'=>false)) ?>
+	<?php
+	echo $this->Form->create(null, array('url' => '/accounts/login',
+										'inputDefaults' => array(
+    										    'label' => false,
+        										'div' => false))
+	);
+
+	//スキップ確認チェックボックス生成
+	echo $this->Form->input('skip',
+		array('type' => 'checkbox',
+				'label' => $this->Html->image('title_nextskip.png')));
+				//ラベルに画像を指定
+
+
+	?>
+</div>
 	<!--オープニング-->
 		<div id="hukidashi">
 			<div id="talker">
@@ -41,14 +54,7 @@ endif;
 		<!--/#hukidashi--></div>
 	<!--ログインフォーム-->
 	<div id="loginForm">
-		<img src="images/title_login.png">
-<!--		<form action="/accounts/login" method="POST">
-			<img src="images/login_add.png"><input type="email" name="userId"><br>
-			<img src="images/login_pass.png"><input type="password" name="password"><br>
-			<input type="submit" value="ログイン">
-		</form>
--->
-
+		<?= $this->Html->image('title_login.png').'<br>' ?>
 <?php 
 
 	
@@ -57,18 +63,12 @@ endif;
 		echo $error;
 	}
 
-	echo $this->Form->create(null, array('url' => '/accounts/login',
-										'inputDefaults' => array(
-    										    'label' => false,
-        										'div' => false))
-	);
+	
 	echo $this->Html->image('login_add.png');
 	echo $this->Form->input('id', array('type'=>'email'))."<br>";
 	echo $this->Html->image('login_pass.png');
 	echo $this->Form->input('pass', array('type'=>'password'));
 	echo $this->Form->end('ログイン');
-
-	echo "<p>".$this->Html->link('会員登録', array('controller' => 'accounts', 'action' => 'add'))."</p>";
 ?>
 	</div>
 	<div>
