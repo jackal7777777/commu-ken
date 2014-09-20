@@ -19,7 +19,6 @@
 		<header>
 			<?php require_once "header.php"; ?>
 		</header>
-		<main>
 			<!--免責事項-->
 			<section>
 				<article>
@@ -32,7 +31,6 @@
 					</form>
 				</article>
 			</section>
-		</main>
 		<footer>
 			<?php require_once "footer.php"; ?>
 		</footer>

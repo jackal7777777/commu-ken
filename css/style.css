@@ -15,6 +15,7 @@
 *,html,body{
 	margin: 0px;
 	padding: 0px;
+	font-size: 62.5%;
 }
 /*										body
 -----------------------------------------------*/
@@ -31,7 +32,7 @@ li{
 h2{
 	height: 25px;
 	width: auto;
-	margin: 50px 0 55px 50px;
+	padding: 50px 0 0 50px;
 }
 /*										main
 -----------------------------------------------*/
@@ -52,6 +53,14 @@ main{
 	left: 10px;
 }
 /*index*/
+#gameLogo{
+	position: absolute;
+	height: 240px;
+	width: 300px;
+	top: 143px;
+	left: 320px;
+	z-index: 10;
+}
 #loginForm{
 	height: 180px;
 	width: 300px;
@@ -63,6 +72,31 @@ main{
 	z-index: 99;
 	background: rgba(255,255,255,0.50);
 }
+#loginForm input[type="button"]{
+	height: 40px;
+	width: 120px;
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	border: 0;
+	background: url(../images/nav_05_out_off.png);
+}
+#loginForm input[type="button"]{
+	background: url(../images/nav_05_out_on.png);
+}
+#game input[type="email"]{
+	height: 20px;
+	width: 180px;
+}
+#game input[type="password"]{
+	height: 20px;
+	width: 180px;
+}
+#loginForm img form{
+	height: 20px;
+	width: 70px;
+	margin: 20px 10px 15px 20px;
+}
 /*game*/
 #game{
 	height: 500px;
@@ -71,6 +105,54 @@ main{
 	background: url(../images/bg_game.png);
 	position: relative;
 	margin: 0 auto;
+}
+#game #skip{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 99;
+}
+#game #next{
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index: 99;
+	height: 200px;
+	width: 300px;
+}
+#game .textSplitLoad{
+	font-size: 1.6rem;
+}
+#game #hukidashi{
+	height: 100px;
+	width: 720px;
+	background: rgba(255,255,255,0.75);
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	margin-left: -360px;
+	border-radius: 10px;
+	overflow: hidden;
+	z-index: 6;
+}
+#game #talker{
+	height: 100px;
+	width: 120px;
+	font-size: 1.6rem;
+	line-height: 100px;
+	float: left;
+	text-align: center;
+}
+#game #gameArticle{
+	height: 100px;
+	width: 600px;
+	left: 120px;
+	position: absolute;
+}
+#game #gameArticle p{
+	line-height: 25px;
+	font-size: 1.6rem;
+	margin: 1em 0;
 }
 #game #selectLeft{
 	height: 60px;
@@ -102,7 +184,110 @@ main{
 #game #select #selectSlide img{
 	float: left;
 }
+#gameBack{
+	height: 525px;
+	width: 940px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 1;
+	background-size: cover;  
+}
+#gameBackBlack{
+	height: 525px;
+	width: 940px;
+	background: rgba(0,0,0,0.70);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 6;
+}
+#regi{
+	height: 175px;
+	width: 940px;
+	position: absolute;
+	z-index: 15;
+	top: 180px;
+	left: 10px;
+	background: url(../images/bg_regi_off.png);
+}
+#regi:hover{
+	height: 175px;
+	width: 940px;
+	position: absolute;
+	z-index: 15;
+	top: 180px;
+	left: 10px;
+	background: url(../images/bg_regi_on.png);
+
+}
+#timer{
+	height: 125px;
+	width: 125px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 6;
+	background: url(../images/bg_timer.png);
+}
+#event{
+	height: 45px;
+	width: 240px;
+	position: absolute;
+	top: 10px;
+	left: 340px;
+	z-index: 6;
+	background: url(../images/title_event.png); 
+}
+#eventTitle{
+	height: 40px;
+	width: 500px;
+	position: absolute;
+	top: 100px;
+	left: 220px;
+	z-index: 6;
+	text-align: center;
+	content: #fff;
+	font-size: 1.6rem;
+	color: #fff;
+}
+#selectBox{
+	height: 400px;
+	width: 600px;
+	position: absolute;
+	top: 160px;
+	left: 180px;
+	z-index: 6;
+}
+#gameImg{
+	height: 500px;
+	width: 300px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -150px;
+	z-index: 6;
+}
+#gameImg #img{
+	width: 300px;
+	position: absolute;
+	bottom: 0;
+}
+#game #summaryTitle{
+	height: 125px;
+	width: 125px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 6;
+	background: url(../images/title_summary.png);
+}
 /*info*/
+section{
+	min-height: 500px;
+	margin-top: 100px;
+
+}
 #info input{
 	height: 40px;
 	width: 720px;
