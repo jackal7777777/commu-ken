@@ -25,11 +25,10 @@
 				<div id="selectLeft"><img src="images/btn_prev.png"></div>
 				<div id="select">
 					<div id="selectSlide">
-						<img src="images/scenario_01.png" class="scenario">
-						<img src="images/scenario_01.png" class="scenario">
-						<img src="images/stage_01.png" class="stage1">
-						<img src="images/stage_01.png" class="stage1">
-						<img src="images/stage_01.png" class="stage1">
+						<img src="images/scenario_01_off.jpg" class="scenario" id="scenario1">
+						<img src="images/stage_01_off.jpg" class="stage" id="stage1">
+						<img src="images/stage_02_off.jpg" class="stage" id="stage2">
+						<img src="images/stage_03_off.jpg" class="stage" id="stage3">
 					</div>
 				</div>
 				<div id="selectRight"><img src="images/btn_next.png"></div>
@@ -40,18 +39,49 @@
 		</footer>
 		<script>
 			$(function(){
-				$(".stage1").hide(0);
+				var index = "";
+				var count = $(".scenario").length;
+				var left = 0;
+				var right = count;
+				var px = 480;
+				$(".stage").hide(0);
 				var select = new Array();
 				//選択ボタン
 				$("#selectLeft").click(function(){
-					$("#selectSlide").animate({
-						"left":"+=480px"
-					},500);
+					if( left < count-1 ){
+						$("#selectSlide").animate({
+							"left":"-=480px"
+						},500);
+						left += 1;
+						right -= 1;
+					}
 				});
 				$("#selectRight").click(function(){
-					$("#selectSlide").animate({
-						"left":"-=480px"
-					},500);
+					if( right < count ){
+						$("#selectSlide").animate({
+							"left":"+=480px"
+						},500);
+						right += 1;
+						left -= 1;
+					}
+				});
+				//マウスオーバー:シナリオ
+				$(".scenario").mouseover(function(){
+					index = $(".scenario").index(this);
+					$(".scenario").eq(index).attr({"src":"images/scenario_0"+(index+1)+"_on.jpg"});
+					$(".scenario").mouseout(function(){
+						index = $(".scenario").index(this);
+						$(".scenario").eq(index).attr({"src":"images/scenario_0"+(index+1)+"_off.jpg"});
+					});
+				});
+				//マウスオーバー:ステージ
+				$(".stage").mouseover(function(){
+					index = $(".stage").index(this);
+					$(".stage").eq(index).attr({"src":"images/stage_0"+(index+1)+"_on.jpg"});
+					$(".stage").mouseout(function(){
+						index = $(".stage").index(this);
+						$(".stage").eq(index).attr({"src":"images/stage_0"+(index+1)+"_off.jpg"});
+					});
 				});
 				//選択されたら配列にプッシュ
 				$(".scenario").click(function(){
@@ -65,9 +95,13 @@
 						"left":"0px"
 					},0);
 					//ステージを表示
-					$(".stage"+(index+1)).delay(500).fadeIn(500);
-					$(".stage"+(index+1)).click(function(){
-						index = $(".stage1").index(this);
+					$(".stage").delay(500).fadeIn(500);
+					count = $(".stage").length;
+					alert(count);
+					left = 0;
+					right = count;
+					$(".stage").click(function(){
+						index = $(".stage").index(this);
 						kari = kari + ("sta"+(index+1));
 						alert(kari);
 						select.push(kari);

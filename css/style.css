@@ -20,7 +20,7 @@
 /*										body
 -----------------------------------------------*/
 body{
-	background: url(../images/background_classroom.jpg);
+	background: url(../images/bg.jpg);
 	background-size: cover;
 }
 ul{
@@ -32,20 +32,15 @@ li{
 h2{
 	height: 25px;
 	width: 300px;
-	margin: 0 0 20px 20px;
+	margin: 20px 0 20px 20px;
 }
 /*										main
 -----------------------------------------------*/
 main{
-	height: 100%;
+	min-height: 400px;
 	width: 960px;
 	background: #fafafa;
-	position: relative;
-	top: 20px;
-	left: 50%;
-	margin: 0;
-	margin-left: -480px;
-	padding-top: 20px;
+	margin: 20px auto;
 }
 #replayOpning{
 	height: 525px;
@@ -73,7 +68,7 @@ main{
 	padding: 10px;
 	bottom:30px;
 	right: 35px;
-	z-index: 99;
+	z-index: 99;#info
 	background: rgba(255,255,255,0.50);
 }
 #loginForm input[type="submit"]{
@@ -304,22 +299,19 @@ main{
 	background: url(../images/title_summary.png);
 }
 /*info*/
-section{
-	min-height: 500px;
-	margin-top: 100px;
-
-}
 #info input{
 	height: 40px;
 	width: 720px;
 	margin-bottom: 20px;
 }
 #info textarea{
-	height: 100px;
-	width: 720px;
+	height: 90px;
+	width: 710px;
 	margin-bottom: 35px;
+	padding: 5px;
+
 }
-#info input[type="button"]{
+#info input[type="submit"]{
 	border: 0px;
 	height: 40px;
 	width: 120px;
@@ -345,11 +337,15 @@ section{
 	margin: 0 20px 20px 0;
 }
 /*add*/
-
+#add {
+	height: 500px;
+	position: relative;
+	margin-bottom: 100px;
+}
 select#que{
 	width: 720px;
 }
-input,select,option{
+input,select,option,textarea{
 	border-radius: 5px;
 	border: 1px solid #aaa;
 }
@@ -358,6 +354,10 @@ input,select,option{
 	width: 150px;
 	background: url(../images/btn_regi_off.png);
 	border: 0;
+	position: absolute;
+	bottom: -90px;
+	left: 50%;
+	margin-left: -75px;
 }
 #add input[type="submit"].add:hover{
 	height: 150px;

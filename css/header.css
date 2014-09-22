@@ -6,6 +6,7 @@ header{
 	width: 100%;
 	background: url(../images/bg_hd2.jpg);
 	background-repeat: repeat-x;
+	margin-bottom: 50px;
 }
 #headerMain{
 	height: 240px;

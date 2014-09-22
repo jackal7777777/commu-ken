@@ -19,18 +19,16 @@
 		<header>
 			<?php require_once "header.php"; ?>
 		</header>
-			<!--免責事項-->
-			<section>
-				<article>
-					<h2><img src="images/title_form.png" alt="お問合せ"></h2>
-					<form action="#" method="POST" id="info">
-						<img src="images/title_addr.png"><input type="email" name="mail"><br>
-						<img src="images/title_title.png"><input type="text"><br>
-						<img src="images/title_con.png"><textarea></textarea><br>
-						<input type="button">
-					</form>
-				</article>
-			</section>
+		<main>
+			<!--お問合せ-->
+				<h2><img src="images/title_form.png" alt="お問合せ"></h2>
+				<form action="#" method="POST" id="info">
+					<img src="images/title_addr.png"><input type="email" name="mail"><br>
+					<img src="images/title_title.png"><input type="text"><br>
+					<img src="images/title_con.png"><textarea></textarea><br>
+					<input type="submit" value="">
+				</form>
+		</main>
 		<footer>
 			<?php require_once "footer.php"; ?>
 		</footer>
