@@ -68,7 +68,7 @@ main{
 	padding: 10px;
 	bottom:30px;
 	right: 35px;
-	z-index: 99;#info
+	z-index: 99;
 	background: rgba(255,255,255,0.50);
 }
 #loginForm input[type="submit"]{

@@ -4,9 +4,9 @@
 	<!--/#logo--></div>
 	<ul>
 		<li id="nav1"><a href="index.php"></a></li>
-		<li id="nav2"><a href="index.php"></a></li>
+		<li id="nav2"><a href="tutorial.php"></a></li>
 		<li id="nav3"><a href="add.php"></a></li>
 		<li id="nav4"><a href="info.php"></a></li>
-		<li id="nav5" class="liLast"><a href="tutorial.php"></a></li>
+		<li id="nav5" class="liLast"><a href="index.php"></a></li>
 	</ul>
  <!--/#headerMain--></div>
