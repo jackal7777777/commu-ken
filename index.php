@@ -368,7 +368,7 @@
 					<form action="index.php" method="POST">
 						<img src="images/login_add.png"><input type="email" name="userId"><br>
 						<img src="images/login_pass.png"><input type="password" name="password"><br>
-						<input type="button">
+						<input type="submit" value="">
 					</form>
 				</div>
 				<div>

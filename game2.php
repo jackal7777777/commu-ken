@@ -22,10 +22,12 @@
 				selectStage['say2'] = 'あのさ、ぼく機能髪切ったんだけど気付いた？';
 				selectStage['say3'] = 'やあ、元気？';
 				selectStage['say4'] = '梅野君の腕時計カッコいいね';
+				selectStage['return0'] = 'いなくなった。。。';
 				selectStage['return1'] = '「あ、そういう考え方もあるかもね・・・」';
 				selectStage['return2'] = '「え、気付かなかった！ごめん・・・」';
 				selectStage['return3'] = '「う、うん、元気だよ」';
 				selectStage['return4'] = '「あ、そう？実はさ、これ高校入学祝いで買ってもらったんだ！あはは」';
+				selectStage['returnImg0'] = 'friend.png';
 				selectStage['returnImg1'] = 'friend_aiso.png';
 				selectStage['returnImg2'] = 'friend_bikkuri.png';
 				selectStage['returnImg3'] = 'friend_d_bikkuri.png';
@@ -99,6 +101,7 @@
 				$("#selectBox").fadeOut(0);
 				$("#event").fadeOut(0);
 				$("#summaryTitle").fadeOut(0);
+				$("#timeup").fadeOut(0);
 				//ソーシャル要素を隠す
 				$("#social").fadeOut(0);
 				var url = location.href;
@@ -172,11 +175,23 @@
 						//タイマーを止める
 						stopTimer();
 						index = $(this).index();
-						save.push(index+1);
 						$("#selectBox").fadeOut(200);
 						$("#gameBackBlack").fadeOut(200);
 						$("#eventTitle").fadeOut(200);
 						$("#timer").fadeOut(200);
+						$("#hukidashi").fadeIn(500);
+						act = "return";
+						text(index,act);
+					});
+					//分岐：タイムオーバー
+					$("#timeup").click(function(){
+						stopTimer();
+						index = -1;
+						$("#selectBox").fadeOut(200);
+						$("#gameBackBlack").fadeOut(200);
+						$("#eventTitle").fadeOut(200);
+						$("#timer").fadeOut(200);
+						$("#timeup").fadeOut(200);
 						$("#hukidashi").fadeIn(500);
 						act = "return";
 						text(index,act);
@@ -194,6 +209,7 @@
 							text(index,act);
 						});
 					});
+					
 				});
 			});
 				//文章を上に流す
@@ -239,7 +255,7 @@
 								$("#img").attr("src","images/"+selectStage[act+"Img"+(index+1)+"-"+ll+"-"+l]);
 								//話し手切り替え
 								$("#talker").text('つむぎ');
-								if(l >= 3){
+								if(l >= 2){
 									huki(l);
 									m = l;
 								}
@@ -274,6 +290,7 @@
 								$("#img").attr("src","images/"+selectStage[act+"Img"+"1-"+l]);
 								//話し手切り替え
 								$("#talker").text('つむぎ');
+								//alert(m);
 								huki(l+m);
 								//文章挿入
 								$("<p>",{
@@ -305,7 +322,7 @@
 					}).appendTo("#hukidashi");
 				}
 		
-//文章をテキスト入力のように表示する
+			//文章をテキスト入力のように表示する
 			function sp(){
 				//	$("#hukidashi").off();
 				
@@ -341,30 +358,28 @@
 			        }*/
 			    });
 			}
+			var timerImg = new Array('timer_0.png','timer_1.png','timer_2.png','timer_3.png','timer_4.png','timer_5.png','timer_6.png','timer_7.png','timer_8.png','timer_9.png');
+				timerImg['two0'] = 'timer_00.png';
+				timerImg['two1'] = 'timer_10.png'; 
 			//タイマー
 			function countDown(){
 				var sec = 15;
 				Timer = setInterval(function(){
 					if(sec>0){
-						sec = sec-1;
-						$("#count").text(sec);
+						sec -= 1;
+						var one = sec%10;
+						var two = Math.floor(sec/10);
+						$("#timer img").eq(1).attr("src","images/"+timerImg[one]);
+						$("#timer img").eq(0).attr("src","images/"+timerImg['two'+two]);
 					}else{
 						for(var j=1;j<5;j++){
 							$("#select"+j).off();
-							$("<p>",{
-								"text":"時間切れ！！",
-								"class":"ans",
-								"css":{
-									"height":"50px",
-									"width":"300px",
-									"font-size":"50px",
-									"position":"absolute",
-									"top":"240px",
-									"left":"320px",
-									"z-index":"9"
-								}
-							}).appendTo("#game");
 						}
+						$("#gameBackBlack").css({"z-index":"9"}).fadeIn(200);
+						$("#timeup").fadeIn(200).click(function(){
+							$("#gameBackBlack").fadeOut(200).delay(200).css({"z-index":"6"});
+							$("#timeup").fadeOut(200);
+						});
 					}
 				},1000);
 			}
@@ -378,8 +393,9 @@
 			<?php require_once "header.php"; ?>
 		</header>
 		<main>
-			<!--ゲーム画面-->
+			<!--画像：ゲーム画面-->
 			<div id="game">
+				<!--画像：ゲーム背景-->
 				<div id="gameBack">
 					<!--ゲーム要素-->
 					<!--キャラクター表示位置-->
@@ -397,7 +413,8 @@
 					<div id="gameBackBlack"></div>
 					<!--画像：タイマー-->
 					<div id="timer">
-						<p>15</p>
+						<img src="images/timer_10.png">
+						<img src="images/timer_5.png">
 					</div>
 					<!--画像：イベント発生-->
 					<div id="event"></div>
@@ -407,6 +424,8 @@
 					<div id="selectBox"></div>
 					<!--画像：まとめ-->
 					<div id="summaryTitle"></div>
+					<!--画像:時間切れ-->
+					<div id="timeup"></div>
 				</div>
 				<!--ゲーム要素終了-->
 
@@ -428,7 +447,7 @@
 					<a href="choice.ctp"><img src="images/btn_rescenario.png"></a>
 				</div>
 				<!--ソーシャル＆アンケート終了-->
-			</div>
+			<!--/#game--></div>
 		</main>
 		<footer>
 			<?php require_once "footer.php"; ?>

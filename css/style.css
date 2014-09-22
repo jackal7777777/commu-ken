@@ -31,17 +31,21 @@ li{
 }
 h2{
 	height: 25px;
-	width: auto;
-	padding: 50px 0 0 50px;
+	width: 300px;
+	margin: 0 0 20px 20px;
 }
 /*										main
 -----------------------------------------------*/
 main{
-	height: 540px;
+	height: 100%;
 	width: 960px;
-	margin: 0 auto;
 	background: #fafafa;
 	position: relative;
+	top: 20px;
+	left: 50%;
+	margin: 0;
+	margin-left: -480px;
+	padding-top: 20px;
 }
 #replayOpning{
 	height: 525px;
@@ -72,7 +76,7 @@ main{
 	z-index: 99;
 	background: rgba(255,255,255,0.50);
 }
-#loginForm input[type="button"]{
+#loginForm input[type="submit"]{
 	height: 40px;
 	width: 120px;
 	position: absolute;
@@ -81,7 +85,7 @@ main{
 	border: 0;
 	background: url(../images/nav_05_out_off.png);
 }
-#loginForm input[type="button"]{
+#loginForm input[type="submit"]{
 	background: url(../images/nav_05_out_on.png);
 }
 #game input[type="email"]{
@@ -230,6 +234,23 @@ main{
 	z-index: 6;
 	background: url(../images/bg_timer.png);
 }
+#timer img{
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	top:40px;
+	left: 40px;
+}
+#timeup{
+	height:50px;
+	width: 300px;
+	position: absolute;
+	z-index: 10;
+	left: 50%;
+	top: 238px;
+	margin-left: -150px;
+	background: url(../images/title_timeup.png);
+}
 #event{
 	height: 45px;
 	width: 240px;
@@ -323,15 +344,22 @@ section{
 	width: 100px;
 	margin: 0 20px 20px 0;
 }
+/*add*/
+
 select#que{
 	width: 720px;
 }
-input[type="button"]#add{
+input,select,option{
+	border-radius: 5px;
+	border: 1px solid #aaa;
+}
+#add input[type="submit"].add{
 	height: 150px;
 	width: 150px;
-	background: url(../images/btn_regi_off.png);	
+	background: url(../images/btn_regi_off.png);
+	border: 0;
 }
-input[type="button"]#add:hover{
+#add input[type="submit"].add:hover{
 	height: 150px;
 	width: 150px;
 	background: url(../images/btn_regi_on.png);	
