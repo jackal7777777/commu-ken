@@ -22,7 +22,7 @@
 		<main>
 			<!--免責事項-->
 			<section>
-				<h2><span>免責事項</span><img src="images/img.png"></h2>
+				<h2><img src="images/title_text_02.png"></h2>
 				<article>
 					<p></p>
 				</article>

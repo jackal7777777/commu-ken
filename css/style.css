@@ -364,6 +364,23 @@ input,select,option,textarea{
 	width: 150px;
 	background: url(../images/btn_regi_on.png);	
 }
+/*change*/
+#add input[type="submit"]#change{
+	height: 150px;
+	width: 150px;
+	background: url(../images/btn_modi_off.png);
+	border: 0;
+	position: absolute;
+	bottom: -90px;
+	left: 50%;
+	margin-left: -75px;
+}
+#add input[type="submit"]#change:hover{
+	height: 150px;
+	width: 150px;
+	background: url(../images/btn_modi_on.png);	
+}
+
 /*social*/
 #social{
 	height: 525px;
