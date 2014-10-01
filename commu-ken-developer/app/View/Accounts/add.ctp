@@ -19,9 +19,8 @@ if (Configure::read('debug') > 0):
 endif;
 ?>
 <!--ログインフォーム-->
-<article>
+<div id="add">
 	<h2><?= $this->Html->image('title_regi.png', array('alt' => '会員登録')) ?></h2>
-	<div id="loginForm">
 <?php
 			echo $this->Form->create('User', array(//フォーム生成開始
 				'id' => 'info',//フォームタグにつけるid
@@ -31,6 +30,9 @@ endif;
 			);
 			
 			//email(ID)入力欄
+			if (isset($error)) {
+		        echo $error;
+		    }
 			echo $this->Html->image('title_addr.png');
 			echo $this->Form->input('id', array('type'=>'email'));
 			
@@ -47,21 +49,22 @@ endif;
 			/*-------生年月日欄-------*/
 			echo $this->Html->image('title_date.png');
 			//年
-			echo $this->Form->datetime('birthday', 'Y', 'yaer', array('minYear' => 1980, 'empty' => '----','orderYear' => 'asc')).'年';
+			echo $this->Form->datetime('birthday', 'Y', 'yaer', array('minYear' => 1900, 'maxYear' => 2014, 'empty' => false,'orderYear' => 'asc')).'年';
 			//月
-			echo $this->Form->datetime('birthday', 'M', 'month', array('monthNames' => false, 'empty' => '--')).'月';
+			echo $this->Form->datetime('birthday', 'M', 'month', array('monthNames' => false, 'empty' => false)).'月';
 			//日
-			echo $this->Form->datetime('birthday', 'D', 'date', array('empty' => '--')).'日<br>';
+			echo $this->Form->datetime('birthday', 'D', 'date', array('empty' => false)).'日<br>';
 			/*------------------------------*/
 
 			//秘密の質問選択欄
 			echo $this->Html->image('title_que.png');
 			echo $this->Form->select('secret_question',
 				array(
-					'1' => '質問1',
-					'2' => '質問2',
-					'3' => '質問3',
-					'4' => '質問4'),
+					'1' => '生まれた町は？',
+					'2' => '通っていた幼稚園または保育園の名前は？',
+					'3' => '一番好きなアーティストは？',
+					'4' => '一番好きな映画は？',
+					'5' => '嫌いな食べ物は？'),
 				array(
 					'id' => 'que',
 					'empty' => false)).'<br>';
@@ -74,15 +77,22 @@ endif;
 			*とりあえず別の方法で作っています。これにidをつければボタン画像を表示することは
 			*可能かと。
 			*/
-			/*submitボタン用画像スタイル設定*/
-			$buttonStyle = 'display:block;width:150px;height:150px;margin:0 auto;';
 			echo $this->Form->submit('btn_regi_off.png',array('type' => 'submit',
-																'id' => 'add',
-																'style' => $buttonStyle,
+																'class' => 'add',
 																'onmouseover' => 'btnChangeOn();',
 																'onmouseout' => 'btnChangeOff();'));
 			echo $this->Form->end();
 
 ?>
-	</div>
-</article>
+</div>
+<!-- 追加分スタイル -->
+<script type="text/javascript">
+    function btnChangeOn(){
+        $('input.add').attr('src','/commu-ken-test/images/btn_regi_on.png');    
+    }
+
+    function btnChangeOff(){
+        $('input.add').attr('src','/commu-ken-test/images/btn_regi_off.png');    
+    }
+    
+</script>

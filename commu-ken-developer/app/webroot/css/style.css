@@ -1,3 +1,4 @@
+
 @charset "utf-8";
 /*----------------------------------------------
 	all
@@ -15,11 +16,12 @@
 *,html,body{
 	margin: 0px;
 	padding: 0px;
+	font-size: 62.5%;
 }
 /*										body
 -----------------------------------------------*/
 body{
-	background: url(../images/background_classroom.jpg);
+	background: url(../images/bg.jpg);
 	background-size: cover;
 }
 ul{
@@ -30,17 +32,16 @@ li{
 }
 h2{
 	height: 25px;
-	width: auto;
-	margin: 50px 0 55px 50px;
+	width: 300px;
+	margin: 20px 0 20px 20px;
 }
 /*										main
 -----------------------------------------------*/
 main{
-	height: 540px;
+	min-height: 400px;
 	width: 960px;
-	margin: 0 auto;
 	background: #fafafa;
-	position: relative;
+	margin: 20px auto;
 }
 #replayOpning{
 	height: 525px;
@@ -52,6 +53,14 @@ main{
 	left: 10px;
 }
 /*index*/
+#gameLogo{
+	position: absolute;
+	height: 240px;
+	width: 300px;
+	top: 143px;
+	left: 320px;
+	z-index: 10;
+}
 #loginForm{
 	height: 180px;
 	width: 300px;
@@ -63,6 +72,31 @@ main{
 	z-index: 99;
 	background: rgba(255,255,255,0.50);
 }
+#loginForm input[type="submit"]{
+	height: 40px;
+	width: 120px;
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	border: 0;
+	background: url(../images/nav_05_out_off.png);
+}
+#loginForm input[type="submit"]{
+	background: url(../images/nav_05_out_on.png);
+}
+#game input[type="email"]{
+	height: 20px;
+	width: 180px;
+}
+#game input[type="password"]{
+	height: 20px;
+	width: 180px;
+}
+#loginForm img form{
+	height: 20px;
+	width: 70px;
+	margin: 20px 10px 15px 20px;
+}
 /*game*/
 #game{
 	height: 500px;
@@ -71,6 +105,54 @@ main{
 	background: url(../images/bg_game.png);
 	position: relative;
 	margin: 0 auto;
+}
+#game #skip{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 99;
+}
+#game #next{
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index: 99;
+	height: 200px;
+	width: 300px;
+}
+#game .textSplitLoad{
+	font-size: 1.6rem;
+}
+#game #hukidashi{
+	height: 100px;
+	width: 720px;
+	background: rgba(255,255,255,0.75);
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	margin-left: -360px;
+	border-radius: 10px;
+	overflow: hidden;
+	z-index: 6;
+}
+#game #talker{
+	height: 100px;
+	width: 120px;
+	font-size: 1.6rem;
+	line-height: 100px;
+	float: left;
+	text-align: center;
+}
+#game #gameArticle{
+	height: 100px;
+	width: 600px;
+	left: 120px;
+	position: absolute;
+}
+#game #gameArticle p{
+	line-height: 25px;
+	font-size: 1.6rem;
+	margin: 1em 0;
 }
 #game #selectLeft{
 	height: 60px;
@@ -102,6 +184,121 @@ main{
 #game #select #selectSlide img{
 	float: left;
 }
+#gameBack{
+	height: 525px;
+	width: 940px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 1;
+	background-size: cover;  
+}
+#gameBackBlack{
+	height: 525px;
+	width: 940px;
+	background: rgba(0,0,0,0.70);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 6;
+}
+#regi{
+	height: 175px;
+	width: 940px;
+	position: absolute;
+	z-index: 15;
+	top: 180px;
+	left: 10px;
+	background: url(../images/bg_regi_off.png);
+}
+#regi:hover{
+	height: 175px;
+	width: 940px;
+	position: absolute;
+	z-index: 15;
+	top: 180px;
+	left: 10px;
+	background: url(../images/bg_regi_on.png);
+
+}
+#timer{
+	height: 125px;
+	width: 125px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 6;
+	background: url(../images/bg_timer.png);
+}
+#timer img{
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	top:40px;
+	left: 40px;
+}
+#timeup{
+	height:50px;
+	width: 300px;
+	position: absolute;
+	z-index: 10;
+	left: 50%;
+	top: 238px;
+	margin-left: -150px;
+	background: url(../images/title_timeup.png);
+}
+#event{
+	height: 45px;
+	width: 240px;
+	position: absolute;
+	top: 10px;
+	left: 340px;
+	z-index: 6;
+	background: url(../images/title_event.png); 
+}
+#eventTitle{
+	height: 40px;
+	width: 500px;
+	position: absolute;
+	top: 100px;
+	left: 220px;
+	z-index: 6;
+	text-align: center;
+	content: #fff;
+	font-size: 1.6rem;
+	color: #fff;
+}
+#selectBox{
+	height: 400px;
+	width: 600px;
+	position: absolute;
+	top: 160px;
+	left: 180px;
+	z-index: 6;
+}
+#gameImg{
+	height: 500px;
+	width: 300px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -150px;
+	z-index: 6;
+}
+#gameImg #img{
+	width: 300px;
+	position: absolute;
+	bottom: 0;
+}
+#game #summaryTitle{
+	height: 125px;
+	width: 125px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 6;
+	background: url(../images/title_summary.png);
+}
 /*info*/
 #info input{
 	height: 40px;
@@ -109,11 +306,13 @@ main{
 	margin-bottom: 20px;
 }
 #info textarea{
-	height: 100px;
-	width: 720px;
+	height: 90px;
+	width: 710px;
 	margin-bottom: 35px;
+	padding: 5px;
+
 }
-#info input[type="button"]{
+#info input[type="submit"]{
 	border: 0px;
 	height: 40px;
 	width: 120px;
@@ -138,19 +337,51 @@ main{
 	width: 100px;
 	margin: 0 20px 20px 0;
 }
+/*add*/
+#add {
+	height: 500px;
+	position: relative;
+	margin-bottom: 100px;
+}
 select#que{
 	width: 720px;
 }
-input[type="button"]#add{
+input,select,option,textarea{
+	border-radius: 5px;
+	border: 1px solid #aaa;
+}
+#add input[type="image"].add{
 	height: 150px;
 	width: 150px;
-	background: url(../images/btn_regi_off.png);	
+	background: url(../images/btn_regi_off.png);
+	border: 0;
+	position: absolute;
+	bottom: -90px;
+	left: 50%;
+	margin-left: -75px;
 }
-input[type="button"]#add:hover{
+#add input[type="image"].add:hover{
 	height: 150px;
 	width: 150px;
 	background: url(../images/btn_regi_on.png);	
 }
+/*change*/
+#add input[type="image"]#change{
+	height: 150px;
+	width: 150px;
+	background: url(../images/btn_modi_off.png);
+	border: 0;
+	position: absolute;
+	bottom: -90px;
+	left: 50%;
+	margin-left: -75px;
+}
+#add input[type="image"]#change:hover{
+	height: 150px;
+	width: 150px;
+	background: url(../images/btn_modi_on.png);	
+}
+
 /*social*/
 #social{
 	height: 525px;
@@ -172,52 +403,69 @@ input[type="button"]#add:hover{
 	width: 350px;
 	margin-top: 35px;
 }
-#socilaBtn{
+#socialBtn{
 	height: 50px;
-	width: 300px;
+	width: 250px;
 	margin: 0 auto;
+	clear: both;
 }
 .socialBtn{
 	height: 50px;
 	width: 50px;
 	margin: 25px 15px 25px 15px;
+	float: left;
 }
 #social textarea{
 	height: 120px;
 	width: 500px;
 	margin-bottom: 35px;
 }
-#social input[type="button"]#btn_yes{
+#social input[type="image"]#btn_yes{
 	height: 50px;
 	width: 200px;
 	margin-right: 100px;
 	border: 0px;
 	background: url(../images/btn_useful_off.png);
 }
-#social input[type="button"]#btn_yes:hover{
+#social input[type="image"]#btn_yes:hover{
 	height: 50px;
 	width: 200px;
 	margin-right: 100px;
 	background: url(../images/btn_useful_on.png);
 	border: 0px;
 }
-#social input[type="button"]#btn_no{
+#social input[type="image"]#btn_no{
 	height: 50px;
 	width: 200px;
 	background: url(../images/btn_useless_off.png);
 	border: 0px;
 }
-#social input[type="button"]#btn_no:hover{
+#social input[type="image"]#btn_no:hover{
 	height: 50px;
 	width: 200px;
 	background: url(../images/btn_useless_on.png);
 	border: 0px;
 }
-#social a img{
+#choice{
 	height: 25px;
 	width: 145px;
 	position: absolute;
 	bottom: 20px;
 	right: 30px;
 }
+#social form p{
+	width: 200px;
+	font-size: 2rem;
+	margin: 100px auto 0;
+	text-align: center;
+}
+.user_id{
+	height: 40px;
+	width: 720px;
+	margin-bottom: 20px;
+	font-size: 2rem;
+}
+
+
+
 

@@ -20,7 +20,7 @@
  */
 
 App::uses('Controller', 'Controller');
-Configure::write('debug', 1);
+Configure::write('debug', 3);
 /**
  * Application Controller
  *
@@ -37,11 +37,15 @@ class AppController extends Controller {
     public $helpers = array('Html', 'Form', 'Js', 'Session');
 
     public function beforeFilter(){//全てのアクションに共通する処理。主にアカウント・セッション認証系。
+        $this->set('title_for_layout', 'こみゅけん！-kommu-ken!');
 
 
         //画像ファイルなどのパスのためにプロジェクト名を定義
+        //ルートパス
+        $rootPath = Router::url('/');
+        $this->set('rootPath', $rootPath);
         //画像用
-        $this->set('pro_pass_img', '/commu-ken-developer/app/webroot/');
+        $this->set('pro_pass_img', $rootPath.'app/webroot/');
 
         //セッションから情報を取得
         $sess_user_id = $this->Session->read('user_id');
@@ -51,7 +55,7 @@ class AppController extends Controller {
                                         $this->action == 'game' || 
                                         $this->action == 'chage')
         ){
-            $this->redirect('/');   
+            $this->redirect('/');
         }else{
             $this->set('user_id', $sess_user_id);
         }
@@ -59,7 +63,7 @@ class AppController extends Controller {
         //ヘッダのcssとリンク判定
         if($this->action == 'add' ||
             $this->action == 'disclaimer' ||
-            $this->action == 'info' ||
+            $this->action == 'info_send' ||
             $this->action == 'personal' ||
             $this->action == 'policy' ||
             $this->action == 'tutorial'){
