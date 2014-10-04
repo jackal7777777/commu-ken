@@ -299,6 +299,9 @@ main{
 	background: url(../images/title_summary.png);
 }
 /*info*/
+input{
+	font-size: 1.6rem;
+}
 #info input{
 	height: 40px;
 	width: 720px;
@@ -450,4 +453,7 @@ input,select,option,textarea{
 	bottom: 20px;
 	right: 30px;
 }
-
+/*footer*/
+#footerMain{
+	font-size: 1.6em;
+}
