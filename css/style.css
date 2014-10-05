@@ -110,6 +110,7 @@ main{
 	top: 5px;
 	right: 5px;
 	z-index: 99;
+	cursor: pointer;
 }
 #game #next{
 	position: absolute;
@@ -133,6 +134,7 @@ main{
 	border-radius: 10px;
 	overflow: hidden;
 	z-index: 6;
+	cursor: pointer;
 }
 #game #talker{
 	height: 100px;
@@ -205,6 +207,7 @@ main{
 	height: 175px;
 	width: 940px;
 	position: absolute;
+	cursor: pointer;
 	z-index: 15;
 	top: 180px;
 	left: 10px;
