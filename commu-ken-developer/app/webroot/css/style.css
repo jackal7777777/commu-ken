@@ -111,6 +111,7 @@ main{
 	top: 5px;
 	right: 5px;
 	z-index: 99;
+	cursor: pointer;
 }
 #game #next{
 	position: absolute;
@@ -134,6 +135,7 @@ main{
 	border-radius: 10px;
 	overflow: hidden;
 	z-index: 6;
+    cursor: pointer;
 }
 #game #talker{
 	height: 100px;
@@ -210,6 +212,7 @@ main{
 	top: 180px;
 	left: 10px;
 	background: url(../images/bg_regi_off.png);
+    cursor: pointer;
 }
 #regi:hover{
 	height: 175px;
@@ -300,6 +303,10 @@ main{
 	background: url(../images/title_summary.png);
 }
 /*info*/
+input, textarea, select{
+	font-size: 1.6rem;
+}
+
 #info input{
 	height: 40px;
 	width: 720px;
@@ -453,17 +460,31 @@ input,select,option,textarea{
 	bottom: 20px;
 	right: 30px;
 }
+/*footer*/
+#footerMain{
+	font-size: 1.6em;
+}
+
 #social form p{
 	width: 200px;
 	font-size: 2rem;
 	margin: 100px auto 0;
 	text-align: center;
 }
+/*久保追加分*/
 .user_id{
 	height: 40px;
 	width: 720px;
 	margin-bottom: 20px;
 	font-size: 2rem;
+}
+#replayButton{
+	width: 300px;
+	height: 30px;
+	margin-bottom: 6px;
+}
+main h2{
+	margin: 0 0 20px 20px;
 }
 
 
