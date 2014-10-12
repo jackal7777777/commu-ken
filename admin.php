@@ -19,9 +19,9 @@
 			<div id="game">
 				<div id="ad_title"><p>管理者画面</p></div>
 				<div id="adm">
-					<div id="ana"></div>
+					<div id="ana"><a href="http://www.google.com/intl/ja_jp/analytics/" target="_blank"></a></div>
 					<div id="log"></div>
-					<div id="ans"></div>
+					<div id="ans"><a href="https://accounts.google.com/" target="_blank"></a></div>
 					<div id="enq"></div>
 					<div id="info"></div>
 					<div id="tool"></div>

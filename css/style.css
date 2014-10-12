@@ -592,21 +592,28 @@ input,select,option,textarea{
 }
 #enq{
 	background: url(../images/admin_btn_enquete_off.png);
+	cursor: pointer;
 }
 #enq:hover{
 	background: url(../images/admin_btn_enquete_on.png);
 }
 #info{
 	background: url(../images/admin_btn_info_off.png);
+	cursor: pointer;
 }
 #info:hover{
 	background: url(../images/admin_btn_info_on.png);
 }
 #tool{
 	background: url(../images/admin_btn_tool_off.png);
+	cursor: pointer;
 }
 #tool:hover{
 	background: url(../images/admin_btn_tool_on.png);
+}
+#ana a,#ans a{
+	height: 100%;
+	width: 100%;
 }
 
 /*footer*/
