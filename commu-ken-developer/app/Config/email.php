@@ -55,11 +55,12 @@ class EmailConfig {
     );*/                                                                                                                             
 
 	public $gmail = array(
+		'transport' => 'Smtp',
         'host' => 'ssl://smtp.gmail.com',
         'port' => 465,
+        'timeout' => 30,
         'username' => 'commu.ken.tokyo@gmail.com',
-        'password' => 'HALxUTokyo_commu-ken2014_testPlayUser_x6p2',
-        'transport' => 'Smtp'
+        'password' => 'HALxUTokyo_commu-ken2014_testPlayUser_x6p2'
     );
 
 	public $smtp = array(
@@ -68,8 +69,8 @@ class EmailConfig {
 		'host' => 'localhost',
 		'port' => 25,
 		'timeout' => 30,
-		'username' => 'user',
-		'password' => 'secret',
+		'username' => 'tyokyo-user',
+		'password' => 'HALxUTokyo_commu-ken2014_testPlayUser_x6p2',
 		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',

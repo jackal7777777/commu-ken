@@ -34,18 +34,47 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         echo $this->Html->script('jquery-2.1.1.min', array( 'inline' => 'false'));
 
         echo $this->Html->css($headerCss);
-        if (isset($user_id)) {
+        if (isset($user_id) && $this->name != 'Admins' ) {
+            //Sessionが有る時(ログイン)のcssを読み込む
+            echo $this->Html->css($changeCss);
+        }elseif(isset($admin_id) && $this->name == 'Admins'){
             //Sessionが有る時(ログイン)のcssを読み込む
             echo $this->Html->css($changeCss);
         }
 
-        echo $this->fetch('meta');
-        echo $this->fetch('css');
+        echo $this->Html->scriptBlock( "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54767335-1', 'auto');
+  ga('send', 'pageview');", array( 'inline' => false));
+
+        echo $this->fetch('meta');        
+
+        if($this->name == 'Admins'){
+            echo $this->Html->scriptBlock( '$(function(){$("body").attr("id", "admin");});', array( 'inline' => false));
+        }elseif($this->name == 'Errors'){
+            echo $this->Html->scriptBlock( '$(function(){$("body").attr("id", "er");});', array( 'inline' => false));
+        }
+
+
+        //アクションがadd,info_send,changeの時はレイアウトを揃えるために
+        //mainタグにcssを追加する
+        if($this->action == 'add' ||
+            $this->action == 'change' ||
+            $this->action == 'info_send'){
+            echo $this->Html->scriptBlock( '$(function(){$("main").css("paddingTop","20px");});', array( 'inline' => false));
+        }
         echo $this->fetch('script');
+
+
+
 
         // Jsヘルパーが生成するJSを出力させる
         echo $this->Js->writeBuffer( array( 'inline' => 'true'));
         clearCache();
+        echo $this->fetch('css');
         
     ?>
     <!-- ogp -->
@@ -54,12 +83,11 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
     <meta property="og:type" content="website" />
     <meta property="og:description" content="東大×HAL東京！" />
     <meta property="og:url" content="http://www.jack.com" />
-    <!--<meta property="og:image" content="画像のURL" />-->
     <meta property="og:site_name" content="こみゅけん" />
     <meta property="og:locale" content="Japanese" />
-    <!--<meta property="fb:admins" content="facebookのユーザーID" /> //できればfb:app_idを利用-->
     <meta property="fb:app_id" content="694588187300519" />
     <!-- ogp -->
+    <link rel="canonical" href="http://local.jackal.com/" />
 </head>
 <body>
 <!-- facebook SDK -->
@@ -105,12 +133,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         <div id="footerMain">
             <ul>
                 <li>心いき</li>
-                <li>個人情報</li>
-                <li>サイトポリシー</li>
-                <li>免責事項</li>
+                <li><?= $this->Html->link('個人情報',array('controller' => 'informations', 'action' => 'personal')) ?></li>
+                <li><?= $this->Html->link('サイトポリシー',array('controller' => 'informations', 'action' => 'policy')) ?></li>
+                <li><?= $this->Html->link('免責事項',array('controller' => 'informations', 'action' => 'disclamer')) ?></li>
                 <li>動作環境</li>
             </ul>
-            <p>&copy;Copyright&nbsp;COMMU-KEN!&nbsp;All&nbsp;rights&nbsp;reserved.</p>
+            <p>&copy;Copyright COMMU-KEN! All rights reserved.</p>
         </div>
     </footer>
 </body>

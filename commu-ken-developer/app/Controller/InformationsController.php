@@ -10,12 +10,17 @@ class InformationsController extends AppController{
     public $components = array('RequestHandler');
 
     public function info_send() {
+
     }
+
     public function policy() {
+
     }
     public function personal() {
+
     }
-    public function disclaimer() {
+    public function disclamer() {
+
     }
 
     //選択肢記録。選択肢をclickした時点でAjaxによって呼び出される処理
@@ -60,9 +65,9 @@ class InformationsController extends AppController{
             
                 $email = new CakeEmail('gmail');
                 // 送信設定
-                $mailRespons = $email->config(array('log' => 'emails'))    // $infomation の設定を使う
+                $mailRespons = $email->config(array('log' => 'emails'))    
                     // 使用するテンプレートの設定, 本文の方 infomation, レイアウト infomation
-                    ->template('information', 'information')
+                    ->template('information', 'information')// $infomation の設定を使う
                     // テンプレート変数設定
                     ->viewVars($vars)
                     // 送信元

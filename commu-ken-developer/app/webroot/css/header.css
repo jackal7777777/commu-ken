@@ -100,7 +100,7 @@ footer{
 	background-repeat: repeat-x;
 	position: relative;
 	bottom: 0;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
 }
 #footerMain{
 	height: 105px;
@@ -108,6 +108,26 @@ footer{
 	padding: 15px 30px 0 30px;
 	margin: 50px auto 0 auto;
 }
+#footerMain li{
+	width: 110px;
+	font-size: 1.4rem;
+	color: #ED4F4F;
+}
+
+#footerMain a{
+	height: 20px;
+	width: 100px;
+	text-decoration: none;
+	color: #ED4F4F;
+	font-size: 1.4rem;
+}
+
 #footerMain p{
-	font-size: 1.6rem;
+	font-size: 1.4rem;
+	color: #ED4F4F;
+}
+
+#footerMain > p{
+	width: 320px;
+	float: right;
 }

@@ -457,9 +457,9 @@ endif;
         <?= $this->Html->image('btn_skip_off.png', array('id' => 'skip')) ?>
         <!--次回から表示するか-->
         <div id="next">
-        <?= $this->Html->link($this->Html->image('btn_return.png').$this->Html->image('title_reopening.png'), array('controller' => 'accounts', 'action' => 'index', 2),array('escape'=>false)) ?>
+        <?= $this->Html->link($this->Html->image('btn_return.png').$this->Html->image('title_reopening.png'), array('controller' => 'accounts', 'action' => 'index', 2),array('escape'=>false,'id'=>'replayButton')) ?>
 <?php
-    echo $this->Form->create(null, array('url' => '/accounts/login',
+    echo $this->Form->create('User', array('url' => '/accounts/login',
                                         'inputDefaults' => array(
                                                 'label' => false,
                                                 'div' => false))
@@ -484,15 +484,13 @@ endif;
 
     
 
-    if (isset($error)) {
-        echo $error;
-    }
-
     
+
+    if (isset($error)) echo '<p style="font-size:1.4rem;">'.$error.'</p>';
     echo $this->Html->image('login_add.png');
     echo $this->Form->input('id', array('type'=>'email'))."<br>";
     echo $this->Html->image('login_pass.png');
-    echo $this->Form->input('pass', array('type'=>'password'));
+    echo $this->Form->input('password', array('type'=>'password'));
     echo $this->Form->end('', array('type'=>'button'));
 ?>
     </div>

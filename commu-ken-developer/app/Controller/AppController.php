@@ -20,7 +20,7 @@
  */
 
 App::uses('Controller', 'Controller');
-Configure::write('debug', 3);
+Configure::write('debug', 1);
 /**
  * Application Controller
  *
@@ -32,6 +32,7 @@ Configure::write('debug', 3);
  */
 class AppController extends Controller {
     var $components = array('Session');
+
 
     //helpersを継承
     public $helpers = array('Html', 'Form', 'Js', 'Session');
@@ -49,13 +50,18 @@ class AppController extends Controller {
 
         //セッションから情報を取得
         $sess_user_id = $this->Session->read('user_id');
+        $sess_admin_id = $this->Session->read('admin_id');
 
         //セッション情報がなければindexへリダイレクトする
         if ($sess_user_id == null && ($this->action == 'choice' || 
                                         $this->action == 'game' || 
-                                        $this->action == 'chage')
-        ){
+                                        $this->action == 'change'))
+        {
             $this->redirect('/');
+        }elseif($sess_admin_id == null && $this->name == 'admins' && $this->action != 'index'){
+            $this->redirect(array('controller' => 'Admins', 'action' => 'index'));
+        }elseif($sess_admin_id != null){
+            $this->set('admin_id', $sess_admin_id);
         }else{
             $this->set('user_id', $sess_user_id);
         }
@@ -70,27 +76,40 @@ class AppController extends Controller {
             //この中のどれかのアクションならheader用のcssにはheader.cssを適用する
             $this->set('headerCss','header.css');
 
-            if($sess_user_id != null){//さらにセッションがあるなら
+            if($sess_user_id != null && $this->name != 'Admins'){//さらにセッションがあるなら
                 $this->set('changeCss','change.css');//header用のcssをログイン時用のモノに変更
 
                 //headerメニューのリンク先設定
                 $this->set('nav3link', array('controller' => 'accounts', 'action' => 'change'));
                 $this->set('nav5link', array('controller' => 'accounts', 'action' => 'logout'));
+            }elseif($sess_admin_id != null){
+
+                $this->set('changeCss','change.css');//header用のcssをログイン時用のモノに変更
+
+                $this->set('nav3link', array('controller' => 'accounts', 'action' => 'change'));
+                $this->set('nav5link', array('controller' => 'admins', 'action' => 'logout'));
+
             }else{
                 $this->set('nav3link', array('controller' => 'accounts', 'action' => 'add'));
                 $this->set('nav5link', array('controller' => 'accounts', 'action' => 'index'));
             }
-
         }else{
             //上記以外のアクションならheader用のcssにはminHeader.cssを適用する
             $this->set('headerCss','minHeader.css');
 
-            if($sess_user_id != null){//さらにセッションがあるなら
-                $this->set('changeCss','minChange.css');//header用のcssをログイン時用のモノに変更
+            if($sess_user_id != null && $this->name != 'Admins'){//さらにセッションがあるなら
 
+                $this->set('changeCss','minChange.css');//header用のcssをログイン時用のモノに変更
                 //headerメニューのリンク先設定
                 $this->set('nav3link', array('controller' => 'accounts', 'action' => 'change'));
                 $this->set('nav5link', array('controller' => 'accounts', 'action' => 'logout'));
+            }elseif($sess_admin_id != null){
+
+                $this->set('changeCss','minChange.css');//header用のcssをログイン時用のモノに変更
+
+                $this->set('nav3link', array('controller' => 'accounts', 'action' => 'change'));
+                $this->set('nav5link', array('controller' => 'admins', 'action' => 'logout'));
+
             }else{
                 $this->set('nav3link', array('controller' => 'accounts', 'action' => 'add'));
                 $this->set('nav5link', array('controller' => 'accounts', 'action' => 'index'));

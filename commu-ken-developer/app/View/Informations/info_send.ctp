@@ -1,5 +1,5 @@
 <!--お問合せ-->
-<h2><?= $this->Html->image('title_form.png') ?></h2>
+<h2><?= $this->Html->image('title_form.png', array('alt' => 'お問い合わせ')) ?></h2>
 <?php
 echo $this->Form->create('Information', array(//フォーム生成開始
 				'id' => 'info',//フォームタグにつけるid
@@ -10,15 +10,15 @@ echo $this->Form->create('Information', array(//フォーム生成開始
 			
 			//email入力欄
 			echo $this->Html->image('title_addr.png');
-			echo $this->Form->input('email', array('type'=>'email', 'value' => $user_id));
+			echo $this->Form->input('email', array('type'=>'email', 'value' => $user_id, 'maxLength' => '50'));
 
 			//件名
 			echo $this->Html->image('title_title.png');
-			echo $this->Form->input('title', array('type'=>'text'));
+			echo $this->Form->input('title', array('type'=>'text', 'maxLength' => '30'));
 
 			//本文
 			echo $this->Html->image('title_con.png');
-			echo $this->Form->input('body', array('type'=>'textarea'));
+			echo $this->Form->input('body', array('type'=>'textarea', 'maxLength' => '1000'));
 
 			echo $this->Form->input('',array('type' => 'submit'));
 			echo $this->Form->input('user_id', array('type'=>'hidden', 'value' => $user_id));

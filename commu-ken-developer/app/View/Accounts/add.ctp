@@ -34,11 +34,11 @@ endif;
 		        echo $error;
 		    }
 			echo $this->Html->image('title_addr.png');
-			echo $this->Form->input('id', array('type'=>'email'));
+			echo $this->Form->input('id', array('type'=>'email', 'maxLength' => '50'));
 			
 			//パスワード入力欄
 			echo $this->Html->image('title_pass.png');
-			echo $this->Form->input('password', array('type'=>'password'));
+			echo $this->Form->input('password', array('type'=>'password', 'maxLength' => '20'));
 			
 			//性別選択欄
 			echo $this->Html->image('title_sex.png');
@@ -71,7 +71,7 @@ endif;
 
 			//秘密の質問の答え入力欄
 			echo $this->Html->image('title_ans.png');
-			echo $this->Form->input('secret_answer', array('type' => 'text' )).'<br>';
+			echo $this->Form->input('secret_answer', array('type' => 'text', 'maxLength' => '50')).'<br>';
 
 			/**送信ボタン。淺野さんが作ってくれたボタンだとうまく送信出来なかったので、
 			*とりあえず別の方法で作っています。これにidをつければボタン画像を表示することは

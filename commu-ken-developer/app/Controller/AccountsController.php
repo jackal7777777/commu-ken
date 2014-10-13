@@ -46,7 +46,7 @@ class AccountsController extends AppController{
         
 
         //ユーザ検索関数呼び出しコード
-        $userCheckCode = $this->User->userCheck($postData["User"]["id"],$postData["User"]["pass"]);
+        $userCheckCode = $this->User->userCheck($postData["User"]["id"],$postData["User"]["password"]);
 
         //ログイン判定
         if ($userCheckCode == null) {
@@ -101,14 +101,20 @@ class AccountsController extends AppController{
         $this->set('day', $day);
         $this->set('year', $year);
 
+        if ($params == 1) {
+            $this->set('result', '変更に成功しました');
+        }elseif ($params == 2) {
+            $this->set('result', '変更に失敗しました');
+        }
+
 
         // post時の処理
         if ($this->request->is('post')) {
             if ($this->User->change($this->request->data, $this->Session->read('user_id')) == true){
                 //debug($this->User->changeUp($this->request->data));
-                $this->redirect(array('controller' => 'accounts', 'action' => 'change'));
+                $this->redirect(array('controller' => 'accounts', 'action' => 'change',1));
             }else{
-                $this->redirect(array('controller' => 'accounts', 'action' => 'change'));
+                $this->redirect(array('controller' => 'accounts', 'action' => 'change',2));
             }
         }
     }

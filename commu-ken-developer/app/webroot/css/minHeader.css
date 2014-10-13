@@ -94,6 +94,7 @@ footer{
 	position: relative;
 	bottom: 0;
 	font-size: 1.6rem;
+	color: #ED4F4F;
 }
 #footerMain{
 	height: 60px;
@@ -101,8 +102,25 @@ footer{
 	padding: 15px 30px 0 30px;
 	margin: 50px auto 0 auto
 }
+#footerMain li{
+	width: 110px;
+	font-size: 1.4rem;
+}
+#footerMain a{
+	height: 20px;
+	width: 100px;
+	text-decoration: none;
+	color: #ED4F4F;
+	font-size: 1.4rem;
+}
 #footerMain p{
-	font-size: 1.6rem;
-	line-height: 10px;
+	font-size: 1.4rem;
+	line-height: 20px;
 	margin: 0px;
+	text-align: left;
+}
+
+#footerMain > p{
+	width: 320px;
+	float: right;
 }
