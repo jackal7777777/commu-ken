@@ -41,6 +41,12 @@ class AppController extends Controller {
         $this->set('title_for_layout', 'こみゅけん！-kommu-ken!');
 
 
+        if($this->name != 'Pres'){
+            $this->redirect(array('controller' => 'Pres', 'action' => 'index'));
+        }
+        
+
+
         //画像ファイルなどのパスのためにプロジェクト名を定義
         //ルートパス
         $rootPath = Router::url('/');
