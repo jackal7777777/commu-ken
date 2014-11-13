@@ -15,7 +15,7 @@
 			var selectStage = new Array(); 
 				selectStage['background'] = 'background_classroom.jpg';
 				selectStage['character'] = 'friend.png';
-				selectStage['name'] = '梅野君';
+				selectStage['name'] = 'name_03';
 				selectStage['startText'] = '高校２年の１学期。新しいクラス、周りは知らない人ばかり、今年こそ友達を作りたい！　隣の席になった梅野くんが、何だかすごくいい人そう。友だちになりたいな…';
 				selectStage['eventTitle'] = 'とりあえず何か話題を探してみよう！';
 				selectStage['say1'] = 'よっ！隣の席になったのも運命だよな。';
@@ -236,7 +236,9 @@
 						//キャラクター表示切替
 						$("#img").attr("src","images/"+selectStage[act+"Img"+(index+1)]);
 						//話し手切り替え
-						$("#talker").text(selectStage['name']);
+						$("<img>",{
+							"src":"images/"+selectStage['name']+".png"
+						}).appendTo("#talker");
 						//文章挿入
 						$("<p>",{
 							"class":"split",
@@ -253,7 +255,7 @@
 								//キャラクター表示切替
 								$("#img").attr("src","images/"+selectStage[act+"Img"+(index+1)+"-"+ll+"-"+l]);
 								//話し手切り替え
-								$("#talker").text('つむぎ');
+								$("#talker img").attr('src','images/name_02.png');
 								if(l >= 2){
 									huki(l);
 									m = l;
@@ -288,7 +290,7 @@
 								//キャラクター表示切替
 								$("#img").attr("src","images/"+selectStage[act+"Img"+"1-"+l]);
 								//話し手切り替え
-								$("#talker").text('つむぎ');
+								$("#talker img").attr('src','images/name_02.png');
 								//alert(m);
 								huki(l+m);
 								//文章挿入
