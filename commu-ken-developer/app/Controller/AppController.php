@@ -38,13 +38,7 @@ class AppController extends Controller {
     public $helpers = array('Html', 'Form', 'Js', 'Session');
 
     public function beforeFilter(){//全てのアクションに共通する処理。主にアカウント・セッション認証系。
-        $this->set('title_for_layout', 'こみゅけん！-kommu-ken!');
-
-
-        if($this->name != 'Pres'){
-            $this->redirect(array('controller' => 'Pres', 'action' => 'index'));
-        }
-        
+        $this->set('title_for_layout', 'こみゅけん！-commu-ken!');
 
 
         //画像ファイルなどのパスのためにプロジェクト名を定義
@@ -58,14 +52,31 @@ class AppController extends Controller {
         $sess_user_id = $this->Session->read('user_id');
         $sess_admin_id = $this->Session->read('admin_id');
 
+        //グローバルナビのカレントページ表示用
+        $current = array($this->name, $this->action);
+        $current_nav = 0;
+
+        if($current[0] == 'Accounts'){
+            if ($current[1] == 'index') {
+                $current_nav = 1;
+            }else if($current[1] == 'add'){
+                $current_nav = 3;
+            }
+        }else if($current[0] == 'Informations'){
+            if ($current[1] == 'info_send') {
+                $current_nav = 4;
+            }
+        }
+        $this->set('current_nav', $current_nav);
+
         //セッション情報がなければindexへリダイレクトする
         if ($sess_user_id == null && ($this->action == 'choice' || 
                                         $this->action == 'game' || 
                                         $this->action == 'change'))
         {
             $this->redirect('/');
-        }elseif($sess_admin_id == null && $this->name == 'admins' && $this->action != 'index'){
-            $this->redirect(array('controller' => 'Admins', 'action' => 'index'));
+        }elseif($this->request->data == array() && $sess_admin_id == null && $this->name == 'Admins' && $this->action != 'index'){
+            $this->redirect(array('controller' => 'admins', 'action' => 'index'));
         }elseif($sess_admin_id != null){
             $this->set('admin_id', $sess_admin_id);
         }else{
@@ -78,6 +89,7 @@ class AppController extends Controller {
             $this->action == 'info_send' ||
             $this->action == 'personal' ||
             $this->action == 'policy' ||
+            $this->action == 'disclamer' ||
             $this->action == 'tutorial'){
             //この中のどれかのアクションならheader用のcssにはheader.cssを適用する
             $this->set('headerCss','header.css');
@@ -104,13 +116,12 @@ class AppController extends Controller {
             $this->set('headerCss','minHeader.css');
 
             if($sess_user_id != null && $this->name != 'Admins'){//さらにセッションがあるなら
-
+                
                 $this->set('changeCss','minChange.css');//header用のcssをログイン時用のモノに変更
                 //headerメニューのリンク先設定
                 $this->set('nav3link', array('controller' => 'accounts', 'action' => 'change'));
                 $this->set('nav5link', array('controller' => 'accounts', 'action' => 'logout'));
             }elseif($sess_admin_id != null){
-
                 $this->set('changeCss','minChange.css');//header用のcssをログイン時用のモノに変更
 
                 $this->set('nav3link', array('controller' => 'accounts', 'action' => 'change'));

@@ -42,7 +42,9 @@ class GamesController extends AppController{
         $this->set('title_for_layout', 'こみゅけん！-kommu-ken!');
 
         $this->set('user_id', $this->Session->read('user_id'));
+
         
+
         //クリア情報読み込み
         $clearInfo = $this->Clear->clearCheck($this->Session->read('user_id'));
         if ($clearInfo != null && $clearInfo != "" && $clearInfo != array()) {
@@ -94,7 +96,6 @@ class GamesController extends AppController{
             $this->redirect(array('controller' => 'games', 'action' => 'choice'));
         }
 
-        //確認
         $this->set('step_id', $stepId);
         $this->set('stage_id', $stageId);
         $this->set('step_exp', $stepInfo[0]['Step']['step_exp']);
@@ -124,6 +125,7 @@ class GamesController extends AppController{
         //このステップのシナリオIDをセット
         $this->set('scenario_id', $scenarioId);
 
+
         //選択肢登録用処理
         $this->set('step_no', $stepNo);//ステップIDセット
 
@@ -134,7 +136,6 @@ class GamesController extends AppController{
         //ステップIDとアンサーに該当するセリフを特定
         //ここでは該当ステップのセリフデータを全取得している
         $serifs = $this->Serif->getSerif($stepId);
-        $this->set('serifArray', $serifs);
 
         //セリフ格納用配列
         $serifArrayJs = array();
@@ -151,6 +152,8 @@ class GamesController extends AppController{
                 $serifArrayJs[$answerNo]['Image'][$serifNo] = $serifImg;
                 $serifArrayJs[$answerNo]['Character'][$serifNo] = $serifChara;
         }
+
+        echo('<span style="display:none"></span>');
 
         $this->set('serifArrayJs', json_encode($serifArrayJs));
     }

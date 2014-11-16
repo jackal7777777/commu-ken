@@ -25,208 +25,208 @@ endif;
 <?php $this->Html->scriptStart(array('inline' => false)); ?>
 //オープニング文章
             var startText = new Array();
-            startText['name1'] = '僕';
+            startText['name1'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text1'] = '今日から高校２年生、新しいクラスだ……';
             startText['img1'] ='<?= $pro_pass_img ?>images/none.png';
-            startText['name2'] = '僕';
+            startText['name2'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text2'] = '１年のときは、全然友達ができなかったなあ……誰とも上手く話せなくて……';
             startText['img2'] ='<?= $pro_pass_img ?>images/none.png';
-            startText['name3'] = '僕';
+            startText['name3'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text3'] = '今年こそは……今年こそは友達が欲しい！';
             startText['img3'] ='<?= $pro_pass_img ?>images/none.png';
-            startText['name4'] = '僕';
+            startText['name4'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text4'] = '新しいクラスで、初対面の人もいっぱいいるし！';
             startText['img4'] ='<?= $pro_pass_img ?>images/none.png';
-            startText['name5'] = '僕';
+            startText['name5'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text5'] = '……でも、どうやって友達を作ればいいんだ？';
             startText['img5'] ='<?= $pro_pass_img ?>images/none.png';
-            startText['name6'] = 'つむぎ';
+            startText['name6'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text6'] = 'お兄ちゃん、何悩んでるの？';
             startText['img6'] ='<?= $pro_pass_img ?>images/sister.png';
-            startText['name7'] = '僕';
+            startText['name7'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text7'] = 'うわっ！　つ、つむぎ！　勝手に部屋に入ってくるんじゃない！';
             startText['img7'] ='<?= $pro_pass_img ?>images/none.png';
-            startText['name7'] = 'つむぎ';
+            startText['name7'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text7'] = 'さっきからうるさいから、気になって見に来たのよ。';
             startText['img7'] ='<?= $pro_pass_img ?>images/sister_zitome.png';
-            startText['name7'] = 'つむぎ';
+            startText['name7'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text7'] = '何、お兄ちゃん、友達を作りたいの？';
             startText['img7'] = '<?= $pro_pass_img ?>images/sister_zitome.png';
-            startText['name8'] = '僕';
+            startText['name8'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text8'] = 'き、聞こえてたのか……';
             startText['img8'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name9'] = '僕';
+            startText['name9'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text9'] = 'そうなんだよ、僕だって友達が欲しいんだよ……';
             startText['img9'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name10'] = '僕';
+            startText['name10'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text10'] = 'でも、他人とどう話していいかわからなくて……';
             startText['img10'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name11'] = 'つむぎ';
+            startText['name11'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text11'] = 'もう、昔からそんなんだから。';
             startText['img11'] = '<?= $pro_pass_img ?>images/sister_komaru.png';
-            startText['name12'] = 'つむぎ';
+            startText['name12'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text12'] = 'そういうときは、とりあえず適当に話しかければ良いのよ。';
             startText['img12'] = '<?= $pro_pass_img ?>images/sister_komaru.png';
-            startText['name13'] = '僕';
+            startText['name13'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text13'] = 'それが無理なんだよ……';
             startText['img13'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name14'] = '僕';
+            startText['name14'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text14'] = 'いいかつむぎ？';
             startText['img14'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name15'] = '僕';
+            startText['name15'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text15'] = '学校っての言うのはな、恐ろしいほど、みんなが空気を読んでいる世界だ。';
             startText['img15'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name16'] = '僕';
+            startText['name16'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text16'] = 'なんていうか、クラスの中で、見えない役割みたいなのがあって……';
             startText['img16'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name17'] = '僕';
+            startText['name17'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text17'] = '僕みたいなぼっちは、明るく楽しく話しちゃいけないみたいな、';
             startText['img17'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name18'] = '僕';
+            startText['name18'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text18'] = 'そういう無言のプレッシャーがあるんだよ。';
             startText['img18'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name19'] = 'つむぎ';
+            startText['name19'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text19'] = 'それで毎日、一人でお弁当食べてるの？';
             startText['img19'] = '<?= $pro_pass_img ?>images/sister_zitome.png';
-            startText['name20'] = '僕';
+            startText['name20'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text20'] = '言うなつむぎ……　とにかくだ、僕にとって学校は「異世界」なんだよ。';
             startText['img20'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name21'] = '僕';
+            startText['name21'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text21'] = '僕みたいに、暗くて、友達のいないやつは、明るいやつらの間に入っていけないんだ。';
             startText['img21'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name22'] = '僕';
+            startText['name22'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text22'] = 'それをやったらなぜか、「空気読めない」って言われちゃうんだよ……';
             startText['img22'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name23'] = '僕';
+            startText['name23'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text23'] = '中学のときもそうだったから、間違いない……！';
             startText['img23'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name24'] = 'つむぎ';
+            startText['name24'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text24'] = 'うーん、なんだかなあ。';
             startText['img24'] = '<?= $pro_pass_img ?>images/sister_komaru.png';
-            startText['name25'] = 'つむぎ';
+            startText['name25'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text25'] = 'ねえ、なんで「話しかけちゃいけない」の？';
             startText['img25'] = '<?= $pro_pass_img ?>images/sister_komaru.png';
-            startText['name26'] = 'つむぎ';
+            startText['name26'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text26'] = 'お兄ちゃん、そういう呪いでもかけられてるの？';
             startText['img26'] = '<?= $pro_pass_img ?>images/sister_komaru.png';
-            startText['name27'] = '僕';
+            startText['name27'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text27'] = 'いや、そうじゃないけど、だからそういう空気が……';
             startText['img27'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name28'] = 'つむぎ';
+            startText['name28'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text28'] = 'もー、空気って何よ？　空気が読めたらエラいの？';
             startText['img28'] = '<?= $pro_pass_img ?>images/sister_ikari.png';
-            startText['name29'] = 'つむぎ';
+            startText['name29'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text29'] = '空気ばっかり読んでるのって、すっごく疲れない？';
             startText['img29'] = '<?= $pro_pass_img ?>images/sister_ikari.png';
-            startText['name30'] = '僕';
+            startText['name30'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text30'] = 'そ、そりゃそうだけど……';
             startText['img30'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name31'] = 'つむぎ';
+            startText['name31'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text31'] = 'とにかく、友達欲しいなら、その気持ちに素直になればいいのよ。';
             startText['img31'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name32'] = '僕';
+            startText['name32'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text32'] = 'で、でも、どう話せばいいか、わかんなくて……';
             startText['img32'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name33'] = '僕';
+            startText['name33'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text33'] = 'ほら、感じの悪い言い方しちゃったら、相手を傷つけるだろ？';
             startText['img33'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name34'] = 'つむぎ';
+            startText['name34'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text34'] = 'まあ、それはもちろんそうよね…。';
             startText['img34'] = '<?= $pro_pass_img ?>images/sister_komaru.png';
-            startText['name35'] = 'つむぎ';
+            startText['name35'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text35'] = 'でも、逆に言えば、「言い方」さえそこそこ上手くなればいいのよ。';
             startText['img35'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name36'] = '僕';
+            startText['name36'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text36'] = 'へ？';
             startText['img36'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name37'] = 'つむぎ';
+            startText['name37'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text37'] = '友達を作るのに、暗いとか人見知りとか、そういう性格を直す必要なんかないわ。';
             startText['img37'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name38'] = 'つむぎ';
+            startText['name38'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text38'] = '周りの空気に合わせて、一人ぼっちのキャラに甘んじる必要もない。';
             startText['img38'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name39'] = 'つむぎ';
+            startText['name39'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text39'] = '要は「上手い話し方」さえ工夫すれば、誰だって友達は作れるのよ。';
             startText['img39'] = '<?= $pro_pass_img ?>images/sister_isamasii.png';
-            startText['name40'] = 'つむぎ';
+            startText['name40'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text40'] = '話し方「だけ」でいいの。案外簡単なものよ、人間関係なんて。';
             startText['img40'] = '<?= $pro_pass_img ?>images/sister_tyousyou.png';
-            startText['name41'] = '僕';
+            startText['name41'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text41'] = 'で、でも、その話し方をどうやって身につければいいんだよ？';
             startText['img41'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name42'] = 'つむぎ';
+            startText['name42'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text42'] = 'ふふん。私に任せなさーい！';
             startText['img42'] = '<?= $pro_pass_img ?>images/sister_isamasii.png';
-            startText['name43'] = '僕';
+            startText['name43'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text43'] = 'は、はあ？';
             startText['img43'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name44'] = 'つむぎ';
+            startText['name44'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text44'] = 'こう見えても私、「話し方」だけは自信があるの！';
             startText['img44'] = '<?= $pro_pass_img ?>images/sister_warau.png';
-            startText['name45'] = 'つむぎ';
+            startText['name45'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text45'] = '友達と仲良くするための話し方、いろいろ教えてあげる！';
             startText['img45'] = '<?= $pro_pass_img ?>images/sister_warau.png';
-            startText['name46'] = '僕';
+            startText['name46'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text46'] = '教えてあげるって……そんなこと言われても……';
             startText['img46'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name47'] = 'つむぎ';
+            startText['name47'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text47'] = 'うじうじしないの！';
             startText['img47'] = '<?= $pro_pass_img ?>images/sister_okoru.png';
-            startText['name48'] = 'つむぎ';
+            startText['name48'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text48'] = 'いい？　友達が作りたいんでしょ？';
             startText['img48'] = '<?= $pro_pass_img ?>images/sister_okoru.png';
-            startText['name49'] = 'つむぎ';
+            startText['name49'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text49'] = 'だったらこれから、何でもいいからクラスメイトと話をしてみて。';
             startText['img49'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name50'] = 'つむぎ';
+            startText['name50'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text50'] = '上手く話が続くように。';
             startText['img50'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name51'] = '僕';
+            startText['name51'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text51'] = 'そ、そんなの無理に決まってるだろ！';
             startText['img51'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name52'] = '僕';
+            startText['name52'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text52'] = '変なこと言っちゃったらどうするんだよ！';
             startText['img52'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name53'] = 'つむぎ';
+            startText['name53'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text53'] = '大丈夫。';
             startText['img53'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name54'] = 'つむぎ';
+            startText['name54'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text54'] = 'もし何かマズいことを言ったら、私がビシビシ教えてあげる。';
             startText['img54'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name55'] = 'つむぎ';
+            startText['name55'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text55'] = '「何が悪かったのか」「どう直せばいいか」をね！';
             startText['img55'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name56'] = 'つむぎ';
+            startText['name56'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text56'] = 'そして、上手く話を続けられたら、「どこがよかったのか」もしっかり教えてあげるわ！';
             startText['img56'] = '<?= $pro_pass_img ?>images/sister_isamasii.png';
-            startText['name57'] = 'つむぎ';
+            startText['name57'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text57'] = 'そうやって、マンツーマンで「話し方のコツ」を教われば、ちょっとは自信もつくと思わない？';
             startText['img57'] = '<?= $pro_pass_img ?>images/sister_isamasii.png';
-            startText['name58'] = 'つむぎ';
+            startText['name58'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text58'] = 'それに、どんどん話し方が上手くなれば、いろんな人と友達になれるかも！';
             startText['img58'] = '<?= $pro_pass_img ?>images/sister_warau.png';
-            startText['name59'] = '僕';
+            startText['name59'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text59'] = 'お、おお、それはありがたい！';
             startText['img59'] = '<?= $pro_pass_img ?>images/none.png';
-            startText['name60'] = 'つむぎ';
+            startText['name60'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text60'] = 'よーし、じゃあさっそく学校に行きましょ！';
             startText['img60'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name61'] = 'つむぎ';
+            startText['name61'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text61'] = 'あ、最後に一つ、大事なこと！';
             startText['img61'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name62'] = 'つむぎ';
+            startText['name62'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text62'] = 'お兄ちゃんは今、友達のいないことを気にしているかもしれないけれど、';
             startText['img62'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name63'] = 'つむぎ';
+            startText['name63'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text63'] = '別に「友達が多ければエラい！」ってワケじゃないからね。';
             startText['img63'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name64'] = 'つむぎ';
+            startText['name64'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text64'] = '友達が少なくても毎日を楽しめてる人、いっぱいいるんだし。';
             startText['img64'] = '<?= $pro_pass_img ?>images/sister_isamasii.png';
-            startText['name65'] = 'つむぎ';
+            startText['name65'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text65'] = 'だから、友達作りをするにしても、肩の力を入れすぎる必要は全然ないわ。';
             startText['img65'] = '<?= $pro_pass_img ?>images/sister.png';
-            startText['name66'] = 'つむぎ';
+            startText['name66'] = '<?= $pro_pass_img ?>images/name_02.png';
             startText['text66'] = '無理せず焦らず、楽しい友達作りができるといいわね！';
             startText['img66'] = '<?= $pro_pass_img ?>images/sister_warau.png';
 
@@ -258,7 +258,7 @@ endif;
                     }else{
                         $("#gameLogo").fadeIn(1000).fadeOut(500);
                         $("#hukidashi").delay(2500).fadeIn(500);
-                        $("#talker").delay(2500).text(startText['name1']);
+                        $("#talker").delay(2500).attr('src', startText['name1']);
                         setTimeout("start()",2500);
                         setTimeout("sp()",2500);
                         $("p").delay(2500).removeClass("split");
@@ -273,7 +273,7 @@ endif;
                 }else{
                     $("#gameLogo").fadeIn(1000).fadeOut(500);
                     $("#hukidashi").delay(2500).fadeIn(500);
-                    $("#talker").delay(2500).text(startText['name1']);
+                    $("#talker").delay(2500).attr('src', startText['name1']);
                     setTimeout("start()",2500);
                     setTimeout("sp()",2500);
                     $("p").delay(2500).removeClass("split");
@@ -317,11 +317,11 @@ endif;
                     //つむぎと僕の切り替え
                     if(startText['name'+j]==startText['name'+(j-1)]){
                         //テキストを一行上に流す
-                        $("#gameArticle").animate({"top":"-"+41*(j-2)+"px"});
+                        $("#gameArticle").animate({"top":"-"+50*(j-2)+"px"});
                         change(j);
                     }else{
                         //テキストを二行分上に流す
-                        $("#gameArticle").animate({"top":"-"+41*(j-1)+"px"});
+                        $("#gameArticle").animate({"top":"-"+50*(j-1)+"px"});
                         $("#gameBackBlack").fadeIn(500).fadeOut(500);
                         setTimeout("change("+j+")",500);
                     }
@@ -338,7 +338,7 @@ endif;
                 $("#skip").fadeOut(100);
             }
             function change(j){
-                $("#talker").text(startText['name'+j]);
+                $("#talker img").attr("src",startText['name'+j]);
                 $("<p>",{
                     "id":"p"+j,
                     "class":"split",
@@ -447,7 +447,7 @@ endif;
         <div id="gameImg"></div>
         <div id="hukidashi">
             <div id="talker">
-
+                <?= $this->Html->image('name_03.png') ?>
             <!--/#talker--></div>
             <div id="gameArticle">
                 
@@ -480,13 +480,8 @@ endif;
     <div id="regi"></div>
     <div id="loginForm">
         <?= $this->Html->image('title_login.png').'<br>' ?>
-<?php 
-
-    
-
-    
-
-    if (isset($error)) echo '<p style="font-size:1.4rem;">'.$error.'</p>';
+<?php
+    if (isset($error)) echo '<p class="err-message">'.$error.'</p>';
     echo $this->Html->image('login_add.png');
     echo $this->Form->input('id', array('type'=>'email'))."<br>";
     echo $this->Html->image('login_pass.png');

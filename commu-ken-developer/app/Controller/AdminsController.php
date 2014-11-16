@@ -44,7 +44,7 @@ class AdminsController extends AppController{
         //ユーザ検索関数呼び出しコード
         $adminCheckCode = $this->Admin->adminCheck($postData["Admin"]["id"],$postData["Admin"]["password"]);
 
-        //debug($adminCheckCode);
+        debug($postData["Admin"]["password"]);
 
         //ログイン判定
         if ($adminCheckCode == null) {
