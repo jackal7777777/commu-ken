@@ -19,6 +19,14 @@
 }
 /*										body
 -----------------------------------------------*/
+body #er{
+	background: url(../images/bg_error.png);
+	background-size: cover;
+}
+body #admin{
+	background: url(../images/admin_bg.png);
+	background-size: cover;
+}
 body{
 	background: url(../images/bg.jpg);
 	background-size: cover;
@@ -456,6 +464,158 @@ input,select,option,textarea{
 	bottom: 20px;
 	right: 30px;
 }
+/*error*/
+#erA{
+	height: 40px;
+	width: 450px;
+	position: absolute;
+	top: 75px;
+	left: 50%;
+	margin-left: -225px;
+}
+#erB{
+	height: 350px;
+	width: 180px;
+	position: absolute;
+	top: 150px;
+	left: 130px;
+}
+#erC{
+	height: 100px;
+	width: 440px;
+	position: absolute;
+	top: 200px;
+	left: 410px;
+}
+#erD{
+	height: 40px;
+	width: 175px;
+	position: absolute;
+	top: 350px;
+	left: 545px;
+}
+/*admin*/
+#ad_title{
+	height: 45px;
+	width: 200px;
+	position: absolute;
+	top: 75px;
+	left: 50%;
+	margin-left: -100px;
+}
+#ad_login{
+	height: 270px;
+	width: 415px;
+	position: absolute;
+	top: 185px;
+	left: 50%;
+	margin-left: -207px;
+	background: #eee;
+	border-radius: 10px;
+}
+#ad_log_title{
+	height: 35px;
+	width: 180px;
+	margin: 20px auto 0 auto;
+}
+#ad_login img:nth-of-type(1){
+	height: 20px;
+	width: 80px;
+	margin: 40px 0 15px 40px;
+	float: left;
+}
+#ad_login input:nth-of-type(1){
+	height: 35px;
+	width: 225px;
+	float: left;
+	margin: 40px 0 15px 20px;
+}
+#ad_login img:nth-of-type(2){
+	height:20px;
+	width: 80px;
+	margin-left: 40px;
+}
+#ad_login input:nth-of-type(2){
+	height: 35px;
+	width: 225px;
+	margin-left: 20px;
+}
+#ad_login input[type="submit"]{
+	height: 35px;
+	width: 110px;
+	position: absolute;
+	bottom: 25px;
+	left: 50%;
+	margin-left: -55px;
+	border: 0;
+	background: url(../images/admin_btn_login_off.png);
+}
+#ad_login input[type="submit"]:hover{
+	background: url(../images/admin_btn_login_on.png);
+}
+#ad_title p,#ad_login p{
+	width: 100%;
+	text-align: center;
+	font-size: 1.6rem;
+}
+#adm{
+	height: 270px;
+	width: 435px;
+	position: absolute;
+	top: 205px;
+	left: 50%;
+	margin-left: -207px;
+}
+#adm div{
+	height: 125px;
+	width: 125px;
+	margin: 0 20px 20px 0;
+	float: left;
+}
+#ana{
+	background: url(../images/admin_btn_analytics_off.png);
+}
+#ana:hover{
+	background: url(../images/admin_btn_analytics_on.png);
+}
+#log{
+	background: url(../images/admin_btn_logo_off.png);
+}
+#log:hover{
+	background: url(../images/admin_btn_logo_on.png);
+}
+#ans{
+	background: url(../images/admin_btn_answer_off.png);
+}
+#ans:hover{
+	background: url(../images/admin_btn_answer_on.png);
+}
+#enq{
+	background: url(../images/admin_btn_enquete_off.png);
+	cursor: pointer;
+}
+#enq:hover{
+	background: url(../images/admin_btn_enquete_on.png);
+}
+#info{
+	background: url(../images/admin_btn_info_off.png);
+	cursor: pointer;
+}
+#info:hover{
+	background: url(../images/admin_btn_info_on.png);
+}
+#tool{
+	background: url(../images/admin_btn_tool_off.png);
+	cursor: pointer;
+}
+#tool:hover{
+	background: url(../images/admin_btn_tool_on.png);
+}
+#ana a,#ans a{
+	height: 100%;
+	width: 100%;
+}
+
 /*footer*/
 #footerMain{
 	font-size: 1.6em;

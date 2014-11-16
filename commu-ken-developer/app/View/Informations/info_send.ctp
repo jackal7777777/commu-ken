@@ -1,5 +1,5 @@
 <!--お問合せ-->
-<h2><?= $this->Html->image('title_form.png') ?></h2>
+<h2><?= $this->Html->image('title_form.png', array('alt' => 'お問い合わせ')) ?></h2>
 <?php
 echo $this->Form->create('Information', array(//フォーム生成開始
 				'id' => 'info',//フォームタグにつけるid
@@ -10,17 +10,20 @@ echo $this->Form->create('Information', array(//フォーム生成開始
 			
 			//email入力欄
 			echo $this->Html->image('title_addr.png');
-			echo $this->Form->input('email', array('type'=>'email', 'value' => $user_id));
+			echo $this->Form->input('email', array('type'=>'email', 'value' => $user_id, 'maxLength' => '50'));
 
 			//件名
 			echo $this->Html->image('title_title.png');
-			echo $this->Form->input('title', array('type'=>'text'));
+			echo $this->Form->input('title', array('type'=>'text', 'maxLength' => '30'));
 
 			//本文
 			echo $this->Html->image('title_con.png');
-			echo $this->Form->input('body', array('type'=>'textarea'));
+			echo $this->Form->input('body', array('type'=>'textarea', 'maxLength' => '1000'));
 
-			echo $this->Form->input('',array('type' => 'submit'));
+			echo $this->Form->submit('送信する',array('class' => 'inquiry_send',
+                'onmouseover' => 'btnChangeOn();',
+                'onmouseout' => 'btnChangeOff();'));
+
 			echo $this->Form->input('user_id', array('type'=>'hidden', 'value' => $user_id));
 			echo $this->Form->end();
 
@@ -32,7 +35,7 @@ echo $this->Form->create('Information', array(//フォーム生成開始
 <script>
 	//ajax用にデータ格納
 	//$('input[type="submit"]').click(function(even){
-	$('#info').submit(function(even){
+	$('#info').submit(function(event){
 		// HTMLでの送信をキャンセル
         event.preventDefault();
 		var $form = $(this);
@@ -40,12 +43,6 @@ echo $this->Form->create('Information', array(//フォーム生成開始
 		$('form input').attr('disabled','disabled');
         $('form textarea').attr('disabled','disabled');
 		console.log($form.serialize());
-		//console.log('asdf');
-        $('input[type="submit"]').css({
-        	'backgroundImage': 'none',
-        	'backgroundColor': '#ED4F4F'
-        });
-        $('input[type="submit"]').css('color', '#fff');
         $('input[type="submit"]').val('送信中です...');
 
         $.ajax({
@@ -76,4 +73,13 @@ echo $this->Form->create('Information', array(//フォーム生成開始
             console.log("complete");
         });
 	});
+
+    function btnChangeOn(){
+        $('input[type="submit"]').css('color', '#ED4F4F');
+        console.log($(this).text());
+    }
+
+    function btnChangeOff(){
+        $('input[type="submit"]').css('color', '#fff');
+    }
 </script>

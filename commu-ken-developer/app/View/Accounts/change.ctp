@@ -38,7 +38,7 @@ endif;
 			
 			//パスワード入力欄
 			echo $this->Html->image('title_pass.png');
-			echo $this->Form->input('password', array('type'=>'password', 'value' => $user_info['password']));
+			echo $this->Form->input('password', array('type'=>'password', 'value' => $user_info['password'], 'maxLength' => '20'));
 			
 			//性別選択欄
 			echo $this->Html->image('title_sex.png');
@@ -72,7 +72,7 @@ endif;
 
 			//秘密の質問の答え入力欄
 			echo $this->Html->image('title_ans.png');
-			echo $this->Form->input('secret_answer', array('type' => 'text', 'default' => $user_info['secret_answer'])).'<br>';
+			echo $this->Form->input('secret_answer', array('type' => 'text', 'default' => $user_info['secret_answer'], 'maxLength' => '50')).'<br>';
 
 			echo $this->Form->submit('btn_modi_off.png',array('type' => 'submit',
 																'id' => 'change',
@@ -80,16 +80,15 @@ endif;
 																'onmouseout' => 'btnChangeOff();'));
 			echo $this->Form->end();
 
+			if (isset($result)) {
+				echo $this->Html->scriptBlock( '$(function(){$("#add h2").after("<p style=\'text-align:center;font-size:1.6rem;\'>'.$result.'</p>");$(".submit input").css("bottom","-100");$("#add").css("height","540px");});', array( 'inline' => false));
+			}
+			echo $this->Html->scriptBlock( 'function btnChangeOn(){$("input#change").attr("src","/commu-ken-test/images/btn_modi_on.png");}function btnChangeOff(){$("input#change").attr("src","/commu-ken-test/images/btn_modi_off.png");}', array( "inline" => false));
 ?>
 </div>
 <!-- 追加分スタイル -->
 <script type="text/javascript">
-    function btnChangeOn(){
-        $('input#change').attr('src','/commu-ken-test/images/btn_modi_on.png');    
-    }
-
-    function btnChangeOff(){
-        $('input#change').attr('src','/commu-ken-test/images/btn_modi_off.png');    
-    }
+    //function btnChangeOn(){$('input#change').attr('src','/commu-ken-test/images/btn_modi_on.png');}function btnChangeOff(){$('input#change').attr('src','/commu-ken-test/images/btn_modi_off.png');}
     
+    //$('main').prepend('<p><?= $result ?></p>');
 </script>

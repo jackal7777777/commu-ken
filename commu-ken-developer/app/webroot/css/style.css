@@ -18,10 +18,22 @@
 	padding: 0px;
 	font-size: 62.5%;
 }
+html,body{
+	width: 100%;
+	height: 100%;
+}
 /*										body
 -----------------------------------------------*/
-body{
-	background: url(../images/bg.jpg);
+body#er #bodyWrapper{ 
+	background: url(../images/bg_error.png) no-repeat;
+	background-size: cover;
+} 
+body#admin #bodyWrapper{ 
+	background: url(../images/admin_bg.png) no-repeat; 
+	background-size: cover; 
+} 
+body #bodyWrapper{
+	background: url(../images/bg.jpg) no-repeat;
 	background-size: cover;
 }
 ul{
@@ -35,13 +47,22 @@ h2{
 	width: 300px;
 	margin: 20px 0 20px 20px;
 }
+#bodyWrapper{
+	position: relative;
+	height: auto !important;    
+    height: 100%;
+    min-height: 100%;
+}
 /*										main
 -----------------------------------------------*/
+#mainWrapper{
+	padding-bottom: 180px;
+}
 main{
 	min-height: 400px;
 	width: 960px;
 	background: #fafafa;
-	margin: 20px auto;
+	margin: 80px auto 0;
 }
 #replayOpning{
 	height: 525px;
@@ -99,18 +120,18 @@ main{
 }
 /*game*/
 #game{
+	position: relative;
 	height: 500px;
 	width: 920px;
 	padding: 20px;
 	background: url(../images/bg_game.png);
-	position: relative;
-	margin: 0 auto;
 }
 #game #skip{
 	position: absolute;
 	top: 5px;
 	right: 5px;
 	z-index: 99;
+	cursor: pointer;
 }
 #game #next{
 	position: absolute;
@@ -126,7 +147,7 @@ main{
 #game #hukidashi{
 	height: 100px;
 	width: 720px;
-	background: rgba(255,255,255,0.75);
+	background: rgba(230,251,255,0.75);
 	position: absolute;
 	bottom: 30px;
 	left: 50%;
@@ -134,6 +155,7 @@ main{
 	border-radius: 10px;
 	overflow: hidden;
 	z-index: 6;
+    cursor: pointer;
 }
 #game #talker{
 	height: 100px;
@@ -143,16 +165,29 @@ main{
 	float: left;
 	text-align: center;
 }
+
+#game #talker img{
+	display: block;
+	margin: 0 auto;
+	width: 90px;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+
 #game #gameArticle{
 	height: 100px;
 	width: 600px;
 	left: 120px;
 	position: absolute;
 }
-#game #gameArticle p{
-	line-height: 25px;
+#game #gameArticle > p{
+	line-height: 50px;
 	font-size: 1.6rem;
-	margin: 1em 0;
+	margin: 0;
 }
 #game #selectLeft{
 	height: 60px;
@@ -183,6 +218,7 @@ main{
 }
 #game #select #selectSlide img{
 	float: left;
+	cursor: pointer;
 }
 #gameBack{
 	height: 525px;
@@ -201,11 +237,13 @@ main{
 	top: 0;
 	left: 0;
 	z-index: 6;
+	cursor: pointer;
 }
 #regi{
 	height: 175px;
 	width: 940px;
 	position: absolute;
+	cursor: pointer;
 	z-index: 15;
 	top: 180px;
 	left: 10px;
@@ -238,14 +276,12 @@ main{
 	left: 40px;
 }
 #timeup{
-	height:50px;
-	width: 300px;
-	position: absolute;
+	height: 100%;
+	width: 100%;
+	position: relative;
 	z-index: 10;
-	left: 50%;
-	top: 238px;
-	margin-left: -150px;
-	background: url(../images/title_timeup.png);
+	background: url(../images/title_timeup.png) center center no-repeat;
+	cursor: pointer;
 }
 #event{
 	height: 45px;
@@ -300,6 +336,14 @@ main{
 	background: url(../images/title_summary.png);
 }
 /*info*/
+input, textarea, select{
+	font-size: 1.6rem;
+}
+
+#info{
+	position: relative;
+}
+
 #info input{
 	height: 40px;
 	width: 720px;
@@ -312,19 +356,20 @@ main{
 	padding: 5px;
 
 }
-#info input[type="submit"]{
+#info .inquiry_send{
 	border: 0px;
-	height: 40px;
-	width: 120px;
-	background: url(../images/btn_send_off.png);
-	margin: 0 35px 20px 50px;
+	height: 150px;
+	width: 150px;
+	position: absolute;
+	bottom: -190px;
+	left: 50%;
+	margin-left: -75px;
+	background: url(../images/btn_inquiry_off.png);
+	font-size: 2rem;
+	color: #fff;
 }
-#info input[type="button"]:hover{
-	border: 0px;
-	height: 40px;
-	width: 120px;
-	background: url(../images/btn_send_on.png);
-	margin: 0 35px 20px 50px;
+#info .inquiry_send:hover{
+	background: url(../images/btn_inquiry_on.png);
 }
 #info img{
 	height: 40px;
@@ -341,12 +386,11 @@ main{
 #add {
 	height: 500px;
 	position: relative;
-	margin-bottom: 100px;
 }
 select#que{
 	width: 720px;
 }
-input,select,option,textarea{
+input,select,textarea{
 	border-radius: 5px;
 	border: 1px solid #aaa;
 }
@@ -356,14 +400,9 @@ input,select,option,textarea{
 	background: url(../images/btn_regi_off.png);
 	border: 0;
 	position: absolute;
-	bottom: -90px;
+	bottom: -185px;
 	left: 50%;
 	margin-left: -75px;
-}
-#add input[type="image"].add:hover{
-	height: 150px;
-	width: 150px;
-	background: url(../images/btn_regi_on.png);	
 }
 /*change*/
 #add input[type="image"]#change{
@@ -372,7 +411,7 @@ input,select,option,textarea{
 	background: url(../images/btn_modi_off.png);
 	border: 0;
 	position: absolute;
-	bottom: -90px;
+	bottom: -185px;
 	left: 50%;
 	margin-left: -75px;
 }
@@ -384,6 +423,7 @@ input,select,option,textarea{
 
 /*social*/
 #social{
+	display: none;
 	height: 525px;
 	width: 940px;
 	background: #e6fbff;
@@ -453,19 +493,276 @@ input,select,option,textarea{
 	bottom: 20px;
 	right: 30px;
 }
+/*footer*/
+#footer{
+	height: 75px;
+	width: 100%;
+	background: url(../images/bg_ft.jpg);
+	background-color: #e6fbff;
+	background-repeat: repeat-x;
+	font-size: 1.6rem;
+	color: #ED4F4F;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+}
+#footerMain{
+	width: 960px;
+	padding: 27.5px 30px 0 30px;
+	margin: 0 auto;
+	font-size: 1.6em;
+}
+.footerNav{
+}
+.footerNavItem{
+	border-left: solid 1px #ED4F4F;
+	text-align: center;
+	padding: 0 10px;
+	font-size: 1.4rem;
+}
+.footerNavItem:first-of-type{
+	border: none;
+	line-height: 20px;
+}
+
+#footerMain a{
+	height: 20px;
+	width: 100px;
+	text-decoration: none;
+	color: #ED4F4F;
+	font-size: 1.4rem;
+}
+#footerMain p{
+	font-size: 1.4rem;
+	line-height: 20px;
+	margin: 0px;
+	text-align: left;
+}
+
+#footerMain > p{
+	width: 320px;
+	float: right;
+}
+
 #social form p{
 	width: 200px;
 	font-size: 2rem;
 	margin: 100px auto 0;
 	text-align: center;
 }
+/*久保追加分*/
 .user_id{
 	height: 40px;
 	width: 720px;
 	margin-bottom: 20px;
 	font-size: 2rem;
 }
+#replayButton{
+	width: 300px;
+	height: 30px;
+	margin-bottom: 6px;
+}
+main h2{
+	margin: 0 0 20px 20px;
+}
 
+/*error*/
+#erA{
+	height: 40px;
+	width: 450px;
+	position: absolute;
+	top: 75px;
+	left: 50%;
+	margin-left: -225px;
+}
+#erB{
+	height: 350px;
+	width: 180px;
+	position: absolute;
+	top: 150px;
+	left: 130px;
+}
+#erC{
+	height: 100px;
+	width: 440px;
+	position: absolute;
+	top: 200px;
+	left: 410px;
+}
+#erD{
+	height: 40px;
+	width: 175px;
+	position: absolute;
+	top: 350px;
+	left: 545px;
+}
+/*admin*/
+#admin #game{
+	background-color: #e6fbff;
+}
 
+#ad_title{
+	height: 45px;
+	width: 200px;
+	position: absolute;
+	top: 75px;
+	left: 50%;
+	margin-left: -100px;
+}
+#ad_login{
+	height: 270px;
+	width: 415px;
+	position: absolute;
+	top: 185px;
+	left: 50%;
+	margin-left: -207px;
+	background: #eee;
+	border-radius: 10px;
+}
+#ad_log_title{
+	height: 35px;
+	width: 180px;
+	margin: 20px auto 0 auto;
+}
+#ad_login img:nth-of-type(1){
+	height: 20px;
+	width: 80px;
+	margin: 40px 0 15px 40px;
+	float: left;
+}
+#ad_login input:nth-of-type(1){
+	height: 35px;
+	width: 225px;
+	float: left;
+	margin: 40px 0 15px 20px;
+}
+#ad_login img:nth-of-type(2){
+	height:20px;
+	width: 80px;
+	margin-left: 40px;
+}
+#ad_login input:nth-of-type(2){
+	height: 35px;
+	width: 225px;
+	margin-left: 20px;
+}
+#ad_login input[type="submit"]{
+	height: 35px;
+	width: 110px;
+	position: absolute;
+	bottom: 25px;
+	left: 50%;
+	margin-left: -55px;
+	border: 0;
+	background: url(../images/admin_btn_login_off.png);
+}
+#ad_login input[type="submit"]:hover{
+	background: url(../images/admin_btn_login_on.png);
+}
+#ad_title p,#ad_login p{
+	width: 100%;
+	text-align: center;
+	font-size: 1.6rem;
+}
+#adm{
+	height: 270px;
+	width: 435px;
+	position: absolute;
+	top: 205px;
+	left: 50%;
+	margin-left: -207px;
+}
+#adm div{
+	height: 125px;
+	width: 125px;
+	margin: 0 20px 20px 0;
+	float: left;
+}
+#ana{
+	background: url(../images/admin_btn_analytics_off.png);
+}
+#ana:hover{
+	background: url(../images/admin_btn_analytics_on.png);
+}
+#log{
+	background: url(../images/admin_btn_logo_off.png);
+}
+#log:hover{
+	background: url(../images/admin_btn_logo_on.png);
+}
+#ans{
+	background: url(../images/admin_btn_answer_off.png);
+}
+#ans:hover{
+	background: url(../images/admin_btn_answer_on.png);
+}
+.ans{
+	height: 50px;
+    width: 600px;
+    position: absolute;
+    left: 0;
+    background: url(../images/bg_choice_off.png);
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.6rem;
+	cursor: pointer;
+	background: url(../images/bg_choice_off.png);
+}
+.ans:hover{
+	background: url(../images/bg_choice_on.png);
+}
 
+#select1{
+	top: 0;
+}
+#select2{
+	top: 70;
+}
+#select3{
+	top: 140;
+}
+#select4{
+	top: 210;
+}
 
+#enq{
+	background: url(../images/admin_btn_enquete_off.png);
+	cursor: pointer;
+}
+#enq > a{
+	width: 125px;
+	height: 125px;
+}
+#enq:hover{
+	background: url(../images/admin_btn_enquete_on.png);
+}
+#admin #info{
+	background: url(../images/admin_btn_info_off.png);
+	cursor: pointer;
+}
+#admin #info:hover{
+	background: url(../images/admin_btn_info_on.png);
+}
+#admin #info > a{
+	width: 125px;
+	height: 125px;
+}
+#tool{
+	background: url(../images/admin_btn_tool_off.png);
+	cursor: pointer;
+}
+#tool > a{
+	width: 125px;
+	height: 125px;
+}
+#tool:hover{
+	background: url(../images/admin_btn_tool_on.png);
+}
+#ana a,#ans a{
+	height: 100%;
+	width: 100%;
+}
+
+.err-message{
+	font-size: 1.6rem;
+}

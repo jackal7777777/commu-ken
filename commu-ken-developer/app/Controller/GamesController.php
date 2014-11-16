@@ -43,6 +43,8 @@ class GamesController extends AppController{
 
         $this->set('user_id', $this->Session->read('user_id'));
 
+        
+
         //クリア情報読み込み
         $clearInfo = $this->Clear->clearCheck($this->Session->read('user_id'));
         if ($clearInfo != null && $clearInfo != "" && $clearInfo != array()) {
@@ -65,6 +67,8 @@ class GamesController extends AppController{
 
     public function game($scenarioId = 0,$stageId = 0,$stepNo = 1){
 
+        //echo dirname(__FILE__);
+
         if ($scenarioId == 0 || $stageId == 0){
             $this->redirect('/');
         }
@@ -84,11 +88,8 @@ class GamesController extends AppController{
 
         //クリア情報読み込み
         $clearInfo = $this->Clear->clearCheck($this->Session->read('user_id'));
-        
         if ($clearInfo != null && $clearInfo != "" && $clearInfo != array()) {
             $clearId = $clearInfo['Step']['id'];
-        }else{
-            $clearId = 0;    
         }
 
         if ($stepId - $clearId > 1) {
@@ -107,7 +108,6 @@ class GamesController extends AppController{
 
         //ステージのステップ数取得
         $stepSum = $this->Step->find('count',array('conditions' => array('stage_id' => $stageId)));
-        
         //次ステップがあるかどうか
         $nextStep = 'no';//デフォではなし
         if($stepNo < $stepSum){
@@ -125,14 +125,17 @@ class GamesController extends AppController{
         //このステップのシナリオIDをセット
         $this->set('scenario_id', $scenarioId);
 
+
         //選択肢登録用処理
         $this->set('step_no', $stepNo);//ステップIDセット
+
+        //仮でアンサーNoを設定しておく
+        //$answerNo = 1;
+
 
         //ステップIDとアンサーに該当するセリフを特定
         //ここでは該当ステップのセリフデータを全取得している
         $serifs = $this->Serif->getSerif($stepId);
-        $this->set('serifArray', $serifs);
-        //echo('とってきたセリフの生データ');
 
         //セリフ格納用配列
         $serifArrayJs = array();
@@ -149,6 +152,8 @@ class GamesController extends AppController{
                 $serifArrayJs[$answerNo]['Image'][$serifNo] = $serifImg;
                 $serifArrayJs[$answerNo]['Character'][$serifNo] = $serifChara;
         }
+
+        echo('<span style="display:none"></span>');
 
         $this->set('serifArrayJs', json_encode($serifArrayJs));
     }
@@ -180,11 +185,6 @@ class GamesController extends AppController{
 
     //アンケ情報取得用アクション
     public function survey(){
-
-        /*$survey_flag = $this->request->data['Survey']['survey_flag'];
-        $survey_text = $this->request->data['Survey']['survey_text'];
-        $user_id = $this->request->data['Survey']['user_id'];
-        $step_id = $this->request->data['Survey']['step_id'];*/
 
         $this->autoLayout = false;
         $this->autoRender = false;

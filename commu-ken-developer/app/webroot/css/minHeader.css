@@ -4,7 +4,7 @@ header{
 	height: 75px;
 	width: 100%;
 	background: url(../images/bg_hd.jpg);
-	margin-bottom: 50px;
+	margin: 0 0 -15px;
 }
 #headerMain{
 	height: 75px;
@@ -16,6 +16,7 @@ header{
 }
 #logo img{
 	height: 75px;
+	cursor: pointer;
 }
 header ul{
 	height: 75px;
@@ -37,7 +38,7 @@ a{
 	width: 120px;
 	background: url(../images/nav_act_01_off.png);
 }
-#nav1:hover{
+#nav1:hover, #nav1.current{
 	height: 75px;
 	width: 120px;
 	background: url(../images/nav_act_01_on.png);
@@ -47,12 +48,12 @@ a{
 	width: 120px;
 	background: url(../images/nav_act_02_off.png);
 }
-#nav2:hover{
+#nav2:hover, #nav2.current{
 	height: 75px;
 	width: 120px;
 	background: url(../images/nav_act_02_on.png);
 }
-#nav3{
+#nav3, #nav3.current{
 	height: 75px;
 	width: 120px;
 	background: url(../images/nav_act_03_out_off.png);
@@ -62,7 +63,7 @@ a{
 	width: 120px;
 	background: url(../images/nav_act_03_out_on.png);
 }
-#nav4{
+#nav4, #nav4.current{
 	height: 75px;
 	width: 120px;
 	background: url(../images/nav_act_04_off.png);
@@ -72,7 +73,7 @@ a{
 	width: 120px;
 	background: url(../images/nav_act_04_on.png);
 }
-#nav5{
+#nav5, #nav5.current{
 	height: 75px;
 	width: 120px;
 	background: url(../images/nav_act_05_out_off.png);
@@ -81,21 +82,4 @@ a{
 	height: 75px;
 	width: 120px;
 	background: url(../images/nav_act_05_out_on.png);
-}
-/*										footer
------------------------------------------------*/
-footer{
-	height: 75px;
-	width: 100%;
-	background: url(../images/bg_ft.jpg);
-	background-color: #e6fbff;
-	background-repeat: repeat-x;
-	position: relative;
-	bottom: 0;
-}
-#footerMain{
-	height: 60px;
-	width: 960px;
-	padding: 15px 30px 0 30px;
-	margin: 50px auto 0 auto;
 }

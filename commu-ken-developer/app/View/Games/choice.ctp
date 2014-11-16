@@ -36,22 +36,7 @@ if (isset($scenarioArray)) {
 	foreach ($scenarioArray as $value) {
 		foreach ($value as $value2) {//持ってきたシナリオ数分画像出力
 			echo $this->Html->image('scenario_0'.$value2['id'].'_off.jpg', array('class' => 'scenario'));
-?><!--
-<script type="text/javascript">//久保が書いた部分(使わないかもだけど一応保存)
-	<?php
-	// Ajax
-	/*
-	echo $this->Js->get('#scenarioSelect')->event(
-	    'click',
-	    $this->Js->request(
-	        array('action' => 'stage_select', $value2['id']),
-	        array('async' => true, 'update' => '#game')
-	    ),
-	    array('buffer' => false)
-	);*/
-	?>
-</script> -->
-<?php
+
 		}
 	}
 }

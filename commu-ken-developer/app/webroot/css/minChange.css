@@ -4,9 +4,9 @@ li#nav3{
 li#nav5{
 	background-image: url(../images/nav_act_05_in_off.png);
 }
-li#nav3:hover{
+li#nav3:hover, li#nav3.current{
 	background-image: url(../images/nav_act_03_in_on.png);
 }
-li#nav5:hover{
+li#nav5:hover, li#nav5.current{
 	background-image: url(../images/nav_act_05_in_on.png);
 }

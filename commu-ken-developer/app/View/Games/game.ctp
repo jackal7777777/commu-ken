@@ -24,9 +24,6 @@ endif;
 ?>
 <!--ゲーム画面-->
             <div id="game">
-            <!--<a id="tweetButton" class="snsButton" href='https://twitter.com/intent/tweet?hashtags=こみゅけん&text=こみゅけんやってみたよ！bit.ly/1Dom9fc' target="blank"></a>
-            <a id="fbButton" class="snsButton" href="http://www.facebook.com/share.php?u=http://commu-ken.tokyo" onclick="window.open(this.href, 'FBwindow', menubar=no, toolbar=no, scrollbars=yes'); return false;" target="blank"></a>
-            <a id="googleButton" class="snsButton" href="https://plus.google.com/share?url=http://commu-ken.tokyo/" onclick="window.open(this.href, 'Gwindow',  menubar=no, toolbar=no, scrollbars=yes'); return false;" target="blank"></a>-->
                 <div id="gameBack">
                     <!--ゲーム要素-->
                     <!--キャラクター表示位置-->
@@ -35,6 +32,7 @@ endif;
                     <div id="hukidashi">
                         <!--しゃべり手-->
                         <div id="talker">
+                        <img src="" alt="">
                         <!--/#talker--></div>
                         <!--文章-->
                         <div id="gameArticle">
@@ -68,9 +66,9 @@ endif;
                         <!--<img src="images/btn_tw_off.png" class="socialBtn">
                         <img src="images/btn_fb_off.png" class="socialBtn">
                         <img src="images/btn_gl_off.png" class="socialBtn">-->
-                        <a href='https://twitter.com/intent/tweet?hashtags=こみゅけん&text=こみゅけんやってみたよ！bit.ly/1Dom9fc' target="blank" class='socialBtn'><?= $this->Html->image('btn_tw_off.png') ?></a>
-                        <a href="http://www.facebook.com/share.php?u=http://commu-ken.tokyo" onclick="window.open(this.href, 'FBwindow', menubar=no, toolbar=no, scrollbars=yes'); return false;" target="blank" class='socialBtn'><?= $this->Html->image('btn_fb_off.png') ?></a>
-                        <a href="https://plus.google.com/share?url=http://commu-ken.tokyo/" onclick="window.open(this.href, 'Gwindow',  menubar=no, toolbar=no, scrollbars=yes'); return false;" target="blank" class='socialBtn'><?= $this->Html->image('btn_gl_off.png') ?></a>
+                        <a href='https://twitter.com/intent/tweet?hashtags=こみゅけん&text=こみゅけんやってみたよ！bit.ly/1Dom9fc' target="blank" class='socialBtn'><?= $this->Html->image('btn_tw_off.png', array('class' => 'enq_img')) ?></a>
+                        <a href="http://www.facebook.com/share.php?u=http://commu-ken.tokyo" onclick="window.open(this.href, 'FBwindow', menubar=no, toolbar=no, scrollbars=yes'); return false;" target="blank" class='socialBtn'><?= $this->Html->image('btn_fb_off.png', array('class' => 'enq_img')) ?></a>
+                        <a href="https://plus.google.com/share?url=http://commu-ken.tokyo/" onclick="window.open(this.href, 'Gwindow',  menubar=no, toolbar=no, scrollbars=yes'); return false;" target="blank" class='socialBtn'><?= $this->Html->image('btn_gl_off.png', array('class' => 'enq_img')) ?></a>
                     </div>
                     <!--<form>
                         <textarea></textarea><br>
@@ -86,8 +84,8 @@ endif;
                     echo $this->Form->input('Survey.survey_text', array('type' => 'textarea')).'<br>';
                     echo $this->Form->hidden('Survey.user_id', array('value' => $user_id));
                     echo $this->Form->hidden('Survey.step_id', array('value' => $step_id));
-                    echo $this->Form->submit('btn_useful_off.png', array('type' => 'submit','name' => 'data[Survey][survey_flag]','value' => '0', 'id' => 'btn_yes','div' => false));
-                    echo $this->Form->submit('btn_useless_off.png', array('type' => 'submit', 'name' => 'data[Survey][survey_flag]','value' => '1', 'id' => 'btn_no','div' => false));
+                    echo $this->Form->submit('btn_useful_off.png', array('type' => 'submit','name' => 'data[Survey][survey_flag]','value' => '0', 'id' => 'btn_yes','div' => false, 'class' => 'enq_img'));
+                    echo $this->Form->submit('btn_useless_off.png', array('type' => 'submit', 'name' => 'data[Survey][survey_flag]','value' => '1', 'id' => 'btn_no','div' => false, 'class' => 'enq_img'));
                     echo $this->Form->end();
 
 ?>
@@ -95,39 +93,21 @@ endif;
                 </div>
                 <!--ソーシャル＆アンケート終了-->
             <!--/#game--></div>
-<?php
-    /*こっからアンケ入力フォーム*/
-
-    /*echo "参考になりましたか？";
-
-    echo $this->Form->create('Survey', array(
-                'inputDefaults' => array(
-                        'label' => false,
-                        'div' => false))
-            );
-    echo $this->Form->input('Survey.survey_text', array('type' => 'textarea'));
-    echo $this->Form->hidden('Survey.user_id', array('value' => $user_id));
-    echo $this->Form->hidden('Survey.step_id', array('value' => $step_id));
-    echo $this->Form->submit('btn_useful_off.png', array('type' => 'submit','name' => 'data[Survey][survey_flag]','value' => '0'));
-    echo $this->Form->submit('btn_useless_off.png', array('type' => 'submit', 'name' => 'data[Survey][survey_flag]','value' => '1'));
-    echo $this->Form->end();*/
-?>
 <script>
 //シーン
+
 
             //PHPからjson形式で渡されたセリフデータをarray形式に変換
             var serifArrayJs = $.parseJSON('<?= $serifArrayJs ?>');
 
-            console.log('json解凍後'+serifArrayJs);
-            console.log('特定:'+serifArrayJs[0]["Serif"][1]);
-
-
-
-
             var selectStage = new Array(); 
                 selectStage['background'] = 'background_classroom.jpg';
                 selectStage['character'] = '<?= $step_image ?>';
-                selectStage['name'] = serifArrayJs[1]["Character"][1];
+                selectStage['name0'] = serifArrayJs[0]["Character"][1];
+                selectStage['name1'] = serifArrayJs[1]["Character"][1];
+                selectStage['name2'] = serifArrayJs[2]["Character"][1];
+                selectStage['name3'] = serifArrayJs[3]["Character"][1];
+                selectStage['name4'] = serifArrayJs[4]["Character"][1];
                 selectStage['startText'] = '<?= $step_exp ?>';
                 selectStage['eventTitle'] = '<?= $step_name ?>';
                 selectStage['say1'] = '<?= $answerArray[1]["Answer"]["answer_text"] ?>';
@@ -160,6 +140,7 @@ endif;
             var con3 = 1;
             var len = 0;
             var m = 0;
+            var textflg = 0;
             var spFin = 0;//文字表示エフェクト(sp関数)の終了判定用変数
             var supArrNum = new Array();
             var sumArrNum = 0;
@@ -200,82 +181,34 @@ endif;
                 return dumptxt;
             }
 
-            //console.log(vardump(serifArrayJs));
-
             for(con1=0;con1<=5;con1++){
-                console.log('1つめ');
-                console.log('con1です'+con1);
-
                 if(con1 < 5){//supportの範囲
                     //連想配列の要素数を取得
                     supArrNum[con1] = arrayLength(serifArrayJs[con1]['Serif']);
 
                     //katuyatyan = supArrNum;//こっちを動的に変更してね
                     for(con3=2;con3<=supArrNum[con1];con3++){
-                        console.log('2つめ');
                         len = arrayLength(serifArrayJs[con1]['Serif'][con3]);
-                        console.log('len'+len);
                         for(con2 = 1;con2 <= ((len / moji)+1);con2++){
-                            console.log('3つめ');
                             selectStage['support'+con1+"-"+con3+"-"+con2] = serifArrayJs[con1]['Serif'][con3].substr((moji*con2)-moji,moji);
-                            console.log('kore'+selectStage['support'+con1+"-"+con3+"-"+con2]);
                             selectStage['supportImg'+con1+"-"+con3+"-"+con2] = serifArrayJs[con1]['Image'][con3];
                             selectStage['supportName'+con1+"-"+con3+"-"+con2] = serifArrayJs[con1]['Character'][con3];
-                            console.log(con1+"-"+con3+"-"+con2);
-                            console.log('answer_no:'+con1+'serif_no:'+con3+'行数:'+con2+'ここ画像'+serifArrayJs[con1]['Image'][con3]);
-                            console.log('support:'+selectStage['support'+con1+"-"+con3+"-"+con2]);
-                            console.log('supportImg:'+selectStage['supportImg'+con1+"-"+con3+"-"+con2]);
-
                         }
-                        //selectStage[answer_no-serif_no]の中の行数をselectStage[supLen(answer_no-serif_no)]に登録
                         selectStage['supLen'+con1+'-'+con3] = con2-1;
-                        console.log('supLen['+con1+'-'+con3+']:'+selectStage['supLen'+con1+'-'+con3]);
-                        console.log('con1です'+con1);
                     }
                 }else{//summaryの範囲
                     sumArrNum = arrayLength(serifArrayJs[con1]['Serif']);
-                    //console.log('con1:'+con1);
-                    //selectStage['sumLen'] = 0;
                     for(con3=1;con3<=sumArrNum;con3++){
-                        console.log('2つめ');
                         selectStage['sumLen-'+con3] = 0;
                         len = arrayLength(serifArrayJs[con1]['Serif'][con3]);
                         for(con2 = 1;con2 <= ((len / moji)+1);con2++){
-                            console.log('3つめ');
-                            console.log('[con3]:'+[con3]);
-                            //console.log('serifArrayJs[con1]["Serif"][con3]:'+serifArrayJs[con1]['Serif'][con3]);
                             selectStage['summary1-'+con3+"-"+con2] = serifArrayJs[con1]['Serif'][con3].substr((moji*con2)-moji,moji);
                             selectStage['summaryImg1-'+con3+"-"+con2] = serifArrayJs[con1]['Image'][con3];
-                            //console.log(con1+"-"+con3+"-"+con2);
-                            //console.log('answer_no:'+con1+'serif_no:'+con3+'行数:'+con2+'ここ画像'+serifArrayJs[con1]['Image'][con3]);
-                            //console.log('support:'+selectStage['support'+con1+"-"+con3+"-"+con2]);
-                            //console.log('supportImg:'+selectStage['supportImg'+con1+"-"+con3+"-"+con2]);
                             selectStage['sumLen-'+con3]++;
-                            //console.log('sumLen-'+con3+'だよ'+selectStage['sumLen-'+con3]);
-                            //console.log('con3なり'+con3);
                         } 
-                        //console.log('supLen['+con1+'-'+con3+']:'+selectStage['supLen'+con1+'-'+con3]);
                     }
                 }
             }
-            /*
-                配列を生成
-                例）summary1
-                ※サマリー1要素目の1行目（38文字以上の場合、2行目が生まれる）
-            */
-            //連想配列の要素数を取得
-            /*sumArrNum = arrayLength(serifArrayJs[5]['Serif']);
-            for(con3=1;con3<=sumArrNum;con3++){
-                len = selectStage['summary'].length;
-                for(con2 = 1;con2 <= ((len/moji)+1);con2++){
-                    selectStage['summary1-'+con3] = serifArrayJs[5]['Serif'][con2].substr((moji*con2)-moji,moji);
-                    selectStage['summaryImg1-'+con3] = serifArrayJs[5]['Image'][con2];
-                    console.log(selectStage['summary'+con1+"-"+con2]);
-                    console.log(selectStage['summaryImg'+con1+"-"+con2]);
-                }
-                selectStage['sumLen'] = (len/moji)+1;
-                console.log(selectStage['sumLen']);
-            }*/
         
             //var save = new Array();
             $(function(){
@@ -300,25 +233,27 @@ endif;
                     "src":"<?= $pro_pass_img ?>images/"+selectStage['character']
                 }).appendTo("#gameImg");
                 //導入文章表示
-                setTimeout(function(){
-                    $("<p>",{
-                        "id":"text",
-                        "class":"split",
-                        "text":selectStage['startText'],
-                        "css":{
-                                "line-height":"30px",
-                                "margin":"0 auto",
-                                "color":"#fff",
-                                "width":"600px",
-                                "height":"100px",
-                                "padding-top":"250px",
-                                "font-size":"1.6rem"
-                        }
-                    }).appendTo("#gameBackBlack");
-                    sp();
-                },500);
+                $("<p>",{
+                    "id":"text",
+                    "class":"split",
+                    "text":selectStage['startText'],
+                    "css":{
+                            "line-height":"30px",
+                            "margin":"0 auto",
+                            "color":"#fff",
+                            "width":"600px",
+                            "height":"100px",
+                            "padding-top":"250px",
+                            "font-size":"1.6rem"
+                    }
+                }).appendTo("#gameBackBlack");
+                sp();
+
+
                 $("#gameBackBlack").click(function(){
+                    textflg = 0;
                     $("#text").remove();
+                    $(this).css({"cursor":"default"});
                     $("#gameBackBlack").off();
                     $("#timer").fadeIn(500);
                     $("#selectBox").delay(500).slideDown(500);
@@ -331,33 +266,15 @@ endif;
                         $("<div>",{
                             "id":"select"+i,
                             "class":"ans",
-                            "text":selectStage["say"+i],
-                            "css":{
-                                "height":"50px",
-                                "width":"600px",
-                                "position":"absolute",
-                                "top":(70*(i-1))+"px",
-                                "left":"0",
-                                "background":"url(<?= $pro_pass_img ?>images/bg_choice_off.png)",
-                                "text-align":"center",
-                                "line-height":"50px",
-                                "font-size":"1.6rem"
-                            }
+                            "text":selectStage["say"+i]
                         }).appendTo("#selectBox");
                     }
-                    //選択肢マウスオーバー/アウト
-                    $("#selectBox").children().mouseover(function(){
-                        //alert("a");
-                        $(this).css({"background":"url(<?= $pro_pass_img ?>images/bg_choice_on.png)"});
-                        $(this).mouseout(function(){
-                            $(this).css({"background":"url(<?= $pro_pass_img ?>images/bg_choice_off.png)"});
-                        });
-                        
-                    });
-                    //相手の反応
+                    //相手の反応(選択肢がクリックされたら)
                     $("#selectBox").children().click(function(){
                         //タイマーを止める
                         stopTimer();
+                        //テキストがアニメーション表示されている間のフラグ
+                        //textflg = 1;
                         index = $(this).index();
                         /*---------選択情報保存&正解判断処理------*/
                         save(index+1);
@@ -388,6 +305,7 @@ endif;
 
                     //いもうとの返し
                     $("#hukidashi").click(function(){
+
                         $("#hukidashi").off();
                         $("#gameArticle p").remove();
                         $("#event").fadeOut(0);
@@ -396,10 +314,7 @@ endif;
                         act = "support";
                         text(index,act);
                         $("#hukidashi").click(function(){
-                            if(spFin == 0){
-                                spFin = 1;//clickされた時点でclickをロック
-                                text(index,act);
-                            }
+                            text(index,act);
                         });
                     });
 
@@ -408,31 +323,10 @@ endif;
                         // HTMLでの送信をキャンセル
                         event.preventDefault();
 
-                        console.log('asd');
-
                         var $form = $(this).parents('form');
                         var $button_name = $(this).attr('name');
                         var $button_value = $(this).attr('value');
 
-                        console.log($(this));
-                        console.log($form.serialize());
-                        console.log($button_value);
-
-
-                        /*if($(this).attr('name') == 'data[Survey][survey_flag_yes]'){
-
-                        }else if(){
-
-                        }
-                        
-                        //ajax用にデータ格納
-                        var ajson = {
-                            step_id : <?= $step_id ?>,
-                            survey_text : <?= $collectAns ?>,
-                            scenario_id : <?= $scenario_id ?>,
-                            user_id : '<?= $user_id ?>'
-                        };*/
-                        console.log($form.serialize() + '&' + $button_name +'='+ $button_value);
                         $.ajax({
                             url: '<?= $this->Html->url(array("controller" =>"games","action" => "survey")) ?>',
                             type: 'post',
@@ -440,8 +334,6 @@ endif;
                             data: $form.serialize() + '&' + $button_name +'='+ $button_value
                         })
                         .done(function(html) {
-                            console.log("結果");
-                            console.log(html);
                             console.log("success");
                             $('form').children().fadeOut(500);
                             setTimeout(function(){
@@ -449,8 +341,6 @@ endif;
                             },500);
                         })
                         .fail(function(data) {//ここでエラー分が取得できる
-                            console.log("エラーの内容");
-                            console.log(data);
                             console.log("error");
                         })
                         .always(function() {
@@ -462,29 +352,19 @@ endif;
                 //文章を上に流す
                 function huki(l){
                     //テキストを一行上に流す
-                    $("#gameArticle").animate({"top":"-"+41*(l-2)+"px"});
+                    $("#gameArticle").animate({"top":"-"+50*(l-2)+"px"});
+                    console.log('lの値:'+l);
                 }
-                //文章、画像、話し手名入れ替え
-                /*function change(j){
-                    $("#talker").text(startText['name'+j]);
-                    $("<p>",{
-                        "id":"p"+j,
-                        "class":"split",
-                        "text":startText['text'+j]
-                    }).appendTo("#gameArticle");
-                    sp();
-                    //キャラクター表示切替
-                    $("#img").attr("src","images/"+selectStage[act+"Img"+(index+1)]);
-                }*/
                 //返し
                 function text(index,act){
+                    console.log('あくと:'+act);
                     //alert(act);
                     //相手の反応
                     if(act == 'return'){
                         //キャラクター表示切替
                         $("#img").attr("src","<?= $pro_pass_img ?>images/"+selectStage[act+"Img"+(index+1)]);
                         //話し手切り替え
-                        $("#talker").text(selectStage['name']);
+                        $("#talker img").attr("src", "<?= $pro_pass_img ?>images/"+selectStage['name'+(index+1)]+".png");
                         //文章挿入
                         $("<p>",{
                             "class":"split",
@@ -495,34 +375,22 @@ endif;
                         $(".split").first().removeClass("split");
                     //妹の返し
                     }else if(act == 'support'){
-                        //console.log('supportきたよー');
                         //正解していて、かつ次のステップがあれば妹の返しは表示せずに次ステップへ移動する
-                        console.log('colect:'+colect);
-                        console.log('nextStep:'+nextStep);
                         var nextStepNo = <?= $step_no ?>;
                         nextStepNo++;
-                        console.log('nextStepNo!'+nextStepNo);
                         if(colect == 1 && nextStep == 'yes'){
                             window.location.href = '<?= $rootPath ?>games/game/'+<?= $scenario_id ?>+'/'+<?= $stage_id ?>+'/'+nextStepNo;
                         }
                         
                         var supLen = selectStage['supLen'+(index+1)+'-'+ll];
-                        //console.log('supLen'+(index+1)+'-'+ll+':'+selectStage['supLen'+(index+1)+'-'+ll]);
                         if(ll <= supArrNum[index+1]){
-                            console.log('ll<=supArrNumだよ:ll='+ll+',supArrNum='+supArrNum[index+1]+',l='+l+',supLen='+supLen);
                             if(l <= supLen){
-                                console.log('l <= supLenだよ:l='+l+',supLen='+supLen);
                                 //キャラクター表示切替
                                 $("#img").attr("src","<?= $pro_pass_img ?>images/"+selectStage[act+"Img"+(index+1)+"-"+ll+"-"+l]);
-                                console.log('妹画像:'+act+"Img"+(index+1)+"-"+ll+"-"+l);
                                 //話し手切り替え
-                                $("#talker").text(selectStage['supportName'+(index+1)+"-"+ll+"-"+l]);
-                                //if(lScroll > 2){
-                                    huki(lScroll);
-                                    //lScroll = 1;
-                                //}
+                                $("#talker img").attr("src", "<?= $pro_pass_img ?>images/"+selectStage['supportName'+(index+1)+"-"+ll+"-"+l]+".png");
+                                huki(lScroll);
                                 lScroll++;
-                                console.log('lScroll'+lScroll);
                                 //文章挿入
                                 $("<p>",{
                                     "class":"split",
@@ -542,37 +410,21 @@ endif;
                             l = 1;
                             ll = 1;
                             act = 'summary';
-                            //alert("A");
                             $("#hukidashi").off();
                             $("#hukidashi").click(function(){
                                 text(index,act);
                             });
-                            //text(index,act);
 
                         }
                     }else if(act == 'summary'){
-                        //alert("F");
-                        console.log('bell'+ll);
-                        console.log('bel'+l);
                         var sumLen = selectStage['sumLen-'+ll];
-                        console.log('sumLen'+sumLen);
-                        //alert(sumLen);
-                        console.log('sumArrNum:'+sumArrNum);
                             if(ll <= sumArrNum){
                                 if(l <= sumLen){
-                                    //alert("F");
                                     //キャラクター表示切替
                                     $("#img").attr("src","<?= $pro_pass_img ?>images/"+selectStage[act+"Img1-"+ll+"-"+l]);
-                                    console.log('妹画像:'+act+"Img1-"+ll+"-"+l);
-                                    //話し手切り替え
-                                    $("#talker").text('つむぎ');
-                                    //huki(lScroll+m);
-                                    console.log('lScroll:'+lScroll);
-                                    //if(lScroll > 2){
-                                        //console.log('通ってはいるぜよ'+lScroll);
-                                        huki(lScroll);
-                                        //lScroll = 1;
-                                    //}
+                                    //話し手切り替えつむぎ
+                                    $("#talker img").attr("src", "<?= $pro_pass_img ?>images/name_02.png");
+                                    huki(lScroll);
                                     lScroll++;
                                     //文章挿入
                                     $("<p>",{
@@ -592,9 +444,7 @@ endif;
                                 $("#hukidashi").off();
                                 $("#social").fadeIn(500);
                             }
-                        console.log('afll'+ll);
-                        console.log('afl'+l);
-                    }
+                        }
                     //文章下の三角
                     $("<div>",{
                         "id":"san",
@@ -613,8 +463,39 @@ endif;
         
             //文章をテキスト入力のように表示する
             function sp(){
-                //  $("#hukidashi").off();
-                
+
+                console.log('スプリットなう:'+textflg);
+                if(textflg == 0){
+                    textflg = 1;
+                    var setElm = $('.split'),
+                    delaySpeed = 50,
+                    fadeSpeed = 0;
+                    setText = setElm.html();
+                    sub = setText;
+                    setElm.css({visibility:'visible'}).children().addBack().contents().each(function(){
+                        var elmThis = $(this);
+                        if (this.nodeType == 3) {
+                            var $this = $(this);
+                            $this.replaceWith($this.text().replace(/(\S)/g, '<span class="textSplitLoad">$&</span>'));
+                        }
+                    });
+                    $(document).ready(function(){
+                        console.log('どきゅめんとどっとれでぃ');
+                        splitLength = $('.textSplitLoad').length;
+                        setElm.find('.textSplitLoad').each(function(i){
+                            splitThis = $(this);
+                            splitTxt = splitThis.text();
+                            splitThis.delay(i*(delaySpeed)).css({display:'inline-block',opacity:'0'}).animate({opacity:'1'},fadeSpeed);
+                        });
+                        if(textflg == 1){
+                            setTimeout(function(){
+                                setElm.html(setText);
+                                textflg = 0;
+                            },splitLength*delaySpeed+fadeSpeed);
+                        }
+                    });
+                }
+                /*
                 var setElm = $('.split'),
                 delaySpeed = 50,
                 fadeSpeed = 0;
@@ -635,10 +516,8 @@ endif;
                     });
                     setTimeout(function(){
                             setElm.html(setText);
-                            spFin = 0;//ロック解除
-                            console.log('解除');
                     },splitLength*delaySpeed+fadeSpeed);
-                    /*if(act != 'return'){
+                    if(act != 'return'){
                         setTimeout(function(){
                             $("#hukidashi").on("click",function(){
                                 l = l+1;
@@ -646,8 +525,10 @@ endif;
 
                             });
                         },splitLength*delaySpeed);
-                    }*/
-                });
+                    }
+                });*/
+
+
             }
             var timerImg = new Array('timer_0.png','timer_1.png','timer_2.png','timer_3.png','timer_4.png','timer_5.png','timer_6.png','timer_7.png','timer_8.png','timer_9.png');
                 timerImg['two0'] = 'timer_00.png';
@@ -712,13 +593,9 @@ endif;
                     data: ajson
                 })
                 .done(function(html) {
-                    console.log("結果");
-                    console.log(html);
                     console.log("success");
                 })
                 .fail(function(data) {//ここでエラー分が取得できる
-                    console.log("エラーの内容");
-                    console.log(data);
                     console.log("error");
                 })
                 .always(function() {
@@ -730,4 +607,18 @@ endif;
                     colect = 1;
                 }
             }
+
+
+            //アンケート部分のボタン画像変更用
+            $('.enq_img').mouseover(function() {
+                var on_name = $(this).attr('src').replace('off','on');
+                $(this).attr('src', on_name);
+            });
+            $('.enq_img').mouseout(function() {
+                var off_name = $(this).attr('src').replace('on','off');
+                $(this).attr('src', off_name);
+            });
+
+
+
         </script>

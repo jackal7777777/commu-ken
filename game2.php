@@ -15,7 +15,7 @@
 			var selectStage = new Array(); 
 				selectStage['background'] = 'background_classroom.jpg';
 				selectStage['character'] = 'friend.png';
-				selectStage['name'] = '梅野君';
+				selectStage['name'] = 'name_03';
 				selectStage['startText'] = '高校２年の１学期。新しいクラス、周りは知らない人ばかり、今年こそ友達を作りたい！　隣の席になった梅野くんが、何だかすごくいい人そう。友だちになりたいな…';
 				selectStage['eventTitle'] = 'とりあえず何か話題を探してみよう！';
 				selectStage['say1'] = 'よっ！隣の席になったのも運命だよな。';
@@ -57,6 +57,7 @@
 			var con3 = 1;
 			var len = 0;
 			var m = 0;
+			var textflg = 0;
 			/*
 				配列を生成
 				例）support1-1-1
@@ -116,25 +117,24 @@
 					"src":"images/"+selectStage['character']
 				}).appendTo("#gameImg");
 				//導入文章表示
-				setTimeout(function(){
-					$("<p>",{
-						"id":"text",
-						"class":"split",
-						"text":selectStage['startText'],
-						"css":{
-								"line-height":"30px",
-								"margin":"0 auto",
-								"color":"#fff",
-								"width":"600px",
-								"height":"100px",
-								"padding-top":"250px",
-								"font-size":"1.6rem"
-						}
-					}).appendTo("#gameBackBlack");
-					sp();
-				},500);
+				$("<p>",{
+					"id":"text",
+					"class":"split",
+					"text":selectStage['startText'],
+					"css":{
+							"line-height":"30px",
+							"margin":"0 auto",
+							"color":"#fff",
+							"width":"600px",
+							"height":"100px",
+							"padding-top":"250px",
+							"font-size":"1.6rem"
+					}
+				}).appendTo("#gameBackBlack");
+				sp();
 				$("#gameBackBlack").click(function(){
 					$("#text").remove();
+					$(this).css({"cursor":"default"});
 					$("#gameBackBlack").off();
 					$("#timer").fadeIn(500);
 					$("#selectBox").delay(500).slideDown(500);
@@ -168,12 +168,12 @@
 						$(this).mouseout(function(){
 							$(this).css({"background":"url(images/bg_choice_off.png)"});
 						});
-						
 					});
 					//相手の反応
 					$("#selectBox").children().click(function(){
 						//タイマーを止める
 						stopTimer();
+						//テキストがアニメーション表示されている間のフラグ
 						index = $(this).index();
 						$("#selectBox").fadeOut(200);
 						$("#gameBackBlack").fadeOut(200);
@@ -209,13 +209,12 @@
 							text(index,act);
 						});
 					});
-					
 				});
 			});
 				//文章を上に流す
 				function huki(l){
 					//テキストを一行上に流す
-					$("#gameArticle").animate({"top":"-"+41*(l-2)+"px"});
+					$("#gameArticle").animate({"top":"-"+50*(l-2)+"px"});
 				}
 				//文章、画像、話し手名入れ替え
 				/*function change(j){
@@ -237,7 +236,9 @@
 						//キャラクター表示切替
 						$("#img").attr("src","images/"+selectStage[act+"Img"+(index+1)]);
 						//話し手切り替え
-						$("#talker").text(selectStage['name']);
+						$("<img>",{
+							"src":"images/"+selectStage['name']+".png"
+						}).appendTo("#talker");
 						//文章挿入
 						$("<p>",{
 							"class":"split",
@@ -254,7 +255,7 @@
 								//キャラクター表示切替
 								$("#img").attr("src","images/"+selectStage[act+"Img"+(index+1)+"-"+ll+"-"+l]);
 								//話し手切り替え
-								$("#talker").text('つむぎ');
+								$("#talker img").attr('src','images/name_02.png');
 								if(l >= 2){
 									huki(l);
 									m = l;
@@ -289,7 +290,7 @@
 								//キャラクター表示切替
 								$("#img").attr("src","images/"+selectStage[act+"Img"+"1-"+l]);
 								//話し手切り替え
-								$("#talker").text('つむぎ');
+								$("#talker img").attr('src','images/name_02.png');
 								//alert(m);
 								huki(l+m);
 								//文章挿入
@@ -305,7 +306,7 @@
 								$("#hukidashi").off();
 								$("#social").fadeIn(500);
 							}
-					}
+						}
 					//文章下の三角
 					$("<div>",{
 						"id":"san",
@@ -321,42 +322,38 @@
 						}
 					}).appendTo("#hukidashi");
 				}
-		
 			//文章をテキスト入力のように表示する
 			function sp(){
 				//	$("#hukidashi").off();
-				
-			    var setElm = $('.split'),
-			    delaySpeed = 50,
-			    fadeSpeed = 0;
-			    setText = setElm.html();
-			    setElm.css({visibility:'visible'}).children().addBack().contents().each(function(){
-			        var elmThis = $(this);
-			        if (this.nodeType == 3) {
-			            var $this = $(this);
-			            $this.replaceWith($this.text().replace(/(\S)/g, '<span class="textSplitLoad">$&</span>'));
-			        }
-			    });
-			    $(document).ready(function(){
-			        splitLength = $('.textSplitLoad').length;
-			        setElm.find('.textSplitLoad').each(function(i){
-			            splitThis = $(this);
-			            splitTxt = splitThis.text();
-			            splitThis.delay(i*(delaySpeed)).css({display:'inline-block',opacity:'0'}).animate({opacity:'1'},fadeSpeed);
-			        });
-			        setTimeout(function(){
-			                setElm.html(setText);
-			        },splitLength*delaySpeed+fadeSpeed);
-			        /*if(act != 'return'){
-			        	setTimeout(function(){
-				        	$("#hukidashi").on("click",function(){
-						    	l = l+1;
-						    	huki(index,act,l);
-
-					        });
-					    },splitLength*delaySpeed);
-			        }*/
-			    });
+				if(textflg == 0){
+					textflg = 1;
+				    var setElm = $('.split'),
+				    delaySpeed = 50,
+				    fadeSpeed = 0;
+				    setText = setElm.html();
+				    sub = setText;
+				    setElm.css({visibility:'visible'}).children().addBack().contents().each(function(){
+				        var elmThis = $(this);
+				        if (this.nodeType == 3) {
+				            var $this = $(this);
+				            $this.replaceWith($this.text().replace(/(\S)/g, '<span class="textSplitLoad">$&</span>'));
+				        }
+				    });
+				    $(document).ready(function(){
+				        splitLength = $('.textSplitLoad').length;
+				        setElm.find('.textSplitLoad').each(function(i){
+				            splitThis = $(this);
+				            splitTxt = splitThis.text();
+				            splitThis.delay(i*(delaySpeed)).css({display:'inline-block',opacity:'0'}).animate({opacity:'1'},fadeSpeed);
+				        });
+				        if(textflg == 1){
+				        	setTimeout(function(){
+				                setElm.html(setText);
+				                textflg = 0;
+				       		},splitLength*delaySpeed+fadeSpeed);
+				        }
+				    });
+				}
 			}
 			var timerImg = new Array('timer_0.png','timer_1.png','timer_2.png','timer_3.png','timer_4.png','timer_5.png','timer_6.png','timer_7.png','timer_8.png','timer_9.png');
 				timerImg['two0'] = 'timer_00.png';
