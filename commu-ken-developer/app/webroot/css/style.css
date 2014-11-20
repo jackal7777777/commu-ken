@@ -59,6 +59,7 @@ h2{
 	padding-bottom: 180px;
 }
 main{
+	display: block;
 	min-height: 400px;
 	width: 960px;
 	background: #fafafa;
@@ -106,11 +107,9 @@ main{
 	background: url(../images/nav_05_out_on.png);
 }
 #game input[type="email"]{
-	height: 20px;
 	width: 180px;
 }
 #game input[type="password"]{
-	height: 20px;
 	width: 180px;
 }
 #loginForm img form{
@@ -276,6 +275,7 @@ main{
 	left: 40px;
 }
 #timeup{
+	display: none;
 	height: 100%;
 	width: 100%;
 	position: relative;
@@ -704,7 +704,7 @@ main h2{
     background: url(../images/bg_choice_off.png);
     text-align: center;
     line-height: 50px;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 	cursor: pointer;
 	background: url(../images/bg_choice_off.png);
 }

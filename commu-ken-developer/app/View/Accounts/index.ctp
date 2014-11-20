@@ -230,6 +230,7 @@ endif;
             startText['text66'] = '無理せず焦らず、楽しい友達作りができるといいわね！';
             startText['img66'] = '<?= $pro_pass_img ?>images/sister_warau.png';
 
+            var textflg = 0;
             var j = 1;
             //オープニング
             $(function(){
@@ -312,6 +313,8 @@ endif;
                         fin();
                     });
                 }else{
+                    $("#hukidashi").off();
+
                     //すでに追加されたテキストのスプリットを削除
                     $(".split").first().removeClass("split");
                     //つむぎと僕の切り替え
@@ -357,7 +360,6 @@ endif;
             }
             //文章をキーボード入力のように表示する。
             function sp(){
-                    $("#hukidashi").off();
                     var setElm = $('.split'),
                     delaySpeed = 50,
                     fadeSpeed = 0;
@@ -377,14 +379,13 @@ endif;
                             splitThis.delay(i*(delaySpeed)).css({display:'inline-block',opacity:'0'}).animate({opacity:'1'},fadeSpeed);
                         });
                         setTimeout(function(){
-                                setElm.html(setText);
+                              setElm.html(setText);
+                              $("#hukidashi").on("click",function(){
+                                    j = j+1;
+                                    huki(j);
+                              });
+
                         },splitLength*delaySpeed+fadeSpeed);
-                        setTimeout(function(){
-                            $("#hukidashi").on("click",function(){
-                                j = j+1;
-                                huki(j);
-                            });
-                        },splitLength*delaySpeed);
                     });
                 }
             //スキップ処理

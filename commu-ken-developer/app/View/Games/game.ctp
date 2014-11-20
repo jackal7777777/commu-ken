@@ -310,7 +310,7 @@ endif;
                         $("#gameArticle p").remove();
                         $("#event").fadeOut(0);
                         $("#gameBackBlack").fadeIn(500).fadeOut(500);
-                        $("#summaryTitle").fadeIn(500);
+                        $("#img").fadeOut(0).delay(500).fadeIn(500);
                         act = "support";
                         text(index,act);
                         $("#hukidashi").click(function(){
@@ -411,6 +411,9 @@ endif;
                             ll = 1;
                             act = 'summary';
                             $("#hukidashi").off();
+                            $("#gameBackBlack").fadeIn(500, function(){
+                                $("#summaryTitle").fadeIn(500);
+                            }).fadeOut(500);
                             $("#hukidashi").click(function(){
                                 text(index,act);
                             });
