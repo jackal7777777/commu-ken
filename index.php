@@ -218,7 +218,7 @@
 			startText['name66'] = 'images/name_02.png';
 			startText['text66'] = '無理せず焦らず、楽しい友達作りができるといいわね！';
 			startText['img66'] = 'images/sister_warau.png';
-
+			var textflg = 0;
 			var j = 1;
 			//オープニング
 			$(function(){
@@ -244,7 +244,6 @@
 				$("#regi").click(function(){
 					window.location.href = 'add.ctp';
 				});
-				
 			});
 			//文章、画像、話し手名入れ替え
 			function huki(j){
@@ -253,6 +252,7 @@
 						fin();
 					});
 				}else{
+					$("#hukidashi").off();
 					//すでに追加されたテキストのスプリットを削除
 					$(".split").first().removeClass("split");
 					//つむぎと僕の切り替え
@@ -267,7 +267,6 @@
 						setTimeout("change("+j+")",500);
 					}
 				}
-				
 			}
 			function fin(){
 				$("#gameBackBlack").fadeIn(500);
@@ -299,7 +298,7 @@
 			}
 			//文章をキーボード入力のように表示する。
 			function sp(){
-					$("#hukidashi").off();
+					
 				    var setElm = $('.split'),
 				    delaySpeed = 50,
 				    fadeSpeed = 0;
@@ -319,16 +318,16 @@
 				            splitThis.delay(i*(delaySpeed)).css({display:'inline-block',opacity:'0'}).animate({opacity:'1'},fadeSpeed);
 				        });
 				        setTimeout(function(){
-				                setElm.html(setText);
+				            setElm.html(setText);
+					        $("#hukidashi").on("click",function(){
+					        	j = j+1;
+							  	console.log(textflg);
+							   	huki(j);
+							});
 				        },splitLength*delaySpeed+fadeSpeed);
-				        setTimeout(function(){
-				        	$("#hukidashi").on("click",function(){
-						    	j = j+1;
-						    	huki(j);
-					        });
-					    },splitLength*delaySpeed);
 				    });
-				}
+				
+			}
 			//スキップ処理
 			//ボタンエフェクト
 		</script>

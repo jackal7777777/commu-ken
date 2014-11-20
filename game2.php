@@ -1,5 +1,19 @@
+﻿Skip to content
+ This repository
+Explore
+Gist
+Blog
+Help
+miki opale0x0
+ 
+5  Unwatch 
+  Star 0
+ Fork 0kokoroiki/commu-ken
+ branch: master  commu-ken / game2.php
+mikiopale0x0 6 days ago no message
+1 contributor
+454 lines (449 sloc)  16.631 kb RawBlameHistory   
 ﻿<?php
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -44,7 +58,6 @@
 				selectStage['supportImg4'] = 'sister_warau.png';
 				selectStage['summary'] = '持ち物とか好きなゲームとか、相手が興味あることを聞いてみたら相手も話しやすいわね！いいのよ！自分のことを話すのはそれからでも遅くないわ。';
 				selectStage['summaryImg'] = 'sister.png';
-
 			var katuyatyan = 1;//下にもう一個あるから、そっちを動的に変更してね
 			var index = 0;
 			var act = "";
@@ -202,7 +215,7 @@
 						$("#gameArticle p").remove();
 						$("#event").fadeOut(0);
 						$("#gameBackBlack").fadeIn(500).fadeOut(500);
-						$("#summaryTitle").fadeIn(500);
+						$("#img").fadeOut(0).delay(500).fadeIn(500);
 						act = "support";
 						text(index,act);
 						$("#hukidashi").click(function(){
@@ -276,6 +289,9 @@
 								act = 'summary';
 								//alert("A");
 								$("#hukidashi").off();
+								$("#gameBackBlack").fadeIn(500);
+								$("#summaryTitle").fadeIn(500);
+								$("#hukidashi")
 								$("#hukidashi").click(function(){
 									text(index,act);
 								});
@@ -285,28 +301,28 @@
 						//alert("F");
 						var sumLen = selectStage['sumLen'];
 						//alert(sumLen);
-							if(l <= sumLen){
-								//alert("F");
-								//キャラクター表示切替
-								$("#img").attr("src","images/"+selectStage[act+"Img"+"1-"+l]);
-								//話し手切り替え
-								$("#talker img").attr('src','images/name_02.png');
-								//alert(m);
-								huki(l+m);
-								//文章挿入
-								$("<p>",{
-									"class":"split",
-									"text":selectStage[act+"1-"+l]
-								}).appendTo("#gameArticle");
-								sp();
-								//すでに追加されたテキストのスプリットを削除
-								$(".split").first().removeClass("split");
-								l = l+1;
-							}else{
-								$("#hukidashi").off();
-								$("#social").fadeIn(500);
-							}
+						if(l <= sumLen){
+							//alert("F");
+							//キャラクター表示切替
+							$("#img").attr("src","images/"+selectStage[act+"Img"+"1-"+l]);
+							//話し手切り替え
+							$("#talker img").attr('src','images/name_02.png');
+							//alert(m);
+							huki(l+m);
+							//文章挿入
+							$("<p>",{
+								"class":"split",
+								"text":selectStage[act+"1-"+l]
+							}).appendTo("#gameArticle");
+							sp();
+							//すでに追加されたテキストのスプリットを削除
+							$(".split").first().removeClass("split");
+							l = l+1;
+						}else{
+							$("#hukidashi").off();
+							$("#social").fadeIn(500);
 						}
+					}
 					//文章下の三角
 					$("<div>",{
 						"id":"san",
