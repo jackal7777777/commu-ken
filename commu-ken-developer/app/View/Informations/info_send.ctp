@@ -20,9 +20,7 @@ echo $this->Form->create('Information', array(//フォーム生成開始
 			echo $this->Html->image('title_con.png');
 			echo $this->Form->input('body', array('type'=>'textarea', 'maxLength' => '1000'));
 
-			echo $this->Form->submit('送信する',array('class' => 'inquiry_send',
-                'onmouseover' => 'btnChangeOn();',
-                'onmouseout' => 'btnChangeOff();'));
+			echo $this->Form->submit('btn_send_off.png' ,array('class' => 'inquiry_send'));
 
 			echo $this->Form->input('user_id', array('type'=>'hidden', 'value' => $user_id));
 			echo $this->Form->end();
@@ -33,18 +31,18 @@ echo $this->Form->create('Information', array(//フォーム生成開始
 
 ?>
 <script>
-	//ajax用にデータ格納
-	//$('input[type="submit"]').click(function(even){
-	$('#info').submit(function(event){
-		// HTMLでの送信をキャンセル
+$(function(){
+    //ajax用にデータ格納
+    //$('input[type="submit"]').click(function(even){
+    $('#info').submit(function(event){
+        // HTMLでの送信をキャンセル
         event.preventDefault();
-		var $form = $(this);
-		var serializedForm = $form.serialize();
-		$('form input').attr('disabled','disabled');
+        var $form = $(this);
+        var serializedForm = $form.serialize();
+        $('form input').attr('disabled','disabled');
         $('form textarea').attr('disabled','disabled');
-		console.log($form.serialize());
-        $('input[type="submit"]').val('送信中です...');
-
+        $('.inquiry_send').fadeOut(500);
+        $('form').append('<p id="send_process" style="text-align:center;font-size:2rem;">送信中です...</p>');
         $.ajax({
             url: '<?= $this->Html->url(array("controller" =>"informations","action" => "information")) ?>',
             type: 'post',
@@ -52,34 +50,33 @@ echo $this->Form->create('Information', array(//フォーム生成開始
             data: serializedForm
         })
         .done(function(html) {
-            console.log("結果");
-            console.log(html);
-            console.log("success");
-            	$('form input').css('border', '1px solid #fff');
-                $('form textarea').css('border', '1px solid #fff');
-            	$('input[type="submit"]').fadeOut(500);
+            $('form input').css('border', '1px solid #fff');
+            $('form textarea').css('border', '1px solid #fff');
+            $('#send_process').fadeOut(500);
             setTimeout(function(){
-                $('form').append('<p style="text-align:center;font-size:2rem;">送信が完了しました。</p>');
+                $('#send_process').fadeIn(500);
+                $('#send_process').text('送信が完了しました。');
             },500);
         })
         .fail(function(data) {//ここでエラー分が取得できる
-            console.log("エラーの内容");
+            $('form input').css('border', '1px solid #fff');
+            $('form textarea').css('border', '1px solid #fff');
+            $('#send_process').fadeOut(500);
             console.log(data);
-            console.log("error");
-            $('input[type="submit"]').fadeOut(500);
-            $('form').append('<p style="text-align:center;font-size:2rem;">送信に失敗しました。</p>');
+            setTimeout(function(){
+                $('#send_process').fadeIn(500);
+                $('#send_process').text('送信に失敗しました。');
+            },500);
         })
         .always(function() {
             console.log("complete");
         });
-	});
-
-    function btnChangeOn(){
-        $('input[type="submit"]').css('color', '#ED4F4F');
-        console.log($(this).text());
-    }
-
-    function btnChangeOff(){
-        $('input[type="submit"]').css('color', '#fff');
-    }
+    });
+    $('.inquiry_send').mouseover(function(){
+        $(this).attr('src','<?= $pro_pass_img ?>images/btn_send_on.png');
+        $('.inquiry_send').mouseout(function(){
+            $(this).attr('src','<?= $pro_pass_img ?>images/btn_send_off.png');
+        });
+    });
+});
 </script>

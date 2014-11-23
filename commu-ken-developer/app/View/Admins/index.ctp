@@ -1,8 +1,6 @@
 <!--画像：ゲーム画面-->
 <div id="game">
-    <div id="ad_title"><p>管理者画面</p></div>
     <div id="ad_login">
-        <div id="ad_log_title"><p>管理者ログイン</p></div>
 <?php
 echo $this->Form->create('Admin', array(//フォーム生成開始
                 'url' => '/admins/login',

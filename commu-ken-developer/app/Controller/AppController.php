@@ -20,7 +20,7 @@
  */
 
 App::uses('Controller', 'Controller');
-Configure::write('debug', 2);
+Configure::write('debug', 0);
 /**
  * Application Controller
  *
@@ -31,7 +31,7 @@ Configure::write('debug', 2);
  * @link        http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    var $components = array('Session');
+    var $components = array('Session','Security');
 
 
     //helpersを継承
@@ -39,6 +39,9 @@ class AppController extends Controller {
 
     public function beforeFilter(){//全てのアクションに共通する処理。主にアカウント・セッション認証系。
         $this->set('title_for_layout', 'こみゅけん！-commu-ken!');
+        Security::setHash('sha256');
+        $this->Security->csrfCheck = false;
+        $this->Security->validatePost = false;
 
 
         //画像ファイルなどのパスのためにプロジェクト名を定義
@@ -77,61 +80,79 @@ class AppController extends Controller {
             $this->redirect('/');
         }elseif($this->request->data == array() && $sess_admin_id == null && $this->name == 'Admins' && $this->action != 'index'){
             $this->redirect(array('controller' => 'admins', 'action' => 'index'));
-        }elseif($sess_admin_id != null){
+        }
+        if($sess_admin_id != null){
             $this->set('admin_id', $sess_admin_id);
-        }else{
+        }
+        if($sess_user_id != null){
             $this->set('user_id', $sess_user_id);
         }
+        //echo $this->name;
+        //globalNaviのTOPのリンク先の初期値としてユーザ側のトップページを指定
+        $this->set('nav1link', array('controller' => 'accounts', 'action' => 'index'));
 
-        //ヘッダのcssとリンク判定
-        if($this->action == 'add' ||
+        //ヘッダのcss判定
+        if( $this->action == 'add' ||
             $this->action == 'disclaimer' ||
             $this->action == 'info_send' ||
             $this->action == 'personal' ||
             $this->action == 'policy' ||
             $this->action == 'disclamer' ||
-            $this->action == 'tutorial'){
-            //この中のどれかのアクションならheader用のcssにはheader.cssを適用する
+            $this->action == 'tutorial'
+        ){
             $this->set('headerCss','header.css');
+            $headerFlag = false;
+        }else{
+            $this->set('headerCss','minHeader.css');
+            $headerFlag = true;
+        }
 
-            if($sess_user_id != null && $this->name != 'Admins'){//さらにセッションがあるなら
-                $this->set('changeCss','change.css');//header用のcssをログイン時用のモノに変更
-
-                //headerメニューのリンク先設定
-                $this->set('nav3link', array('controller' => 'accounts', 'action' => 'change'));
-                $this->set('nav5link', array('controller' => 'accounts', 'action' => 'logout'));
-            }elseif($sess_admin_id != null){
-
-                $this->set('changeCss','change.css');//header用のcssをログイン時用のモノに変更
-
-                $this->set('nav3link', array('controller' => 'accounts', 'action' => 'change'));
-                $this->set('nav5link', array('controller' => 'admins', 'action' => 'logout'));
-
+        //ログイン状態によるグローバルナビの飛び先＆画像変更
+        if(isset($sess_user_id) || isset($sess_admin_id)){
+            //ユーザIDもしくは管理者IDログインしていたら
+            
+            if(isset($sess_user_id)){
+                $accountsAction = 'change';
             }else{
-                $this->set('nav3link', array('controller' => 'accounts', 'action' => 'add'));
-                $this->set('nav5link', array('controller' => 'accounts', 'action' => 'index'));
+                $accountsAction = 'add';
             }
         }else{
-            //上記以外のアクションならheader用のcssにはminHeader.cssを適用する
-            $this->set('headerCss','minHeader.css');
-
-            if($sess_user_id != null && $this->name != 'Admins'){//さらにセッションがあるなら
-                
-                $this->set('changeCss','minChange.css');//header用のcssをログイン時用のモノに変更
-                //headerメニューのリンク先設定
-                $this->set('nav3link', array('controller' => 'accounts', 'action' => 'change'));
-                $this->set('nav5link', array('controller' => 'accounts', 'action' => 'logout'));
-            }elseif($sess_admin_id != null){
-                $this->set('changeCss','minChange.css');//header用のcssをログイン時用のモノに変更
-
-                $this->set('nav3link', array('controller' => 'accounts', 'action' => 'change'));
-                $this->set('nav5link', array('controller' => 'admins', 'action' => 'logout'));
-
-            }else{
-                $this->set('nav3link', array('controller' => 'accounts', 'action' => 'add'));
-                $this->set('nav5link', array('controller' => 'accounts', 'action' => 'index'));
-            }
-
+            $accountsAction = 'add';
         }
+
+        if ($this->name == 'Admins') {
+            $linkController = $this->name;
+            if(isset($sess_admin_id)){
+                $loginAction = 'logout';
+                if($headerFlag == true){
+                    $this->set('changeCss','minChange.css');
+                }else{
+                    $this->set('changeCss','change.css');
+                }
+            }else{
+                $loginAction = 'index';
+            }
+        }else{
+            $linkController = 'accounts';
+            if(isset($sess_user_id)){
+                $loginAction = 'logout';
+                if($headerFlag == true){
+                    $this->set('changeCss','minChange.css');
+                }else{
+                    $this->set('changeCss','change.css');
+                }
+            }else{
+                $loginAction = 'index';
+            }
+        }
+
+        
+
+        $this->set('nav1link', array('controller' => $linkController , 'action' => 'index'));
+        $this->set('nav3link', array('controller' => 'accounts', 'action' => $accountsAction));
+        $this->set('nav5link', array('controller' => $linkController, 'action' => $loginAction));
+
+        
     }
+
 }

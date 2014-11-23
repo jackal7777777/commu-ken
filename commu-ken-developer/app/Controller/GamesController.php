@@ -39,11 +39,10 @@ class GamesController extends AppController{
 
     public function choice($scenarioId = 0){
 
-        $this->set('title_for_layout', 'こみゅけん！-kommu-ken!');
-
         $this->set('user_id', $this->Session->read('user_id'));
 
         
+        //debug($this->Scenario->allScenario());
 
         //クリア情報読み込み
         $clearInfo = $this->Clear->clearCheck($this->Session->read('user_id'));
@@ -65,18 +64,20 @@ class GamesController extends AppController{
 
     }
 
-    public function game($scenarioId = 0,$stageId = 0,$stepNo = 1){
+    public function game($scenarioId = 0,$stageId = 0,$stepNo = 1, $security = null){
 
         //echo dirname(__FILE__);
 
-        if ($scenarioId == 0 || $stageId == 0){
+        if ($scenarioId == 0 || 
+            $stageId == 0 ||
+            !is_numeric($scenarioId) ||
+            !is_numeric($stageId) ||
+            !is_numeric($stepNo) ||
+            $security != null){
             $this->redirect('/');
         }
 
         //一つ前のステップidが未クリアだったらchoiceへリダイレクト
-
-
-        $this->set('title_for_layout', 'こみゅけん！-kommu-ken!');
 
         //セッション情報セット
         $this->set('user_id', $this->Session->read('user_id'));
@@ -96,11 +97,15 @@ class GamesController extends AppController{
             $this->redirect(array('controller' => 'games', 'action' => 'choice'));
         }
 
+        //確認
+        
+
         $this->set('step_id', $stepId);
         $this->set('stage_id', $stageId);
         $this->set('step_exp', $stepInfo[0]['Step']['step_exp']);
         $this->set('step_name', $stepInfo[0]['Step']['step_name']);
         $this->set('step_image', $stepInfo[0]['Face']['character_image']);
+
 
         //ステージ情報を取得
         $stageArray = $this->Stage->getStage(0,$stageId);
@@ -152,9 +157,7 @@ class GamesController extends AppController{
                 $serifArrayJs[$answerNo]['Image'][$serifNo] = $serifImg;
                 $serifArrayJs[$answerNo]['Character'][$serifNo] = $serifChara;
         }
-
         echo('<span style="display:none"></span>');
-
         $this->set('serifArrayJs', json_encode($serifArrayJs));
     }
 
@@ -201,7 +204,6 @@ class GamesController extends AppController{
                                     'user_id' => $this->request->data['Survey']['user_id'],
                                     'step_id' => $this->request->data['Survey']['step_id']);
             }
-
             $this->Survey->surveyInsert($surveyInfo);
         }
 

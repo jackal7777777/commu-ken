@@ -31,6 +31,8 @@ class AdminsController extends AppController{
     }
 
     public function login(){
+        $this->autoLayout = false;
+        $this->autoRender = false;
 
         //ポストデータを取得
         $postData = $this->request->data;
@@ -68,6 +70,8 @@ class AdminsController extends AppController{
     }
 
     public function download_csv($sqlType = 0){
+        $this->autoLayout = false;
+        $this->autoRender = false;
 
             Configure::write('debug', 0); // 警告を出さない
             $this->layout = false;

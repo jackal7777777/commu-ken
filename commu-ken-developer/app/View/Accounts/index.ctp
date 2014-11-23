@@ -1,28 +1,6 @@
 <?php
-/**
- *
- *
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- */
-
-if (!Configure::read('debug')):
-    throw new NotFoundException();
-endif;
-
-App::uses('Debugger', 'Utility');
-
-//css出力
-echo $this->Html->css('minHeader');
-
-?>
-<?php
-if (Configure::read('debug') > 0):
-    Debugger::checkSecurityKeys();
-endif;
-?>
-<?php $this->Html->scriptStart(array('inline' => false)); ?>
+App::uses('Utility');
+$this->Html->scriptStart(array('inline' => false)); ?>
 //オープニング文章
             var startText = new Array();
             startText['name1'] = '<?= $pro_pass_img ?>images/name_03.png';
@@ -74,7 +52,7 @@ endif;
             startText['text14'] = 'いいかつむぎ？';
             startText['img14'] = '<?= $pro_pass_img ?>images/none.png';
             startText['name15'] = '<?= $pro_pass_img ?>images/name_03.png';
-            startText['text15'] = '学校っての言うのはな、恐ろしいほど、みんなが空気を読んでいる世界だ。';
+            startText['text15'] = '学校って言うのはな、恐ろしいほど、みんなが空気を読んでいる世界だ。';
             startText['img15'] = '<?= $pro_pass_img ?>images/none.png';
             startText['name16'] = '<?= $pro_pass_img ?>images/name_03.png';
             startText['text16'] = 'なんていうか、クラスの中で、見えない役割みたいなのがあって……';
@@ -287,6 +265,11 @@ endif;
                     });
                 }
 
+                var errorFlag = <?=$params?>;
+                if(errorFlag == 1){
+                  fin();
+                }
+
 
 
 
@@ -447,6 +430,9 @@ endif;
         <?= $this->Html->image('logo.png', array('id' => 'gameLogo')) ?>
         <div id="gameImg"></div>
         <div id="hukidashi">
+            <div id="san">
+                <?= $this->Html->image('sitasankaku.png') ?>
+            </div>
             <div id="talker">
                 <?= $this->Html->image('name_03.png') ?>
             <!--/#talker--></div>

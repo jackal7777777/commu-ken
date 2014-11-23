@@ -59,8 +59,8 @@ class EmailConfig {
         'host' => 'ssl://smtp.gmail.com',
         'port' => 465,
         'timeout' => 30,
-        'username' => 'commu.ken.tokyo@gmail.com',
-        'password' => 'HALxUTokyo_commu-ken2014_testPlayUser_x6p2'
+        'username' => 'commu.ken@gmail.com',
+        'password' => 'tokyo-user'
     );
 
 	public $smtp = array(

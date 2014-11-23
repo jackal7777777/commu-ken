@@ -10,7 +10,9 @@ class InformationsController extends AppController{
     public $components = array('RequestHandler');
 
     public function info_send() {
-
+        if($this->Session->read('user_id') == null){
+            $this->set('user_id','');
+        }
     }
 
     public function policy() {
@@ -19,7 +21,7 @@ class InformationsController extends AppController{
     public function personal() {
 
     }
-    public function disclamer() {
+    public function disclaimer() {
 
     }
 
@@ -29,37 +31,22 @@ class InformationsController extends AppController{
         $this->autoLayout = false;
         $this->autoRender = false;
 
+        echo "string";
+
         if ($this->RequestHandler->isAjax()) {
-
-            /*$this->Play_history->ansInsert($_POST["ans_id"],$_POST["step_id"]);
-
-            if ($_POST["ans_id"] == $_POST["collectAns_id"]) {
-
-                $this->Clear->clearInsert($_POST["scenario_id"],$_POST["step_id"],$_POST["user_id"]);
-                echo $_POST["scenario_id"];
-                echo $_POST["step_id"];
-                echo $_POST["user_id"];
-            }
             
-        }else {
-            $this->redirect(array('controller' => 'games', 'action' => 'choice'));
-        }*/
             $this->Information->set($this->request->data);
-            //debug($this->request->data);
 
             if ($this->request->data["Information"]["user_id"] == null) {
                 $this->request->data["Information"]["user_id"] = "非会員";
             }
 
             if ($this->Information->validates()) {
-                debug($this->request->data);
 
                 $vars = array('email'=> $this->request->data["Information"]["email"],
                                 'title'=> $this->request->data["Information"]["title"],
                                 'body'=> $this->request->data["Information"]["body"],
                                 'user_id'=> $this->request->data["Information"]["user_id"]);
-
-                //echo 'ここれふ'.$vars;
             
                 //$vars = $this->request->data['Information'];
             
@@ -73,7 +60,7 @@ class InformationsController extends AppController{
                     // 送信元
                     ->from(array($vars['email'] => 'お問い合わせ-こみゅけん-'))
                     // 送信先
-                    ->to('commu.ken.tokyo@gmail.com')
+                    ->to('commu.ken@gmail.com')
                     // BCC, お問い合わせした人にもコピーを送りたい時とか
                     // ->bcc($this->request->data['Information']['email'])
 

@@ -1,26 +1,5 @@
 <?php
-/**
- *
- *
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- */
-
-if (!Configure::read('debug')):
-    throw new NotFoundException();
-endif;
-
-App::uses('Debugger', 'Utility');
-
-echo $this->Html->css('minHeader');
-$this->Blocks->set('css-acc', '<style type="text/css">#nav3{background-image:url(<?= $pro_pass_img ?>"nav_act_03_in_off.png");}</style>');
-
-?>
-<?php
-if (Configure::read('debug') > 0):
-    Debugger::checkSecurityKeys();
-endif;
+App::uses('Utility');
 ?>
 <!--ゲーム画面-->
             <div id="game">
@@ -30,6 +9,9 @@ endif;
                     <div id="gameImg"></div>
                     <!--吹き出し-->
                     <div id="hukidashi">
+                        <div id="san">
+                            <?= $this->Html->image('sitasankaku.png') ?>
+                        </div>
                         <!--しゃべり手-->
                         <div id="talker">
                         <img src="" alt="">
@@ -307,12 +289,16 @@ endif;
                     $("#hukidashi").click(function(){
 
                         $("#hukidashi").off();
+                        $("#talker").hide(0);
                         $("#gameArticle p").remove();
                         $("#event").fadeOut(0);
                         $("#gameBackBlack").fadeIn(500).fadeOut(500);
                         $("#img").fadeOut(0).delay(500).fadeIn(500);
                         act = "support";
-                        text(index,act);
+                        setTimeout(function(){
+                            text(index,act);
+                            $("#talker").fadeIn(500);
+                        },500);
                         $("#hukidashi").click(function(){
                             text(index,act);
                         });
@@ -353,12 +339,9 @@ endif;
                 function huki(l){
                     //テキストを一行上に流す
                     $("#gameArticle").animate({"top":"-"+50*(l-2)+"px"});
-                    console.log('lの値:'+l);
                 }
                 //返し
                 function text(index,act){
-                    console.log('あくと:'+act);
-                    //alert(act);
                     //相手の反応
                     if(act == 'return'){
                         //キャラクター表示切替
@@ -388,6 +371,16 @@ endif;
                                 //キャラクター表示切替
                                 $("#img").attr("src","<?= $pro_pass_img ?>images/"+selectStage[act+"Img"+(index+1)+"-"+ll+"-"+l]);
                                 //話し手切り替え
+                                console.log(lScroll);
+
+                                //中途半端なタイミングで話し手が切り替わるときの処理
+                                if(($("#talker img").attr('src') != "<?= $pro_pass_img ?>images/"+selectStage['supportName'+(index+1)+"-"+ll+"-"+l]+".png") && lScroll%2 == 0){
+                                    $("#gameArticle p:first-child").hide();
+                                    lScroll--;
+                                }
+
+
+
                                 $("#talker img").attr("src", "<?= $pro_pass_img ?>images/"+selectStage['supportName'+(index+1)+"-"+ll+"-"+l]+".png");
                                 huki(lScroll);
                                 lScroll++;
@@ -411,9 +404,11 @@ endif;
                             ll = 1;
                             act = 'summary';
                             $("#hukidashi").off();
-                            $("#gameBackBlack").fadeIn(500, function(){
+                            /*$("#gameBackBlack").fadeIn(500, function(){
                                 $("#summaryTitle").fadeIn(500);
-                            }).fadeOut(500);
+                            }).fadeOut(500);*/
+                            $("#gameBackBlack").css({"z-index":"5"}).fadeIn(500);
+                            $("#summaryTitle").fadeIn(500);
                             $("#hukidashi").click(function(){
                                 text(index,act);
                             });
@@ -448,20 +443,6 @@ endif;
                                 $("#social").fadeIn(500);
                             }
                         }
-                    //文章下の三角
-                    $("<div>",{
-                        "id":"san",
-                        "css":{
-                            "height":"0px",
-                            "width":"0px",
-                            "border":"solid 20px transparent",
-                            "border-top":"solid 20px #aaa",
-                            "position":"absolute",
-                            "top":"75px",
-                            "right":"20px",
-                            "z-index":"3"
-                        }
-                    }).appendTo("#hukidashi");
                 }
         
             //文章をテキスト入力のように表示する

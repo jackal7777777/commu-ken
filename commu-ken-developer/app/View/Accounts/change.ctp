@@ -1,22 +1,5 @@
 <?php
-/**
- *
- *
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- */
-
-if (!Configure::read('debug')):
-	throw new NotFoundException();
-endif;
-
-App::uses('Debugger', 'Utility');
-?>
-<?php
-if (Configure::read('debug') > 0):
-	Debugger::checkSecurityKeys();
-endif;
+App::uses('Utility');
 ?>
 <!--ログインフォーム-->
 <div id="add">
@@ -38,7 +21,7 @@ endif;
 			
 			//パスワード入力欄
 			echo $this->Html->image('title_pass.png');
-			echo $this->Form->input('password', array('type'=>'password', 'value' => $user_info['password'], 'maxLength' => '20'));
+			echo $this->Form->password('password', array('value' => "", 'maxLength' => '20', 'placeholder' => "新しいパスワード"));
 			
 			//性別選択欄
 			echo $this->Html->image('title_sex.png');
@@ -48,12 +31,14 @@ endif;
 
 			/*-------生年月日欄-------*/
 			echo $this->Html->image('title_date.png');
-			//年
-			echo $this->Form->datetime('birthday', 'Y', 'yaer', array('minYear' => 1900, 'maxYear' => 2014, 'empty' => false,'orderYear' => 'asc', 'selected' => $year)).'年';
-			//月
-			echo $this->Form->datetime('birthday', 'M', 'month', array('monthNames' => false, 'empty' => false, 'selected' => $month)).'月';
-			//日
-			echo $this->Form->datetime('birthday', 'D', 'date', array('empty' => false, 'selected' => $day)).'日<br>';
+			$birthday_option = array(
+				'minYear' => '1930',
+				'maxYear' => date('Y'),
+				'separator' => array('年','月','日'),
+				'value' => array('year' => $year,'month' => $month,'day' => $day),
+				'monthNames' => false
+			);
+			echo '<div class="birthday_wrapper">'.$this->Form->datetime('birthday', 'YMD', null, $birthday_option)."</div>";
 			/*------------------------------*/
 
 			//秘密の質問選択欄
@@ -86,9 +71,3 @@ endif;
 			echo $this->Html->scriptBlock( 'function btnChangeOn(){$("input#change").attr("src","/commu-ken-test/images/btn_modi_on.png");}function btnChangeOff(){$("input#change").attr("src","/commu-ken-test/images/btn_modi_off.png");}', array( "inline" => false));
 ?>
 </div>
-<!-- 追加分スタイル -->
-<script type="text/javascript">
-    //function btnChangeOn(){$('input#change').attr('src','/commu-ken-test/images/btn_modi_on.png');}function btnChangeOff(){$('input#change').attr('src','/commu-ken-test/images/btn_modi_off.png');}
-    
-    //$('main').prepend('<p><?= $result ?></p>');
-</script>

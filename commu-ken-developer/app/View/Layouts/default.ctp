@@ -20,11 +20,10 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 ?>
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+    <meta charset="UTF-8">
     <?php echo $this->Html->charset(); ?>
-    <title>
-        <?php echo $title_for_layout; ?>
-    </title>
+    <title><?php echo $title_for_layout; ?></title>
     <?php
         echo $this->Html->meta('icon');//ファビコン設定
 
@@ -36,10 +35,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         echo $this->Html->script('jquery-2.1.1.min', array( 'inline' => 'false'));
 
         echo $this->Html->css($headerCss);
-        if (isset($user_id) && $this->name != 'Admins' ) {
-            //Sessionが有る時(ログイン)のcssを読み込む
-            echo $this->Html->css($changeCss);
-        }elseif(isset($admin_id) && $this->name == 'Admins'){
+        if ((isset($user_id) || (isset($admin_id))) && isset($changeCss)) {
             //Sessionが有る時(ログイン)のcssを読み込む
             echo $this->Html->css($changeCss);
         }
@@ -80,7 +76,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         
     ?>
     <!-- ogp -->
-    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta property="og:title" content="今さら聞けない...こみゅけん" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="東大×HAL東京！" />
@@ -89,9 +84,16 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
     <meta property="og:locale" content="Japanese" />
     <meta property="fb:app_id" content="694588187300519" />
     <!-- ogp -->
-    <link rel="canonical" href="http://local.jackal.com/" />
+    <link rel="canonical" href="http://commu-ken.tokyo/" />
 </head>
 <body>
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56953816-1', 'auto');
+  ga('send', 'pageview');</script>
 <!-- facebook SDK -->
     <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -111,7 +113,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
             <!--/#logo--></div>
             <ul>
                 <li id="nav1">
-                    <?= $this->Html->link(null,array('controller' => 'accounts', 'action' => 'index')) ?>
+                    <?= $this->Html->link(null,array('controller' => $nav1link['controller'], 'action' => $nav1link['action'])) ?>
                 </li>
                 <li id="nav2">
                     <?= $this->Html->link(null,array('controller' => 'games', 'action' => 'tutorial')) ?>
@@ -140,7 +142,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                     <li class="footerNavItem">心いき</li>
                     <li class="footerNavItem"><?= $this->Html->link('個人情報',array('controller' => 'informations', 'action' => 'personal')) ?></li>
                     <li class="footerNavItem"><?= $this->Html->link('サイトポリシー',array('controller' => 'informations', 'action' => 'policy')) ?></li>
-                    <li class="footerNavItem"><?= $this->Html->link('免責事項',array('controller' => 'informations', 'action' => 'disclamer')) ?></li>
+                    <li class="footerNavItem"><?= $this->Html->link('免責事項',array('controller' => 'informations', 'action' => 'disclaimer')) ?></li>
                     <li class="footerNavItem">動作環境</li>
                 </ul>
                 <p>&copy;Copyright COMMU-KEN! All rights reserved.</p>

@@ -6,17 +6,11 @@ class AccountsController extends AppController{
     //使用するモデル
     var $uses = array('User');
 
-    public $scaffold;
-
-    //helpersを継承
-    //public $helpers = array('Html', 'Form', 'Js', 'Session', 'Css');
-
     // ビューを使わないように設定
     //public $autoRender = false;
 
 
     public function index($params = 0){
-        $this -> set('title_for_layout', 'こみゅけん！-kommu-ken!');
 
         //ログインに失敗してリダイレクトされた時のエラー文セット
         $this->set('replayPage', null);
@@ -25,8 +19,11 @@ class AccountsController extends AppController{
             $this->set('error', $error );
         }elseif(isset($params) && $params == 2){
             $this->set('replayPage', 'noSkip');
+        }else{
+            $params = 0;
         }
-
+        $this->set('params',$params);
+    
         //セッション情報があればゲームページへリダイレクト
         if (isset($this->viewVars['user_id'])) {
             $this->redirect(array('controller' => 'games', 'action' => 'choice'));
@@ -35,6 +32,8 @@ class AccountsController extends AppController{
 
 
     public function login(){
+        $this->autoLayout = false;
+        $this->autoRender = false;
 
         //ポストデータを取得
         $postData = $this->request->data;
@@ -60,6 +59,8 @@ class AccountsController extends AppController{
     }
 
     public function logout(){
+        $this->autoLayout = false;
+        $this->autoRender = false;
         $this->Session->delete('user_id');
         $this->Session->destroy();
         $this->redirect('/');//indexページヘリダイレクト
@@ -90,6 +91,7 @@ class AccountsController extends AppController{
 
     public function change($params = 0){
 
+        
         //ユーザー情報取得
         $user_info = $this->User->userInfo($this->Session->read('user_id'));
         //debug($user_info);
