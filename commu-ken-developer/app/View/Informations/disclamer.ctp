@@ -1,5 +1,5 @@
 <!--免責事項-->
-<section>
+<section id="dis">
 	<article>
 		<h2><?= $this->Html->image('title_text_03.png'); ?></h2>
 

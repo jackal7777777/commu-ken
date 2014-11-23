@@ -22,9 +22,7 @@
 			 <!--/#headerMain--></div>
 		</header>
 		<main>
-			<div id="tutorial">
-
-			</div>
+			<img src="<?= $pro_pass_img ?>images/20141123_Leaflet.png">
 		</main>
 		<footer>
 			<?php require_once "footer.php"; ?>

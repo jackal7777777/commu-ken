@@ -5,8 +5,9 @@
 	main
 		-game
 		-opening
-		-policy
 		-info
+		-dis,pol,per
+	footer
 */
 
 
@@ -144,6 +145,14 @@ main{
 	z-index: 6;
 	cursor: pointer;
 }
+#game #hukidashi #san{
+	height: 15px;
+	width: 30px;
+	position: absolute;
+	top: 80px;
+	right: 20px;
+	z-index: 3;
+}
 #game #talker{
 	height: 100px;
 	width: 120px;
@@ -151,6 +160,10 @@ main{
 	line-height: 100px;
 	float: left;
 	text-align: center;
+	padding-top: 40px;
+}
+#game #talker img{
+	height: 20px;
 }
 #game #gameArticle{
 	height: 100px;
@@ -615,8 +628,20 @@ input,select,option,textarea{
 	height: 100%;
 	width: 100%;
 }
-
-/*footer*/
+/*dis,pol,per*/
+#dis{
+	height: 100%;
+	width: 100%;
+	padding: 20px;
+	margin: 0;
+	size: 1.6rem;
+}
+#dis h2{
+	margin: 0 0 10px 0;
+	padding: 0;
+}
+/*										footer
+-----------------------------------------------*/
 #footerMain{
 	font-size: 1.6em;
 }

@@ -1,5 +1,5 @@
 <!--免責事項-->
-<section>
+<section id="dis">
 	<h2><?= $this->Html->image('title_text_01.png'); ?></h2>
 	<article>
 		<h2>＜個人情報の定義＞</h2>

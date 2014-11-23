@@ -20,7 +20,7 @@
  */
 
 App::uses('Controller', 'Controller');
-Configure::write('debug', 1);
+Configure::write('debug', 2);
 /**
  * Application Controller
  *

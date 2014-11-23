@@ -1,5 +1,5 @@
 <!--免責事項-->
-<section>
+<section id="dis">
 	<h2><?= $this->Html->image('title_text_02.png'); ?></h2>
 	<article>
 		<h2>サイトのご利用にあたって</h2>

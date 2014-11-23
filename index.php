@@ -344,6 +344,9 @@
 					<img src="images/logo.png" id="gameLogo">
 					<div id="gameImg"></div>
 					<div id="hukidashi">
+						<div id="san">
+							<img src="images/sitasankaku.png">
+						</div>
 						<div id="talker">
 							<img src="images/name_01.png">
 						<!--/#talker--></div>
