@@ -2,8 +2,6 @@
 
 class Admin extends AppModel {
 	var $name = 'Admin';
-	//public $hasMany = "Comment";
-	//public $belongsTo = "User";
 
 	public $validate = array(
 		'id'=> array(
@@ -21,11 +19,12 @@ class Admin extends AppModel {
 	);
 
 	public function adminCheck($id,$pass){//ログイン確認
+		$password = Security::hash($pass, 'sha256', true);
 		//データベース検索情報セット
 		$params = array('fields' => array('Admin.id'),//Userテーブルのuser_idフィールドを取得
 						'conditions' => array(//SQLでいうとWHERE文に当たるところ
 							'Admin.id' => $id,//user_idが一致したものだけ
-							'Admin.password' => $pass)//かつpasswordが一致したものだけ
+							'Admin.password' => $password)//かつpasswordが一致したものだけ
 		);
 
 		//SQL実行

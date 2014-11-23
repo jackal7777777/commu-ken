@@ -70,10 +70,8 @@ class AdminsController extends AppController{
     }
 
     public function download_csv($sqlType = 0){
-        $this->autoLayout = false;
-        $this->autoRender = false;
 
-            Configure::write('debug', 0); // 警告を出さない
+            Configure::write('debug', 3); // 警告を出さない
             $this->layout = false;
 
             switch ($sqlType) {

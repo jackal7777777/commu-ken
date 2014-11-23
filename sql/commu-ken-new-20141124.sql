@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2014 年 11 月 24 日 07:56
+-- Generation Time: 2014 年 11 月 24 日 08:26
 -- サーバのバージョン： 5.6.16
 -- PHP Version: 5.5.11
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `admins` (
   `id` varchar(20) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `password`) VALUES
-('master@gmail.com', 'master');
+('master@gmail.com', '7e090c9f27abdf1ec5b3921d9d8a65cf957ab469750ec473afa4d88563d54d04');
 
 -- --------------------------------------------------------
 
