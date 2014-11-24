@@ -71,11 +71,11 @@ App::uses('Utility');
 <!-- 追加分スタイル -->
 <script type="text/javascript">
     function btnChangeOn(){
-        $('input.add').attr('src','/commu-ken-test/images/btn_regi_on.png');    
+        $('input[type="image"]').attr('src','<?= $pro_pass_img ?>images/btn_regi_on.png');    
     }
 
     function btnChangeOff(){
-        $('input.add').attr('src','/commu-ken-test/images/btn_regi_off.png');    
+        $('input[type="image"]').attr('src','<?= $pro_pass_img ?>images/btn_regi_off.png');    
     }
     
 </script>

@@ -68,6 +68,15 @@ App::uses('Utility');
 			if (isset($result)) {
 				echo $this->Html->scriptBlock( '$(function(){$("#add h2").after("<p style=\'text-align:center;font-size:1.6rem;\'>'.$result.'</p>");$(".submit input").css("bottom","-100");$("#add").css("height","540px");});', array( 'inline' => false));
 			}
-			echo $this->Html->scriptBlock( 'function btnChangeOn(){$("input#change").attr("src","/commu-ken-test/images/btn_modi_on.png");}function btnChangeOff(){$("input#change").attr("src","/commu-ken-test/images/btn_modi_off.png");}', array( "inline" => false));
 ?>
 </div>
+<!-- 追加分スタイル -->
+<script type="text/javascript">
+    function btnChangeOn(){
+        $('input[type="image"]').attr('src','<?= $pro_pass_img ?>images/btn_modi_on.png');
+    }
+
+    function btnChangeOff(){
+        $('input[type="image"]').attr('src','<?= $pro_pass_img ?>images/btn_modi_off.png');    
+    }
+</script>
