@@ -62,7 +62,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
     <meta property="og:title" content="今さら聞けない...こみゅけん" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="東大×HAL東京！" />
-    <meta property="og:url" content="http://commu-ken.tokyo/" />
+    <meta property="og:url" content="http://www.commu-ken.tokyo/" />
     <meta property="og:site_name" content="こみゅけん" />
     <meta property="og:locale" content="Japanese" />
     <meta property="fb:app_id" content="694588187300519" />
