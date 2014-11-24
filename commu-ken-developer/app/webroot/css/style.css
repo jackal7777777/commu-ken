@@ -749,6 +749,16 @@ main h2{
 #dis p{
 	font-size: 1.4rem;
 }
+#dis .link_detail_list{
+	display: block;
+	overflow: hidden;
+	width: 900px;
+	list-style: disc;
+	padding-left: 20px;
+}
+#dis .link_detail_item{
+	font-size: 1.3rem;
+}
 
 /*tutorial*/
 #tutorial{

@@ -1,21 +1,4 @@
 <?php
-/**
- *
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 ?>
 <!DOCTYPE html>
@@ -139,11 +122,10 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         <footer id="footer">
             <div id="footerMain">
                 <ul class="footerNav">
-                    <li class="footerNavItem">心いき</li>
+                    <li class="footerNavItem"><a href="http://kokoroiki-todai.com/">心いき</a></li>
                     <li class="footerNavItem"><?= $this->Html->link('個人情報',array('controller' => 'informations', 'action' => 'personal')) ?></li>
                     <li class="footerNavItem"><?= $this->Html->link('サイトポリシー',array('controller' => 'informations', 'action' => 'policy')) ?></li>
                     <li class="footerNavItem"><?= $this->Html->link('免責事項',array('controller' => 'informations', 'action' => 'disclaimer')) ?></li>
-                    <li class="footerNavItem">動作環境</li>
                 </ul>
                 <p>&copy;Copyright COMMU-KEN! All rights reserved.</p>
             </div>

@@ -9,7 +9,6 @@ $this->Csv->addRow($th);
 			
 			//foreach ($td as $t) {
 			    $this->Csv->addField($td);
-			    //$this->Csv->addField('sdfgsdfg');
 			    $this->Csv->endRow();
 			//}
 
@@ -24,6 +23,7 @@ $this->Csv->addRow($th);
 			    $this->Csv->addField($t['Survey']['survey_text']);
 			    $this->Csv->endRow();
 			}
+			
 
 			break;
 
@@ -48,4 +48,4 @@ $this->Csv->addRow($th);
 
 
 $this->Csv->setFilename($filename);
-echo $this->Csv->render();
+echo $this->Csv->render(true, 'sjis', 'utf-8');
