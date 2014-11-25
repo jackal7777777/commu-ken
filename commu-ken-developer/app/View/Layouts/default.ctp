@@ -67,7 +67,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
     <meta property="og:locale" content="Japanese" />
     <meta property="fb:app_id" content="694588187300519" />
     <!-- ogp -->
-    <link rel="canonical" href="http://commu-ken.tokyo/" />
+    <link rel="canonical" href="http://www.commu-ken.tokyo/" />
 </head>
 <body>
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

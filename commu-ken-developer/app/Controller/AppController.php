@@ -93,6 +93,7 @@ class AppController extends Controller {
 
         //ヘッダのcss判定
         if( $this->action == 'add' ||
+            $this->action == 'change' ||
             $this->action == 'disclaimer' ||
             $this->action == 'info_send' ||
             $this->action == 'personal' ||
