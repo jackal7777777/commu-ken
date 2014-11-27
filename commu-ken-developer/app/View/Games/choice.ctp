@@ -54,15 +54,6 @@ if (isset($stageArray) && $stageArray != array()) {
 				$(".stage").hide(0);
 				var select = new Array();
 				//選択ボタン
-				$("#selectRight").click(function(){
-					if( left < count-1 ){
-						$("#selectSlide").animate({
-							"left":"-=480px"
-						},500);
-						left += 1;
-						right -= 1;
-					}
-				});
 				$("#selectLeft").click(function(){
 					if( right < count ){
 						$("#selectSlide").animate({
@@ -70,6 +61,15 @@ if (isset($stageArray) && $stageArray != array()) {
 						},500);
 						right += 1;
 						left -= 1;
+					}
+				});
+				$("#selectRight").click(function(){
+					if( left < count-1 ){
+						$("#selectSlide").animate({
+							"left":"-=480px"
+						},500);
+						left += 1;
+						right -= 1;
 					}
 				});
 				//マウスオーバー:シナリオ
