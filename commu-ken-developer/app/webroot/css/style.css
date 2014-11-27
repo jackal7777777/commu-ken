@@ -114,15 +114,19 @@ form option{
 	background: url(../images/nav_05_out_on.png);
 }
 #game input[type="email"]{
+	margin: 0 0 8px;
+	height: 24px;
 	width: 180px;
 }
 #game input[type="password"]{
+	height: 24px;
 	width: 180px;
 }
-#loginForm img form{
+#UserIndexForm img{
+	margin: 0 4px 0 0;
 	height: 20px;
 	width: 70px;
-	margin: 20px 10px 15px 20px;
+	vertical-align: middle;
 }
 /*game*/
 #game{
@@ -145,7 +149,7 @@ form option{
 	left: 5px;
 	z-index: 99;
 	height: 200px;
-	width: 300px;
+	width: 320px;
 }
 #game .textSplitLoad{
 	font-size: 1.6rem;
@@ -748,6 +752,7 @@ main h2{
 }
 #dis p{
 	font-size: 1.4rem;
+	line-height: 2rem;
 }
 #dis .link_detail_list{
 	display: block;
@@ -822,8 +827,27 @@ main h2{
 }
 
 #social form p{
-	width: 200px;
+	width: 600px;
 	font-size: 2rem;
 	margin: 100px auto 0;
 	text-align: center;
+}
+
+#checkbox_wrapper{
+	height: 25px;
+	width: 304px;
+	cursor: pointer;
+}
+
+#checkbox{
+	float: left;
+	display: block;
+	margin-right: 4px;
+	padding: 0;
+	height: 25px;
+	width: 25px;
+	background: url('../images/checkbox.png');
+
+#check{
+	display: none;
 }

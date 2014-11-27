@@ -223,8 +223,6 @@ $this->Html->scriptStart(array('inline' => false)); ?>
                 });
                 
 
-                /*-----久保追記分-----*/
-
                 var replayPage = '<?= $replayPage ?>';
 
 
@@ -234,6 +232,7 @@ $this->Html->scriptStart(array('inline' => false)); ?>
                     //replayかどうか確認
                     if(replayPage == null || replayPage == ''){
                         fin();
+                        $('#check').show();
                     }else{
                         $("#gameLogo").fadeIn(1000).fadeOut(500);
                         $("#hukidashi").delay(2500).fadeIn(500);
@@ -247,6 +246,7 @@ $this->Html->scriptStart(array('inline' => false)); ?>
                         }).appendTo("#gameImg");
                         $("#skip").click(function(){
                             fin();
+                            $('#check').show();
                         });
                     }
                 }else{
@@ -274,17 +274,18 @@ $this->Html->scriptStart(array('inline' => false)); ?>
 
 
                 //次回以降スキップ用のcheckboxイベント
-                $('#checkbox').change(function(event) {
-                    //console.log();
-                    if($(this).prop('checked') == true){
+                $('#checkbox_wrapper').click(function(event) {
+                    if($('#check').css('display') == 'none'){
                         // クッキーをセット
                         window.onload = setCookie('skipFlag','1',7);
+                        $('#check').show();
                     }else{
-                        console.log('out');
                         // クッキーを削除
                         window.onload = setCookie('skipFlag','0',0);
+                        $('#check').hide();
                     }
                 });
+
                 /*-----------------------------------*/
                 
             });
@@ -372,11 +373,7 @@ $this->Html->scriptStart(array('inline' => false)); ?>
                     });
                 }
             //スキップ処理
-            //ボタンエフェクト
-
-            //久保追記分
             //cookieの処理
-            //setCookie(クッキー名, クッキーの値, クッキーの有効日数); //
             function setCookie(c_name,value,expiredays){
                 // pathの指定
                 var path = location.pathname;
@@ -444,23 +441,13 @@ $this->Html->scriptStart(array('inline' => false)); ?>
         <?= $this->Html->image('btn_skip_off.png', array('id' => 'skip')) ?>
         <!--次回から表示するか-->
         <div id="next">
-        <?= $this->Html->link($this->Html->image('btn_return.png').$this->Html->image('title_reopening.png'), array('controller' => 'accounts', 'action' => 'index', 2),array('escape'=>false,'id'=>'replayButton')) ?>
-<?php
-    echo $this->Form->create('User', array('url' => '/accounts/login',
-                                        'inputDefaults' => array(
-                                                'label' => false,
-                                                'div' => false))
-    );
-
-    //スキップ確認チェックボックス生成
-    echo $this->Form->input('skip',
-        array('type' => 'checkbox',
-                'id' => 'checkbox',
-                'label' => $this->Html->image('title_nextskip.png')));
-                //ラベルに画像を指定
-
-
-?>
+        <?= $this->Html->link($this->Html->image('btn_return.png').$this->Html->image('title_reopening.png'), array('controller' => 'accounts', 'action' => 'index', 2),array('escape'=>false,'id'=>'replayButton')) ?>    
+                <div id="checkbox_wrapper">
+                    <div id="checkbox">
+                        <?= $this->Html->image('check.png', array('id' => 'check' )) ?>
+                    </div>
+                    <?= $this->Html->image('title_nextskip.png') ?>
+                </div>
         </div>
     </div>
     <!--ログインフォーム-->
@@ -468,6 +455,11 @@ $this->Html->scriptStart(array('inline' => false)); ?>
     <div id="loginForm">
         <?= $this->Html->image('title_login.png').'<br>' ?>
 <?php
+    echo $this->Form->create('User', array('url' => '/accounts/login',
+                                        'inputDefaults' => array(
+                                                'label' => false,
+                                                'div' => false))
+    );
     if (isset($error)) echo '<p class="err-message">'.$error.'</p>';
     echo $this->Html->image('login_add.png');
     echo $this->Form->input('id', array('type'=>'email'))."<br>";

@@ -323,7 +323,7 @@ App::uses('Utility');
                             console.log("success");
                             $('form').children().fadeOut(500);
                             setTimeout(function(){
-                                $('form').html('<p>送信が完了しました。</p>');
+                                $('form').html('<p>アンケート送信完了。<br>上のSNSボタンでシェアしよう！</p>');
                             },500);
                         })
                         .fail(function(data) {//ここでエラー分が取得できる

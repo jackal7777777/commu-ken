@@ -1,6 +1,3 @@
-<?php
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
-?>
 <!DOCTYPE html>
 <html lang="ja">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
@@ -63,7 +60,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         
     ?>
     <!-- ogp -->
-    <meta property="og:title" content="今さら聞けない...こみゅけん" />
+    <meta property="og:title" content="こみゅけん！" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="東大×HAL東京！" />
     <meta property="og:url" content="http://www.commu-ken.tokyo/" />
