@@ -54,7 +54,7 @@ if (isset($stageArray) && $stageArray != array()) {
 				$(".stage").hide(0);
 				var select = new Array();
 				//選択ボタン
-				$("#selectLeft").click(function(){
+				$("#selectRight").click(function(){
 					if( left < count-1 ){
 						$("#selectSlide").animate({
 							"left":"-=480px"
@@ -63,7 +63,7 @@ if (isset($stageArray) && $stageArray != array()) {
 						right -= 1;
 					}
 				});
-				$("#selectRight").click(function(){
+				$("#selectLeft").click(function(){
 					if( right < count ){
 						$("#selectSlide").animate({
 							"left":"+=480px"
