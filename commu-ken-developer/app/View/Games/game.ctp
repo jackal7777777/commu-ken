@@ -48,7 +48,7 @@ App::uses('Utility');
                         <!--<img src="images/btn_tw_off.png" class="socialBtn">
                         <img src="images/btn_fb_off.png" class="socialBtn">
                         <img src="images/btn_gl_off.png" class="socialBtn">-->
-                        <a href='https://twitter.com/intent/tweet?hashtags=こみゅけん&text=こみゅけんやってみたよ！bit.ly/1Dom9fc' target="blank" class='socialBtn'><?= $this->Html->image('btn_tw_off.png', array('class' => 'enq_img')) ?></a>
+                        <a href='https://twitter.com/intent/tweet?hashtags=%e3%81%93%e3%81%bf%e3%82%85%e3%81%91%e3%82%93&text=%e3%81%93%e3%81%bf%e3%82%85%e3%81%91%e3%82%93%e3%82%84%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f%e3%82%88%ef%bc%81bit.ly/1Dom9fc' target="blank" class='socialBtn'><?= $this->Html->image('btn_tw_off.png', array('class' => 'enq_img')) ?></a>
                         <a href="http://www.facebook.com/share.php?u=http://commu-ken.tokyo" onclick="window.open(this.href, 'FBwindow', menubar=no, toolbar=no, scrollbars=yes'); return false;" target="blank" class='socialBtn'><?= $this->Html->image('btn_fb_off.png', array('class' => 'enq_img')) ?></a>
                         <a href="https://plus.google.com/share?url=http://commu-ken.tokyo/" onclick="window.open(this.href, 'Gwindow',  menubar=no, toolbar=no, scrollbars=yes'); return false;" target="blank" class='socialBtn'><?= $this->Html->image('btn_gl_off.png', array('class' => 'enq_img')) ?></a>
                     </div>
