@@ -212,6 +212,21 @@ $this->Html->scriptStart(array('inline' => false)); ?>
             var j = 1;
             //オープニング
             $(function(){
+
+
+                //ポップアップ表示
+                $('#pop-up-back').fadeIn(400,function(){
+                    $('#close-pop-up-btn').click(function(){
+                        $('#pop-up-back').fadeOut(400);
+                    });
+                    $('#pop-up-back').click(function(){
+                        $('#pop-up-back').fadeOut(400);
+                    });
+                });
+
+
+
+
                 $("#gameBackBlack").fadeOut(0);
                 $("#regi").fadeOut(0);
                 $("#loginForm").fadeOut(0);
@@ -228,11 +243,10 @@ $this->Html->scriptStart(array('inline' => false)); ?>
 
                 //cookieCheck
                 if(getCookie('skipFlag') == 1){
-                    $('#checkbox').prop('checked', true);
+                    $('#check').show();
                     //replayかどうか確認
                     if(replayPage == null || replayPage == ''){
                         fin();
-                        $('#check').show();
                     }else{
                         $("#gameLogo").fadeIn(1000).fadeOut(500);
                         $("#hukidashi").delay(2500).fadeIn(500);
@@ -246,7 +260,6 @@ $this->Html->scriptStart(array('inline' => false)); ?>
                         }).appendTo("#gameImg");
                         $("#skip").click(function(){
                             fin();
-                            $('#check').show();
                         });
                     }
                 }else{
@@ -421,6 +434,20 @@ $this->Html->scriptStart(array('inline' => false)); ?>
 
             
 <?php $this->Html->scriptEnd(); ?>
+<div id="pop-up-back">
+<div id="pop-up-wrapper">
+<p class="center" id="pop-up-title">こみゅけん！にアクセスしてくださった方へ</p>
+<p>このたびは、「こみゅけん！～今さら聞けない友達の作り方～」にご関心をお寄せいただき、ありがとうございます。</p>
+<p>現在公開している「こみゅけん！」では、場面設定のためのムービーに続き、<br>シナリオ（場面）が１つ、課題が提示されるエピソードが３つ、体験していただけます。</p>
+<p>私たち東大の大学院生チームでは日々の心理学相談の場面で、<br>コミュニケーションにおいて「困った」「苦手だ」という悩みを伺うことが多々あります。その経験から、<br>楽しみながらコミュニケーションについて少しでも役に立つような考え方や言い方をお伝えできるツールがあるといいな、<br>という思いを強くしてこのようなゲームを企画し、HAL東京の学生さんたちに形にしていただきました。</p>
+<p>開発期間は約3か月。</p>
+<p>どのような課題をどのようにお見せするのがよいのか、どのような工夫をすれば楽しんでいただけるのかなど、まだまだ模索中です。<br>そのため、現時点のバージョンの公開期間は12月1日～12月26日とさせていただきます。<br>是非プレイをしていただいて、率直なご意見を課題後のフィードバックや問い合わせフォームからお送りいただければ、<br>ありがたく思います。</p>
+<p>頂いたご意見を今後さらなる企画開発の充実につなげていきたいと考えております。</p>
+<p>どうぞ、よろしくお願い申し上げます。</p>
+<p class="right">こみゅけん！開発スタッフ一同</p>
+<button id="close-pop-up-btn">閉じる</button>
+</div>
+</div>
     <div id="game">
     <div id="replayOpning">
         <div id="gameBackBlack"></div>
